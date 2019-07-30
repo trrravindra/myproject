@@ -1,0 +1,105 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+	elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data">
+	<xs:import
+		schemaLocation="ReportSvc-XSD2.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+	<xs:import
+		schemaLocation="ReportSvc-XSD7.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution" />
+	<xs:complexType name="UserToken">
+		<xs:sequence>
+			<xs:element
+				xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Status" type="q1:eTokenStatus" />
+			<xs:element minOccurs="0" name="Token" nillable="true"
+				type="xs:base64Binary" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserToken" nillable="true" type="tns:UserToken" />
+	<xs:complexType name="GroupBy">
+		<xs:sequence>
+			<xs:element
+				xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Group" type="q2:eGroupBy" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GroupBy" nillable="true" type="tns:GroupBy" />
+	<xs:complexType name="Gender">
+		<xs:sequence>
+			<xs:element
+				xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Type" type="q3:eGender" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Gender" nillable="true" type="tns:Gender" />
+	<xs:complexType name="SortBy">
+		<xs:sequence>
+			<xs:element
+				xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Sort" type="q4:eSortBy" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SortBy" nillable="true" type="tns:SortBy" />
+	<xs:complexType name="Paging">
+		<xs:sequence>
+			<xs:element name="PageSize" type="xs:int" />
+			<xs:element name="Start" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Paging" nillable="true" type="tns:Paging" />
+	<xs:complexType name="ReportResults">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="ReportResult"
+				nillable="true" type="tns:ReportResult" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportResults" nillable="true"
+		type="tns:ReportResults" />
+	<xs:complexType name="ReportResult">
+		<xs:sequence>
+			<xs:element name="Count" type="xs:long" />
+			<xs:element minOccurs="0" name="Device" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="Din" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Gender" type="q5:eGender" />
+			<xs:element minOccurs="0" name="PatientOid" nillable="true"
+				type="xs:string" />
+			<xs:element name="PeriodFrom" type="xs:dateTime" />
+			<xs:element name="PeriodTo" type="xs:dateTime" />
+			<xs:element minOccurs="0" name="PharmacyContractNumber"
+				nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="PostalCode" nillable="true"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportResult" nillable="true" type="tns:ReportResult" />
+	<xs:complexType name="ReportInput">
+		<xs:sequence>
+			<xs:element
+				xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="ReportName" type="q6:eReportName" />
+			<xs:element
+				xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="OutputFormat" type="q7:eReportOutputFormat" />
+			<xs:element
+				xmlns:q8="http://schemas.datacontract.org/2004/07/Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution"
+				name="ParametersValue" nillable="true" type="q8:ArrayOfParameterValue" />
+			<xs:element
+				xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Culture" type="q9:eCulture" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportInput" nillable="true" type="tns:ReportInput" />
+	<xs:complexType name="ReportName">
+		<xs:sequence>
+			<xs:element
+				xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Name" type="q10:eReportName" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportName" nillable="true" type="tns:ReportName" />
+</xs:schema>

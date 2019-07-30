@@ -1,0 +1,33 @@
+<div class="store-info">
+    <img class="map-marker" data-identifier="{{=it.identifier}}" src="{{=it.identifierPin}}" />
+    <h3 class="title"><a href="#" data-identifier="{{=it.identifier}}">{{=it.storeName}}</a><span>{{=it.distance}} km</span></h3>
+    <p class="store-address">
+       {{=it.address.addressLine1}}<br />
+        {{=it.address.city}}, {{=it.address.province}}&nbsp;&nbsp;&nbsp;{{=it.address.postalCode}}<br />
+        {{=this.format.as('phone', it.phoneNumber)}}<br />
+    </p>
+
+    <div class="collapse">
+        <p class="store-hours"><a href="#" data-collapse-target=".collapse-content">Store Hours</a></p>
+        <div class="collapse-content">
+            <table>
+                {{~it.operatingHours :value:index}}
+                <tr {{? value.holiday }}class="holiday"{{?}}><th>{{=value.day}}</th><td>{{=value.hours}}</td></tr>
+                {{~}}
+            </table>
+           
+        </div>
+    </div>
+
+    <div class="collapse">
+        <p class="store-services"><a href="#" data-collapse-target=".collapse-content">Store Services</a></p>
+        <div class="collapse-content">
+            <ul>
+                {{~it.departments :value:index}}
+                <li>{{=value.departmentName}}</li>
+                {{~}}
+            </ul>
+        </div>
+    </div>
+    
+</div>

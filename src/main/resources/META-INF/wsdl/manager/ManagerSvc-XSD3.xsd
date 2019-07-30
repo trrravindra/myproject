@@ -1,0 +1,164 @@
+<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
+	<xs:import
+		schemaLocation="ManagerSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="UserToken" nillable="true" type="q1:UserToken"
+		xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Username" nillable="true" type="xs:string" />
+	<xs:element name="SendPasswordByEmail" type="xs:boolean" />
+	<xs:element name="Password" nillable="true" type="xs:string" />
+	<xs:element name="Pharmacy" nillable="true" type="q2:Pharmacy"
+		xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="MainPharmacyContractNumber" nillable="true"
+		type="xs:string" />
+	<xs:element name="PharmacyTimeZone" nillable="true"
+		type="q3:PharmacyTimeZone"
+		xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PharmacyPMS" nillable="true" type="q4:PharmacyPMS"
+		xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PharmacyContractNumber" nillable="true"
+		type="xs:string" />
+	<xs:element name="ActivationKey" nillable="true" type="xs:string" />
+	<xs:element name="ActivationModule" nillable="true"
+		type="q5:ActivationModule"
+		xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="AssignmentStatus" nillable="true"
+		type="q6:UserAccountsAssignmentStatus"
+		xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="GroupId" nillable="true"
+		type="q7:ArrayOfUserAccountsGroup"
+		xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ParentUserName" nillable="true" type="xs:string" />
+	<xs:element name="SearchCriteria" nillable="true"
+		type="q8:ArrayOfSearchElement"
+		xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Paging" nillable="true" type="q9:Paging"
+		xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Accounts" nillable="true" type="q10:UserAccounts"
+		xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Count" type="xs:int" />
+	<xs:element name="UserName" nillable="true" type="xs:string" />
+	<xs:element name="LinkedPharmacies" type="xs:boolean" />
+	<xs:element name="Agents" nillable="true" type="q11:Agents"
+		xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="AccountType" nillable="true"
+		type="q12:UserAccountType"
+		xmlns:q12="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="FirstName" nillable="true" type="xs:string" />
+	<xs:element name="LastName" nillable="true" type="xs:string" />
+	<xs:element name="Email" nillable="true" type="xs:string" />
+	<xs:element name="Comments" nillable="true" type="xs:string" />
+	<xs:element name="Language" nillable="true"
+		type="q13:AccountPreference.eLanguagesSupported"
+		xmlns:q13="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="RequestorUserName" nillable="true" type="xs:string" />
+	<xs:element name="ConsentOID" nillable="true" type="xs:string" />
+	<xs:element name="GuestUserName" nillable="true" type="xs:string" />
+	<xs:element name="GuestPassword" nillable="true" type="xs:string" />
+	<xs:element name="ConsentForGuest" type="xs:boolean" />
+	<xs:element name="Description" nillable="true" type="xs:string" />
+	<xs:element name="SendNotification" nillable="true" type="xs:boolean" />
+	<xs:element name="RequestsState" nillable="true"
+		type="q14:FamilyManagerRequestState"
+		xmlns:q14="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="FamilyManagerPatientRequests" nillable="true"
+		type="q15:FamilyManagerPatientRequests"
+		xmlns:q15="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="State" nillable="true" type="q16:FilterAgentState"
+		xmlns:q16="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ListAgents" nillable="true" type="q17:ListAgents"
+		xmlns:q17="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="AssignmentAction" nillable="true"
+		type="q18:AssignUserAssignmentAction"
+		xmlns:q18="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="UserAccountState" nillable="true"
+		type="q19:UserAccountState"
+		xmlns:q19="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PatientUserName" nillable="true" type="xs:string" />
+	<xs:element name="PatientOID" nillable="true" type="xs:string" />
+	<xs:element name="CaregiverUserName" nillable="true" type="xs:string" />
+	<xs:element name="FacilityOID" nillable="true" type="xs:string" />
+	<xs:element name="ExtendedInfo" nillable="true" type="q20:ExtendedInfo"
+		xmlns:q20="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ParentUsername" nillable="true" type="xs:string" />
+	<xs:element name="Patients" nillable="true" type="q21:Patients"
+		xmlns:q21="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="LicenseAgreementDate" type="xs:dateTime" />
+	<xs:element name="ContractNumber" nillable="true" type="xs:string" />
+	<xs:element name="MessageType" nillable="true"
+		type="q22:EventMessageType"
+		xmlns:q22="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="MessageState" nillable="true"
+		type="q23:EventMessageState"
+		xmlns:q23="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="DateFrom" nillable="true" type="xs:dateTime" />
+	<xs:element name="DateTo" nillable="true" type="xs:dateTime" />
+	<xs:element name="GetEventMessages" nillable="true"
+		type="q24:GetEventMessages"
+		xmlns:q24="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="GetPharmacyParameters" nillable="true"
+		type="q25:PharmacyParameters"
+		xmlns:q25="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Target" nillable="true" type="q26:HierarchicalTarget"
+		xmlns:q26="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="UpdatePharmacyParameter" nillable="true"
+		type="q27:PharmacyParameterValue"
+		xmlns:q27="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ManagerUsername" nillable="true" type="xs:string" />
+	<xs:element name="ManagedUsername" nillable="true" type="xs:string" />
+	<xs:element name="FacilityAssignmentStatus" nillable="true"
+		type="q28:FacilityAssignmentStatus"
+		xmlns:q28="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="FacilitiesAssigned" nillable="true"
+		type="q29:FacilitiesAssigned"
+		xmlns:q29="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PatientsAssigned" nillable="true"
+		type="q30:PatientsAssigned"
+		xmlns:q30="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="FilterParameters" nillable="true"
+		type="q31:FilterParameters"
+		xmlns:q31="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ParametersExtendedInfo" nillable="true"
+		type="q32:ParametersExtendedInfo"
+		xmlns:q32="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PharmacyParametersValue" nillable="true"
+		type="q33:PharmacyParametersValue"
+		xmlns:q33="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PermissionGroup" nillable="true"
+		type="q34:UserAccountsGroup"
+		xmlns:q34="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PermissionExtendedInfo" nillable="true"
+		type="q35:PermissionExtendedInfo"
+		xmlns:q35="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ParametersPermission" nillable="true"
+		type="q36:ParametersPermission"
+		xmlns:q36="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="UpdateValue" nillable="true"
+		type="q37:UpdateParameterPermission"
+		xmlns:q37="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Region" nillable="true" type="q38:Region"
+		xmlns:q38="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="OID" nillable="true" type="xs:string" />
+	<xs:element name="ListRegions" nillable="true" type="q39:Regions"
+		xmlns:q39="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="RegionOID" nillable="true" type="xs:string" />
+	<xs:element name="PharmacyRegionAssignmentAction" nillable="true"
+		type="q40:AssignPharmacyRegionAssignmentAction"
+		xmlns:q40="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ApplyParameters" type="xs:boolean" />
+	<xs:element name="PharmacySearchCriteria" nillable="true"
+		type="q41:ArrayOfPharmacySearchElement"
+		xmlns:q41="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="assignedPharmacies" nillable="true"
+		type="q42:AssignedPharmacies"
+		xmlns:q42="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="EventMessageType" nillable="true"
+		type="q43:EventMessageType"
+		xmlns:q43="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Physician" nillable="true" type="q44:Physician"
+		xmlns:q44="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ActiveListPhysicians" nillable="true"
+		type="q45:Physicians"
+		xmlns:q45="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+</xs:schema>

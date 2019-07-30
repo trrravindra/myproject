@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="ProfileService" targetNamespace="http://tempuri.org/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import schemaLocation="ProfileSvc-XSD3.xsd"
+				namespace="http://tempuri.org/" />
+			<xsd:import schemaLocation="ProfileSvc-XSD5.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+			<xsd:import schemaLocation="ProfileSvc-XSD0.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import schemaLocation="ProfileSvc-XSD1.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+			<xsd:import schemaLocation="ProfileSvc-XSD2.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xsd:import schemaLocation="ProfileSvc-XSD4.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/System" />
+			<xsd:import schemaLocation="ProfileSvc-XSD6.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="GetPrescriptionsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PrescriptionExtendedInfo" element="tns:PrescriptionExtendedInfo" />
+		<wsdl:part name="PatientOID" element="tns:PatientOID" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+		<wsdl:part name="CustomFilters" element="tns:CustomFilters" />
+	</wsdl:message>
+	<wsdl:message name="GetPrescriptionsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ProfilePrescriptions" element="tns:ProfilePrescriptions" />
+	</wsdl:message>
+	<wsdl:message name="IProfileSvc_GetPrescriptions_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q1:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPrescriptionsCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientOID" element="tns:PatientOID" />
+		<wsdl:part name="CustomFilters" element="tns:CustomFilters" />
+	</wsdl:message>
+	<wsdl:message name="GetPrescriptionsCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Count" element="tns:Count" />
+	</wsdl:message>
+	<wsdl:message
+		name="IProfileSvc_GetPrescriptionsCount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q2:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPrescriptionHistoryRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PrescriptionOID" element="tns:PrescriptionOID" />
+		<wsdl:part name="PrescriptionExtendedInfo" element="tns:PrescriptionExtendedInfo" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetPrescriptionHistoryResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Prescriptions" element="tns:Prescriptions" />
+	</wsdl:message>
+	<wsdl:message
+		name="IProfileSvc_GetPrescriptionHistory_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q3:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPatientDataRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientExtendedInfo" element="tns:PatientExtendedInfo" />
+		<wsdl:part name="PatientOID" element="tns:PatientOID" />
+	</wsdl:message>
+	<wsdl:message name="GetPatientDataResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Patient" element="tns:Patient" />
+		<wsdl:part name="EmailAddress" element="tns:EmailAddress" />
+	</wsdl:message>
+	<wsdl:message name="IProfileSvc_GetPatientData_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q4:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetAllPharmaciesRequest">
+		<wsdl:part name="Chain" element="tns:Chain" />
+		<wsdl:part name="PostalCode" element="tns:PostalCode" />
+		<wsdl:part name="City" element="tns:City" />
+	</wsdl:message>
+	<wsdl:message name="GetAllPharmaciesResponse">
+		<wsdl:part name="Pharmacies" element="tns:Pharmacies" />
+	</wsdl:message>
+	<wsdl:message name="IProfileSvc_GetAllPharmacies_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q5:Error" />
+	</wsdl:message>
+	<wsdl:portType name="IProfileSvc">
+		<wsdl:operation name="GetPrescriptions">
+			<wsdl:input wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptions"
+				name="GetPrescriptionsRequest" message="tns:GetPrescriptionsRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionsResponse"
+				name="GetPrescriptionsResponse" message="tns:GetPrescriptionsResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionsErrorFault"
+				name="ErrorFault" message="tns:IProfileSvc_GetPrescriptions_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPrescriptionsCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionsCount"
+				name="GetPrescriptionsCountRequest" message="tns:GetPrescriptionsCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionsCountResponse"
+				name="GetPrescriptionsCountResponse" message="tns:GetPrescriptionsCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionsCountErrorFault"
+				name="ErrorFault" message="tns:IProfileSvc_GetPrescriptionsCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPrescriptionHistory">
+			<wsdl:input wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionHistory"
+				name="GetPrescriptionHistoryRequest" message="tns:GetPrescriptionHistoryRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionHistoryResponse"
+				name="GetPrescriptionHistoryResponse" message="tns:GetPrescriptionHistoryResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetPrescriptionHistoryErrorFault"
+				name="ErrorFault"
+				message="tns:IProfileSvc_GetPrescriptionHistory_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPatientData">
+			<wsdl:input wsaw:Action="http://tempuri.org/IProfileSvc/GetPatientData"
+				name="GetPatientDataRequest" message="tns:GetPatientDataRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IProfileSvc/GetPatientDataResponse"
+				name="GetPatientDataResponse" message="tns:GetPatientDataResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IProfileSvc/GetPatientDataErrorFault"
+				name="ErrorFault" message="tns:IProfileSvc_GetPatientData_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetAllPharmacies">
+			<wsdl:input wsaw:Action="http://tempuri.org/IProfileSvc/GetAllPharmacies"
+				name="GetAllPharmaciesRequest" message="tns:GetAllPharmaciesRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetAllPharmaciesResponse"
+				name="GetAllPharmaciesResponse" message="tns:GetAllPharmaciesResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IProfileSvc/GetAllPharmaciesErrorFault"
+				name="ErrorFault" message="tns:IProfileSvc_GetAllPharmacies_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RxAssystProfileEndPoint" type="tns:IProfileSvc">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetPrescriptions">
+			<soap:operation soapAction="http://tempuri.org/IProfileSvc/GetPrescriptions"
+				style="document" />
+			<wsdl:input name="GetPrescriptionsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPrescriptionsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPrescriptionsCount">
+			<soap:operation
+				soapAction="http://tempuri.org/IProfileSvc/GetPrescriptionsCount"
+				style="document" />
+			<wsdl:input name="GetPrescriptionsCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPrescriptionsCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPrescriptionHistory">
+			<soap:operation
+				soapAction="http://tempuri.org/IProfileSvc/GetPrescriptionHistory"
+				style="document" />
+			<wsdl:input name="GetPrescriptionHistoryRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPrescriptionHistoryResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPatientData">
+			<soap:operation soapAction="http://tempuri.org/IProfileSvc/GetPatientData"
+				style="document" />
+			<wsdl:input name="GetPatientDataRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPatientDataResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAllPharmacies">
+			<soap:operation soapAction="http://tempuri.org/IProfileSvc/GetAllPharmacies"
+				style="document" />
+			<wsdl:input name="GetAllPharmaciesRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAllPharmaciesResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ProfileService">
+		<wsdl:port name="RxAssystProfileEndPoint" binding="tns:RxAssystProfileEndPoint">
+			<soap:address
+				location="abc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

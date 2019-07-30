@@ -1,0 +1,54 @@
+{ 
+    "api": {
+        "pcApi": {
+            "base": "http://loblaws.ca/apps/lcl",
+            "dataType": "json",
+
+            "services": {
+                "store": {
+                    "path": "/storelocator",
+                    "params": {
+                        "storeId": null,
+                        "lang": "en_CA"
+                    }
+                },
+                "storeLocator": {
+                    "path": "/storelocator",
+                    "params": {
+                        "location": null,
+                        "stores": 10,
+                        "banner": ["13","31"],
+                        "departments": null,
+                        "proximity": 50,
+                        "lang": "en_CA"
+                    }
+                }  
+            }
+        }
+    },
+    "storeLocator": {
+        "defaultSearch": "Toronto",
+        "pinUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld={identifier}|ff776b",
+        "pinShadowUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+
+        "mapDefaults": {
+            "mapType": "ROADMAP",
+            "center": {
+                "lat": 43.707594,
+                "lng": -79.365234
+            },
+            "zoom": 4,
+            "zoomDetail": 15
+        }
+    },
+    "analytics": {
+        "enabled": true,
+        "data" : {
+            "pageURL" : "http://www.pc.ca/en_CA.html",
+            "identifiedStore" : "",
+            "province" : "ON"
+        }
+    },
+	"cookieDomain" : "/",
+    "cookieExpiry" : 365 
+}

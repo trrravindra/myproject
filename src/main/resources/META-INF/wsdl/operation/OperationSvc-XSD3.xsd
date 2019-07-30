@@ -1,0 +1,46 @@
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://www.RxAssyst.com/Operation/2012/08" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.RxAssyst.com/Operation/2012/08">
+	<xs:import
+		schemaLocation="OperationSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="UserToken" nillable="true" type="q1:UserToken"
+		xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PatientOid" nillable="true" type="xs:string" />
+	<xs:element name="AutomatedRefills" nillable="true"
+		type="q2:AutomatedRefills"
+		xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="OID" nillable="true" type="xs:string" />
+	<xs:element name="AutomatedRefill" nillable="true"
+		type="q3:AutomatedRefill"
+		xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PatientOID" nillable="true" type="xs:string" />
+	<xs:element name="RxNewRequest" nillable="true" type="q4:RxNewRequest"
+		xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="OperationalEvent" nillable="true"
+		type="q5:OperationalEvent"
+		xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="RequestOid" nillable="true" type="xs:string" />
+	<xs:element name="PharmacyContractNumber" nillable="true"
+		type="xs:string" />
+	<xs:element name="OriginalPrescriptionOID" nillable="true"
+		type="xs:string" />
+	<xs:element name="MedReleaseMode" nillable="true"
+		type="q6:MedReleaseMode"
+		xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="AutomatedRefillCalendars" nillable="true"
+		type="q7:AutomatedRefillCalendars"
+		xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="RefillReminders" nillable="true"
+		type="q8:RefillReminders"
+		xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="RefillReminder" nillable="true"
+		type="q9:RefillReminder"
+		xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="BufferTimeHours" type="xs:int" />
+	<xs:element name="MobilePhoneNumber" nillable="true" type="xs:string" />
+	<xs:element name="Email" nillable="true" type="xs:string" />
+	<xs:element name="RefillReminderCalendars" nillable="true"
+		type="q10:RefillReminderCalendars"
+		xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+</xs:schema>

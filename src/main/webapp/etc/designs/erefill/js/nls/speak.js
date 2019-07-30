@@ -1,0 +1,1 @@
+define({root:{header:"Find Your Local Pharmacy",searchlbl:"Search results for:",frmplaceholder:"Enter your address, postal code or city",btnfind:"Find",btnback:"Back to Home",storehr:"Store Hours",storesrv:"Store Services",btnselstore:"Select This Store","errmsg":"No Results Found"},fr_CA:!0});

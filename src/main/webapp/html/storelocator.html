@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en_CA" class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" > <![endif]-->
+<!--[if IE 7]>         <html lang="en_CA" class="no-js lt-ie10 lt-ie9 lt-ie8" > <![endif]-->
+<!--[if IE 8]>         <html lang="en_CA" class="no-js lt-ie10 lt-ie9" > <![endif]-->
+<!--[if IE 9]>         <html lang="en_CA" class="no-js lt-ie10" > <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en_CA" class="no-js" > <!--<![endif]-->
+
+<head>
+
+    <title>TITLE</title>
+    <meta name="description" content="" />
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=yes" />
+    <meta http-equiv="cleartype" content="on" />
+    <meta name="mobileoptimized" content="1024" />
+    <meta name="viewport" content="width=1024" />
+
+    <meta property="og:url" content="http://www.pageurlhere.com">
+    <meta property="og:title" content="Page title here" />
+    <meta property="og:description" content="Page description here" />
+    <meta property="og:image" content="http://lorempixel.com/output/food-h-c-223-266-7.jpg" />
+    <meta name="format-detection" content="telephone=no">
+
+   <link rel="stylesheet" href="/lcl-erefill-services/resources/styles/pages/erefill/global.css">
+    
+    <script src="/lcl-erefill-services/resources/js/vendor/modernizr.js"></script>
+    <script id="require-js" data-main="/lcl-erefill-services/resources/js/page-storelocator" src="/lcl-erefill-services/resources/js/vendor/require.js"></script>
+
+</head>
+
+<body class="" data-page-analytics='{"pageCategory" : "recipes","pageName" : "how-to--poach-fish.html","pageTemplate" : "hirlanding","brand" : "","campaign" : ""}'>
+ <!-- MAIN -->
+ <!--<pre>
+ {
+ "defaultSearch": "Toronto",
+ "pinUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld={identifier}|ff776b",
+ "pinShadowUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+ "mapDefaults": 
+ {
+ "mapType": "ROADMAP",
+ "center": 
+ {
+ "lat": 43.707594,
+ "lng": -79.365234
+},
+"zoom": 4,
+"zoomDetail": 15
+}
+ </pre>-->
+<input type="hidden" value='{
+ "defaultSearch": "Toronto",
+ "pinUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld={identifier}|ff776b",
+ "pinShadowUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+ "mapDefaults": 
+ {
+ "mapType": "ROADMAP",
+ "center": 
+ {
+ "lat": 43.707594,
+ "lng": -79.365234
+},
+"zoom": 4,
+"zoomDetail": 15,"cookieExpiry": 365
+},"storeLocator": {
+                    "path": "/apps/lcl/storelocator",
+                    "params": {
+                        "location": null,
+                        "stores": 10,
+                        "banner": [],
+                        "departments": null,
+                        "lang": "en_CA",
+                        "proximity": 50
+                    }
+                }}' name="storelocator"/>
+    <section class="container uniform" >
+
+        <section class="page page-details locator" >
+
+           <div class="banner">
+	<!-- <img class="logo print" src="library/images/erefill/logo-print-loblaws.jpg" title="Loblaws" alt="Loblaws" /> -->
+	<a target="_parent" href="http://erefill.localhost.com/content/erefill/en_CA.html">
+		<div class="title">
+			<img alt="" title="Loblaws" src="/lcl-erefill-services/resources/images/erefill/Header_Image.png" class="logo">
+		</div>
+	</a>
+	<div class="locale">
+		<a class="active banloc enlang" href="#" data-lang="en">English</a> | <a class="banloc frlang" href="#" data-lang="en">Français</a>
+	</div>
+</div>
+
+            <div class="content" >
+                <h1 class="title">Find Your Local Pharmacy</h1>
+
+                <section class="store-locator">
+
+                    <h4 class="title">Search results for:</h4>
+
+                    <!-- Could include Language and BannerName Filters -->
+                    <!-- //www.presidentschoice.ca/LCLOnline/rest/v3/store/locator/?lang=en_US&banner=loblaws -->
+                    <form id="form-store-locator" data-banner="loblaws" data-storeloc="content/lclonline/config/en_CA/storeloc3.json">
+                        <div class="error"><p>We couldn't find what you're looking for. Please try again.</p></div>
+                        <input class="input-search" type="text" name="input" placeholder="Enter your address, postal code or city">
+                        <button type="submit" class="button-erefill green">Find</button>
+                        <a href="#" class="button-erefill white">Back to Home</a>
+
+                        <div class="departments">
+                            <input name="pharmacy" value="300064" type="checkbox" checked="checked">
+                        </div>
+
+                    </form>
+                </section>
+				
+				 <div class="map-results" >
+                <!-- found stores -->
+
+                <section class="main main-store-locator">
+                    <div class="column-layout col-3">
+                        <div class="col">
+                            <div class="store-listing">
+                                <!-- storeInfo tpls -->
+                            </div>
+                        </div>
+                        <div class="col span2 last">
+                            <div class="google-maps-container">
+                                <div class="map_canvas"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            </div>
+
+           
+
+        </section>
+
+    </section>
+	<footer class="footer-main">
+
+    <div class="wrap">
+        <div class="footer-global-erefill">
+            <ul>
+              
+            </ul>
+            <div class="copyright"></div></div>
+    </div>
+</footer>
+
+<!-- Google Tag Manager -->
+<script>
+    
+    // Parse tracking tags stored in a hash from the URL
+    window['dataLayer'] = window['dataLayer'] || [];
+    
+    dataLayer.push( { 'visitor-status' : 'ANONYMOUS | IDENTIFIED' } );
+    dataLayer.push( { 'preferred-province' : 'PROVINCE' } );
+    dataLayer.push( { 'page-category' : 'PAGE-CATEGORY' } );
+    dataLayer.push( { 'brand' : 'BRAND' } );
+    dataLayer.push( { 'pageview': 'PAGE-NAME', 'event': 'pageview'} );
+
+    // Please don't fail
+    try {
+        // UTM info from hash
+        if( location.hash && location.hash !== '#' ) {
+            // Make sure there's a utm_source
+            if( location.hash.indexOf('utm_source') > -1 ) {
+
+                    // Split at ampersand to get keys and values
+                var kvPairs = location.hash.replace('#','').split('&'),
+                    i = 0, 
+                    l = kvPairs.length;
+
+                // Iterate through each kvPair
+                for( i; i < l; i++ ) {
+                    
+                    // Get this index
+                    var kv = kvPairs[i];
+
+                    // ! marks where the theme id is. If there is one there,
+                    // then we have to store that theme id for later and skip
+                    // the rest of this loop.
+                    if( kv.indexOf('!') > -1 ) {
+                        window.themeId = kv;
+                        continue;
+                    }
+
+                    // If there's an equals sign in the current index
+                    if( kv.indexOf('=') > -1 ) {
+                            // Cache index of the equals sign
+                        var indexOfEquals = kv.indexOf('='),
+                            // The key
+                            k = kv.slice( 0, indexOfEquals ),
+                            // The value
+                            v = kv.slice( indexOfEquals + 1, kv.length ) || "";
+
+                        // Switch at the key and add the value to the corresponding GTM key
+                        switch( k ) {
+                            case 'utm_source' :
+                                dataLayer.push( { "source" : v } );
+                            break;
+                            case 'utm_medium' :
+                                dataLayer.push( { "medium" : v } );
+                            break;
+                            case 'utm_keyword' :
+                                dataLayer.push( { "keyword" : v } );
+                            break;
+                            case 'utm_content' :
+                                dataLayer.push( { "content" : v } );
+                            break;
+                            case 'utm_campaign' :
+                                dataLayer.push( { "campaign" : v } );
+                            break;
+                            default:
+                                // do nothing
+                            break;
+                        }
+                    }
+                }
+
+                // Add an extra parameter for page type
+                dataLayer.push( { "page-type" : "landing" } );
+
+                // If there was a theme-id then make the hash
+                // only the theme ID, otherwise empty the hash
+                if( window.themeId ) {
+                    location.hash = window.themeId;
+                    delete window[themeId];
+                } else {
+                    location.hash = '';
+                }
+
+                // Fini
+            }
+        }
+
+    } catch ( err ) {
+        // Do nothing aka handle the error
+    }
+
+</script>
+
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MVM9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MVM9');
+</script>
+<!-- End Google Tag Manager -->
+
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes">
+	<xs:import
+		schemaLocation="OperationSvc-XSD0.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+	<xs:simpleType name="eTokenStatus">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="byte" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Ok">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustConsent">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustChangePassword">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustGivePasswordReminder">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eTemporaryPasswordExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eUnsubscribingState">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eTokenStatus" nillable="true" type="tns:eTokenStatus" />
+	<xs:simpleType name="eOperationalEventState">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="eActive" />
+			<xs:enumeration value="eInactive" />
+			<xs:enumeration value="eExpired" />
+			<xs:enumeration value="eError" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eOperationalEventState" nillable="true"
+		type="tns:eOperationalEventState" />
+	<xs:simpleType name="eRecurrenceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="eDayBased" />
+			<xs:enumeration value="eMonthBased" />
+			<xs:enumeration value="eExpectedRefillDate" />
+			<xs:enumeration value="eOnce" />
+			<xs:enumeration value="eNbAttempt" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eRecurrenceType" nillable="true"
+		type="tns:eRecurrenceType" />
+	<xs:simpleType name="eProvince">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Alberta" />
+			<xs:enumeration value="BritishColumbia" />
+			<xs:enumeration value="Manitoba" />
+			<xs:enumeration value="NewBrunswick" />
+			<xs:enumeration value="Newfoundland" />
+			<xs:enumeration value="NovaScotia" />
+			<xs:enumeration value="Nunavut" />
+			<xs:enumeration value="NorthWestTerritories" />
+			<xs:enumeration value="Ontario" />
+			<xs:enumeration value="PrinceEdwardIsland" />
+			<xs:enumeration value="Quebec" />
+			<xs:enumeration value="Saskatchewan" />
+			<xs:enumeration value="Yukon" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eProvince" nillable="true" type="tns:eProvince" />
+	<xs:simpleType name="eRequestState">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Pending" />
+			<xs:enumeration value="Received" />
+			<xs:enumeration value="Completed" />
+			<xs:enumeration value="All" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eRequestState" nillable="true"
+		type="tns:eRequestState" />
+	<xs:simpleType name="eMedReleaseMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Pickup" />
+			<xs:enumeration value="Delivery" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eMedReleaseMode" nillable="true"
+		type="tns:eMedReleaseMode" />
+	<xs:simpleType name="eRxPrescriptionState">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Pending" />
+			<xs:enumeration value="Received" />
+			<xs:enumeration value="Accepted" />
+			<xs:enumeration value="Declined" />
+			<xs:enumeration value="AcceptedWithoutInfo" />
+			<xs:enumeration value="None" />
+			<xs:enumeration value="ReceivedETARequired" />
+			<xs:enumeration value="ConditionalAccepted" />
+			<xs:enumeration value="ReadyToPickUp" />
+			<xs:enumeration value="Released" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eRxPrescriptionState" nillable="true"
+		type="tns:eRxPrescriptionState" />
+	<xs:simpleType name="eRestriction">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Expired" />
+			<xs:enumeration value="NoRefill" />
+			<xs:enumeration value="EarlyRefill" />
+			<xs:enumeration value="Narcotic" />
+			<xs:enumeration value="Controlled" />
+			<xs:enumeration value="FilteredOut" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eRestriction" nillable="true" type="tns:eRestriction" />
+	<xs:simpleType name="ErrorCodes">
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="eInvalidUserPassword" />
+					<xs:enumeration value="eAccessDenied" />
+					<xs:enumeration value="eInvalidArguments" />
+					<xs:enumeration value="eSessionExpired" />
+					<xs:enumeration value="eMaxSessionsReached" />
+					<xs:enumeration value="eAccountLocked" />
+					<xs:enumeration value="eUnknown" />
+					<xs:enumeration value="eTokenExpired" />
+					<xs:enumeration value="eAccountDeactivated" />
+					<xs:enumeration value="eNoCounsellingSheetForDin" />
+					<xs:enumeration value="eInvalidOperation" />
+					<xs:enumeration value="eCannotUnassign" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="ErrorCodes" nillable="true" type="tns:ErrorCodes" />
+	<xs:simpleType name="eOperationalEventType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="eRefillReminder" />
+			<xs:enumeration value="eAutomatedRefill" />
+			<xs:enumeration value="eDeletePatient" />
+			<xs:enumeration value="eRefillOverdue" />
+			<xs:enumeration value="ePickUpReminder" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eOperationalEventType" nillable="true"
+		type="tns:eOperationalEventType" />
+</xs:schema>

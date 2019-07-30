@@ -1,0 +1,55 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib"
+	elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib">
+	<xs:import schemaLocation="SessionSvc-XSD3.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+	<xs:import schemaLocation="SessionSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:complexType name="Account">
+		<xs:sequence>
+			<xs:element name="ApplicationName" nillable="true" type="xs:string" />
+			<xs:element name="Comments" nillable="true" type="xs:string" />
+			<xs:element name="CreationDate" type="xs:dateTime" />
+			<xs:element name="FirstName" nillable="true" type="xs:string" />
+			<xs:element name="LastActivityDate" type="xs:dateTime" />
+			<xs:element name="LastName" nillable="true" type="xs:string" />
+			<xs:element name="LastPasswordChangeDate" type="xs:dateTime" />
+			<xs:element
+				xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="State" type="q1:eAccountState" />
+			<xs:element name="StateDate" type="xs:dateTime" />
+			<xs:element
+				xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Type" type="q2:eAccountType" />
+			<xs:element name="UserName" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Account" nillable="true" type="tns:Account" />
+	<xs:complexType name="LogOnDetail">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Account" nillable="true"
+				type="tns:Account" />
+			<xs:element
+				xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+				minOccurs="0" name="GroupId" nillable="true" type="q3:UserAccountsGroup" />
+			<xs:element
+				xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+				minOccurs="0" name="Establishment" nillable="true" type="q4:Establishment" />
+			<xs:element minOccurs="0" name="PatientModule" nillable="true"
+				type="tns:PatientModule" />
+			<xs:element minOccurs="0" name="PatientOID" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="ConsentExpired" nillable="true"
+				type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LogOnDetail" nillable="true" type="tns:LogOnDetail" />
+	<xs:complexType name="PatientModule">
+		<xs:sequence>
+			<xs:element name="AuthorizeOnlineBilling" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PatientModule" nillable="true"
+		type="tns:PatientModule" />
+</xs:schema>

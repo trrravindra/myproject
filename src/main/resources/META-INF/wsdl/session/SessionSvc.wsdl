@@ -1,0 +1,1024 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	name="RxAssyst" targetNamespace="http://tempuri.org/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import schemaLocation="SessionSvc-XSD2.xsd"
+				namespace="http://tempuri.org/" />
+			<xsd:import schemaLocation="SessionSvc-XSD4.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+			<xsd:import schemaLocation="SessionSvc-XSD0.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import schemaLocation="SessionSvc-XSD1.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+			<xsd:import schemaLocation="SessionSvc-XSD3.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xsd:import schemaLocation="SessionSvc-XSD5.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts" />
+			<xsd:import schemaLocation="SessionSvc-XSD6.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			<xsd:import schemaLocation="SessionSvc-XSD7.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib" />
+			<xsd:import schemaLocation="SessionSvc-XSD8.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/System" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="LogOnRequest">
+		<wsdl:part name="User" element="tns:User" />
+		<wsdl:part name="UserInfo" element="tns:UserInfo" />
+	</wsdl:message>
+	<wsdl:message name="LogOnResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_LogOn_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q1:Error" />
+	</wsdl:message>
+	<wsdl:message name="LogOffRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="LogOffResponse" />
+	<wsdl:message name="ISessionSvc_LogOff_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q2:Error" />
+	</wsdl:message>
+	<wsdl:message name="ChangePasswordRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="NewPassword" element="tns:NewPassword" />
+		<wsdl:part name="OldPassword" element="tns:OldPassword" />
+	</wsdl:message>
+	<wsdl:message name="ChangePasswordResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_ChangePassword_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q3:Error" />
+	</wsdl:message>
+	<wsdl:message name="ListPreferencesRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ListPreferencesResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="AccountPreferences" element="tns:AccountPreferences" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_ListPreferences_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q4:Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePreferencesRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="AccountPreferences" element="tns:AccountPreferences" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePreferencesResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_UpdatePreferences_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q5:Error" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmEmailRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UniqueIdentifier" element="tns:UniqueIdentifier" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmEmailResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ConfirmEmailCode" element="tns:ConfirmEmailCode" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_ConfirmEmail_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q6:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetConfirmEmailRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UniqueIdentifier" element="tns:UniqueIdentifier" />
+	</wsdl:message>
+	<wsdl:message name="GetConfirmEmailResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Email" element="tns:Email" />
+		<wsdl:part name="Status" element="tns:Status" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_GetConfirmEmail_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q7:Error" />
+	</wsdl:message>
+	<wsdl:message name="EmailValidRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Username" element="tns:Username" />
+	</wsdl:message>
+	<wsdl:message name="EmailValidResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Status" element="tns:Status" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_EmailValid_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q8:Error" />
+	</wsdl:message>
+	<wsdl:message name="SendPasswordRequest">
+		<wsdl:part name="Reminder" element="tns:Reminder" />
+	</wsdl:message>
+	<wsdl:message name="SendPasswordResponse" />
+	<wsdl:message name="ISessionSvc_SendPassword_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q9:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPasswordReminderRequest">
+		<wsdl:part name="User" element="tns:User" />
+	</wsdl:message>
+	<wsdl:message name="GetPasswordReminderResponse">
+		<wsdl:part name="PasswordReminder" element="tns:PasswordReminder" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_GetPasswordReminder_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q10:Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePasswordReminderRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PasswordReminder" element="tns:PasswordReminder" />
+		<wsdl:part name="Email" element="tns:Email" />
+		<wsdl:part name="Language" element="tns:Language" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePasswordReminderResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="ISessionSvc_UpdatePasswordReminder_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q11:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetCurrentAccountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="GetCurrentAccountResponse">
+		<wsdl:part name="Account" element="tns:Account" />
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_GetCurrentAccount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q12="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q12:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmaciesRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmaciesResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Pharmacies" element="tns:Pharmacies" />
+		<wsdl:part name="Default" element="tns:Default" />
+		<wsdl:part name="Main" element="tns:Main" />
+		<wsdl:part name="LastService" element="tns:LastService" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_GetPharmacies_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q13="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q13:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetUserRoleRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="GetUserRoleResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="GroupId" element="tns:GroupId" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_GetUserRole_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q14="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q14:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetAccountAliasesRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+	</wsdl:message>
+	<wsdl:message name="GetAccountAliasesResponse">
+		<wsdl:part name="Aliases" element="tns:Aliases" />
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_GetAccountAliases_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q15="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q15:Error" />
+	</wsdl:message>
+	<wsdl:message name="AddAccountAliasRequest">
+		<wsdl:part name="Alias" element="tns:Alias" />
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="AddAccountAliasResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_AddAccountAlias_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q16="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q16:Error" />
+	</wsdl:message>
+	<wsdl:message name="DeleteAccountAliasRequest">
+		<wsdl:part name="Alias" element="tns:Alias" />
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="DeleteAccountAliasResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_DeleteAccountAlias_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q17="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q17:Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdateAccountAliasRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Alias" element="tns:Alias" />
+		<wsdl:part name="NewAlias" element="tns:NewAlias" />
+	</wsdl:message>
+	<wsdl:message name="UpdateAccountAliasResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_UpdateAccountAlias_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q18="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q18:Error" />
+	</wsdl:message>
+	<wsdl:message name="SetLogonSourceRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="SourceName" element="tns:SourceName" />
+	</wsdl:message>
+	<wsdl:message name="SetLogonSourceResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_SetLogonSource_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q19="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q19:Error" />
+	</wsdl:message>
+	<wsdl:message name="VerifyIdentityRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+		<wsdl:part name="Verifications" element="tns:Verifications" />
+	</wsdl:message>
+	<wsdl:message name="VerifyIdentityResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Valid" element="tns:Valid" />
+		<wsdl:part name="VerifyIdentityReason" element="tns:VerifyIdentityReason" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_VerifyIdentity_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q20="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q20:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetConfirmMobilePhoneNumberRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+	</wsdl:message>
+	<wsdl:message name="GetConfirmMobilePhoneNumberResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="MobilePhoneNumber" element="tns:MobilePhoneNumber" />
+		<wsdl:part name="MobileConfirmationStatus" element="tns:MobileConfirmationStatus" />
+	</wsdl:message>
+	<wsdl:message
+		name="ISessionSvc_GetConfirmMobilePhoneNumber_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q21="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q21:Error" />
+	</wsdl:message>
+	<wsdl:message name="IdentifyRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="IdentificationType" element="tns:IdentificationType" />
+		<wsdl:part name="Identification" element="tns:Identification" />
+	</wsdl:message>
+	<wsdl:message name="IdentifyResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Identity" element="tns:Identity" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_Identify_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q22="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q22:Error" />
+	</wsdl:message>
+	<wsdl:message name="UnsubscribeCommunicationRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UnsubscribeEmailCommunication" element="tns:UnsubscribeEmailCommunication" />
+		<wsdl:part name="UnsubscribeMobilePhoneCommunication"
+			element="tns:UnsubscribeMobilePhoneCommunication" />
+	</wsdl:message>
+	<wsdl:message name="UnsubscribeCommunicationResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="ISessionSvc_UnsubscribeCommunication_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q23="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q23:Error" />
+	</wsdl:message>
+	<wsdl:message name="LogOnUserRequest">
+		<wsdl:part name="User" element="tns:User" />
+		<wsdl:part name="ExtendedInfo" element="tns:ExtendedInfo" />
+		<wsdl:part name="EncryptedKey" element="tns:EncryptedKey" />
+	</wsdl:message>
+	<wsdl:message name="LogOnUserResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Detail" element="tns:Detail" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_LogOnUser_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q24="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q24:Error" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmEnrollmentRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="SecondFactor" element="tns:SecondFactor" />
+		<wsdl:part name="SecondFactorType" element="tns:SecondFactorType" />
+		<wsdl:part name="Alias" element="tns:Alias" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmEnrollmentResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_ConfirmEnrollment_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q25="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q25:Error" />
+	</wsdl:message>
+	<wsdl:message name="UnsubscribeEmailCommunicationRequest">
+		<wsdl:part name="UnsubscribeKey" element="tns:UnsubscribeKey" />
+	</wsdl:message>
+	<wsdl:message name="UnsubscribeEmailCommunicationResponse" />
+	<wsdl:message
+		name="ISessionSvc_UnsubscribeEmailCommunication_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q26="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q26:Error" />
+	</wsdl:message>
+	<wsdl:message name="SetDefaultPharmacyRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PharmacyContractNumber" element="tns:PharmacyContractNumber" />
+	</wsdl:message>
+	<wsdl:message name="SetDefaultPharmacyResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ISessionSvc_SetDefaultPharmacy_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q27="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q27:Error" />
+	</wsdl:message>
+	<wsdl:message name="SendAliasRequest">
+		<wsdl:part name="Email" element="tns:Email" />
+		<wsdl:part name="BirthDate" element="tns:BirthDate" />
+	</wsdl:message>
+	<wsdl:message name="SendAliasResponse" />
+	<wsdl:message name="ISessionSvc_SendAlias_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q28="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q28:Error" />
+	</wsdl:message>
+	<wsdl:portType name="ISessionSvc">
+		<wsdl:operation name="LogOn">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/LogOn"
+				name="LogOnRequest" message="tns:LogOnRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/LogOnResponse"
+				name="LogOnResponse" message="tns:LogOnResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/LogOnErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_LogOn_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="LogOff">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/LogOff"
+				name="LogOffRequest" message="tns:LogOffRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/LogOffResponse"
+				name="LogOffResponse" message="tns:LogOffResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/LogOffErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_LogOff_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ChangePassword">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/ChangePassword"
+				name="ChangePasswordRequest" message="tns:ChangePasswordRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/ChangePasswordResponse"
+				name="ChangePasswordResponse" message="tns:ChangePasswordResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/ChangePasswordErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_ChangePassword_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ListPreferences">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/ListPreferences"
+				name="ListPreferencesRequest" message="tns:ListPreferencesRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/ListPreferencesResponse"
+				name="ListPreferencesResponse" message="tns:ListPreferencesResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/ListPreferencesErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_ListPreferences_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePreferences">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/UpdatePreferences"
+				name="UpdatePreferencesRequest" message="tns:UpdatePreferencesRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/UpdatePreferencesResponse"
+				name="UpdatePreferencesResponse" message="tns:UpdatePreferencesResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/UpdatePreferencesErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_UpdatePreferences_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ConfirmEmail">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/ConfirmEmail"
+				name="ConfirmEmailRequest" message="tns:ConfirmEmailRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/ConfirmEmailResponse"
+				name="ConfirmEmailResponse" message="tns:ConfirmEmailResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/ConfirmEmailErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_ConfirmEmail_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetConfirmEmail">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/GetConfirmEmail"
+				name="GetConfirmEmailRequest" message="tns:GetConfirmEmailRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/GetConfirmEmailResponse"
+				name="GetConfirmEmailResponse" message="tns:GetConfirmEmailResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetConfirmEmailErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_GetConfirmEmail_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="EmailValid">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/EmailValid"
+				name="EmailValidRequest" message="tns:EmailValidRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/EmailValidResponse"
+				name="EmailValidResponse" message="tns:EmailValidResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/EmailValidErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_EmailValid_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="SendPassword">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/SendPassword"
+				name="SendPasswordRequest" message="tns:SendPasswordRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/SendPasswordResponse"
+				name="SendPasswordResponse" message="tns:SendPasswordResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/SendPasswordErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_SendPassword_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPasswordReminder">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/GetPasswordReminder"
+				name="GetPasswordReminderRequest" message="tns:GetPasswordReminderRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetPasswordReminderResponse"
+				name="GetPasswordReminderResponse" message="tns:GetPasswordReminderResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetPasswordReminderErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_GetPasswordReminder_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePasswordReminder">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/UpdatePasswordReminder"
+				name="UpdatePasswordReminderRequest" message="tns:UpdatePasswordReminderRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/UpdatePasswordReminderResponse"
+				name="UpdatePasswordReminderResponse" message="tns:UpdatePasswordReminderResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/UpdatePasswordReminderErrorFault"
+				name="ErrorFault"
+				message="tns:ISessionSvc_UpdatePasswordReminder_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetCurrentAccount">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/GetCurrentAccount"
+				name="GetCurrentAccountRequest" message="tns:GetCurrentAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetCurrentAccountResponse"
+				name="GetCurrentAccountResponse" message="tns:GetCurrentAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetCurrentAccountErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_GetCurrentAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacies">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/GetPharmacies"
+				name="GetPharmaciesRequest" message="tns:GetPharmaciesRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/GetPharmaciesResponse"
+				name="GetPharmaciesResponse" message="tns:GetPharmaciesResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/GetPharmaciesErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_GetPharmacies_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetUserRole">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/GetUserRole"
+				name="GetUserRoleRequest" message="tns:GetUserRoleRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/GetUserRoleResponse"
+				name="GetUserRoleResponse" message="tns:GetUserRoleResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/GetUserRoleErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_GetUserRole_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetAccountAliases">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/GetAccountAliases"
+				name="GetAccountAliasesRequest" message="tns:GetAccountAliasesRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetAccountAliasesResponse"
+				name="GetAccountAliasesResponse" message="tns:GetAccountAliasesResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetAccountAliasesErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_GetAccountAliases_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AddAccountAlias">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/AddAccountAlias"
+				name="AddAccountAliasRequest" message="tns:AddAccountAliasRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/AddAccountAliasResponse"
+				name="AddAccountAliasResponse" message="tns:AddAccountAliasResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/AddAccountAliasErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_AddAccountAlias_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeleteAccountAlias">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/DeleteAccountAlias"
+				name="DeleteAccountAliasRequest" message="tns:DeleteAccountAliasRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/DeleteAccountAliasResponse"
+				name="DeleteAccountAliasResponse" message="tns:DeleteAccountAliasResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/DeleteAccountAliasErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_DeleteAccountAlias_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAccountAlias">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/UpdateAccountAlias"
+				name="UpdateAccountAliasRequest" message="tns:UpdateAccountAliasRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/UpdateAccountAliasResponse"
+				name="UpdateAccountAliasResponse" message="tns:UpdateAccountAliasResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/UpdateAccountAliasErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_UpdateAccountAlias_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="SetLogonSource">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/SetLogonSource"
+				name="SetLogonSourceRequest" message="tns:SetLogonSourceRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/SetLogonSourceResponse"
+				name="SetLogonSourceResponse" message="tns:SetLogonSourceResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/SetLogonSourceErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_SetLogonSource_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="VerifyIdentity">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/VerifyIdentity"
+				name="VerifyIdentityRequest" message="tns:VerifyIdentityRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/VerifyIdentityResponse"
+				name="VerifyIdentityResponse" message="tns:VerifyIdentityResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/VerifyIdentityErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_VerifyIdentity_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetConfirmMobilePhoneNumber">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetConfirmMobilePhoneNumber"
+				name="GetConfirmMobilePhoneNumberRequest" message="tns:GetConfirmMobilePhoneNumberRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetConfirmMobilePhoneNumberResponse"
+				name="GetConfirmMobilePhoneNumberResponse" message="tns:GetConfirmMobilePhoneNumberResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/GetConfirmMobilePhoneNumberErrorFault"
+				name="ErrorFault"
+				message="tns:ISessionSvc_GetConfirmMobilePhoneNumber_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="Identify">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/Identify"
+				name="IdentifyRequest" message="tns:IdentifyRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/IdentifyResponse"
+				name="IdentifyResponse" message="tns:IdentifyResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/IdentifyErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_Identify_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UnsubscribeCommunication">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/UnsubscribeCommunication"
+				name="UnsubscribeCommunicationRequest" message="tns:UnsubscribeCommunicationRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/UnsubscribeCommunicationResponse"
+				name="UnsubscribeCommunicationResponse" message="tns:UnsubscribeCommunicationResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/UnsubscribeCommunicationErrorFault"
+				name="ErrorFault"
+				message="tns:ISessionSvc_UnsubscribeCommunication_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="LogOnUser">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/LogOnUser"
+				name="LogOnUserRequest" message="tns:LogOnUserRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/LogOnUserResponse"
+				name="LogOnUserResponse" message="tns:LogOnUserResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/LogOnUserErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_LogOnUser_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ConfirmEnrollment">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/ConfirmEnrollment"
+				name="ConfirmEnrollmentRequest" message="tns:ConfirmEnrollmentRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/ConfirmEnrollmentResponse"
+				name="ConfirmEnrollmentResponse" message="tns:ConfirmEnrollmentResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/ConfirmEnrollmentErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_ConfirmEnrollment_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UnsubscribeEmailCommunication">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/ISessionSvc/UnsubscribeEmailCommunication"
+				name="UnsubscribeEmailCommunicationRequest" message="tns:UnsubscribeEmailCommunicationRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/UnsubscribeEmailCommunicationResponse"
+				name="UnsubscribeEmailCommunicationResponse" message="tns:UnsubscribeEmailCommunicationResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/UnsubscribeEmailCommunicationErrorFault"
+				name="ErrorFault"
+				message="tns:ISessionSvc_UnsubscribeEmailCommunication_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="SetDefaultPharmacy">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/SetDefaultPharmacy"
+				name="SetDefaultPharmacyRequest" message="tns:SetDefaultPharmacyRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/ISessionSvc/SetDefaultPharmacyResponse"
+				name="SetDefaultPharmacyResponse" message="tns:SetDefaultPharmacyResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/ISessionSvc/SetDefaultPharmacyErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_SetDefaultPharmacy_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="SendAlias">
+			<wsdl:input wsaw:Action="http://tempuri.org/ISessionSvc/SendAlias"
+				name="SendAliasRequest" message="tns:SendAliasRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/ISessionSvc/SendAliasResponse"
+				name="SendAliasResponse" message="tns:SendAliasResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/ISessionSvc/SendAliasErrorFault"
+				name="ErrorFault" message="tns:ISessionSvc_SendAlias_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RxAssystSessionEndPoint" type="tns:ISessionSvc">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="LogOn">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/LogOn"
+				style="document" />
+			<wsdl:input name="LogOnRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="LogOnResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="LogOff">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/LogOff"
+				style="document" />
+			<wsdl:input name="LogOffRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="LogOffResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ChangePassword">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/ChangePassword"
+				style="document" />
+			<wsdl:input name="ChangePasswordRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ChangePasswordResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ListPreferences">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/ListPreferences"
+				style="document" />
+			<wsdl:input name="ListPreferencesRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListPreferencesResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePreferences">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/UpdatePreferences"
+				style="document" />
+			<wsdl:input name="UpdatePreferencesRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdatePreferencesResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ConfirmEmail">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/ConfirmEmail"
+				style="document" />
+			<wsdl:input name="ConfirmEmailRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ConfirmEmailResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfirmEmail">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/GetConfirmEmail"
+				style="document" />
+			<wsdl:input name="GetConfirmEmailRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetConfirmEmailResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="EmailValid">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/EmailValid"
+				style="document" />
+			<wsdl:input name="EmailValidRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="EmailValidResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SendPassword">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/SendPassword"
+				style="document" />
+			<wsdl:input name="SendPasswordRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SendPasswordResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPasswordReminder">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/GetPasswordReminder"
+				style="document" />
+			<wsdl:input name="GetPasswordReminderRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPasswordReminderResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePasswordReminder">
+			<soap:operation
+				soapAction="http://tempuri.org/ISessionSvc/UpdatePasswordReminder"
+				style="document" />
+			<wsdl:input name="UpdatePasswordReminderRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdatePasswordReminderResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetCurrentAccount">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/GetCurrentAccount"
+				style="document" />
+			<wsdl:input name="GetCurrentAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetCurrentAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacies">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/GetPharmacies"
+				style="document" />
+			<wsdl:input name="GetPharmaciesRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPharmaciesResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetUserRole">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/GetUserRole"
+				style="document" />
+			<wsdl:input name="GetUserRoleRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetUserRoleResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAccountAliases">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/GetAccountAliases"
+				style="document" />
+			<wsdl:input name="GetAccountAliasesRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAccountAliasesResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AddAccountAlias">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/AddAccountAlias"
+				style="document" />
+			<wsdl:input name="AddAccountAliasRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddAccountAliasResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteAccountAlias">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/DeleteAccountAlias"
+				style="document" />
+			<wsdl:input name="DeleteAccountAliasRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeleteAccountAliasResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAccountAlias">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/UpdateAccountAlias"
+				style="document" />
+			<wsdl:input name="UpdateAccountAliasRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdateAccountAliasResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SetLogonSource">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/SetLogonSource"
+				style="document" />
+			<wsdl:input name="SetLogonSourceRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SetLogonSourceResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="VerifyIdentity">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/VerifyIdentity"
+				style="document" />
+			<wsdl:input name="VerifyIdentityRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="VerifyIdentityResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfirmMobilePhoneNumber">
+			<soap:operation
+				soapAction="http://tempuri.org/ISessionSvc/GetConfirmMobilePhoneNumber"
+				style="document" />
+			<wsdl:input name="GetConfirmMobilePhoneNumberRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetConfirmMobilePhoneNumberResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Identify">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/Identify"
+				style="document" />
+			<wsdl:input name="IdentifyRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="IdentifyResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UnsubscribeCommunication">
+			<soap:operation
+				soapAction="http://tempuri.org/ISessionSvc/UnsubscribeCommunication"
+				style="document" />
+			<wsdl:input name="UnsubscribeCommunicationRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UnsubscribeCommunicationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="LogOnUser">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/LogOnUser"
+				style="document" />
+			<wsdl:input name="LogOnUserRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="LogOnUserResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ConfirmEnrollment">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/ConfirmEnrollment"
+				style="document" />
+			<wsdl:input name="ConfirmEnrollmentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ConfirmEnrollmentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UnsubscribeEmailCommunication">
+			<soap:operation
+				soapAction="http://tempuri.org/ISessionSvc/UnsubscribeEmailCommunication"
+				style="document" />
+			<wsdl:input name="UnsubscribeEmailCommunicationRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UnsubscribeEmailCommunicationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SetDefaultPharmacy">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/SetDefaultPharmacy"
+				style="document" />
+			<wsdl:input name="SetDefaultPharmacyRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SetDefaultPharmacyResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SendAlias">
+			<soap:operation soapAction="http://tempuri.org/ISessionSvc/SendAlias"
+				style="document" />
+			<wsdl:input name="SendAliasRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SendAliasResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="RxAssyst">
+		<wsdl:port name="RxAssystSessionEndPoint" binding="tns:RxAssystSessionEndPoint">
+			<soap:address
+				location="http://dev.rxassyst.com/BlackBoxLoblaws/1_1_0/Session/RxAssyst.svc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

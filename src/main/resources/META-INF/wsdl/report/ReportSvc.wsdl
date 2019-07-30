@@ -1,0 +1,407 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	name="RxAssyst" targetNamespace="http://tempuri.org/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import
+				schemaLocation="ReportSvc-XSD3.xsd"
+				namespace="http://tempuri.org/" />
+			<xsd:import
+				schemaLocation="ReportSvc-XSD5.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+			<xsd:import
+				schemaLocation="ReportSvc-XSD0.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import
+				schemaLocation="ReportSvc-XSD1.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+			<xsd:import
+				schemaLocation="ReportSvc-XSD2.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xsd:import
+				schemaLocation="ReportSvc-XSD4.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			<xsd:import
+				schemaLocation="ReportSvc-XSD6.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts" />
+			<xsd:import
+				schemaLocation="ReportSvc-XSD7.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="GetActiveFileCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PostalCodes" element="tns:PostalCodes" />
+		<wsdl:part name="PharmacyContractNumbers" element="tns:PharmacyContractNumbers" />
+		<wsdl:part name="DateFrom" element="tns:DateFrom" />
+		<wsdl:part name="DateTo" element="tns:DateTo" />
+		<wsdl:part name="GroupBy" element="tns:GroupBy" />
+		<wsdl:part name="Devices" element="tns:Devices" />
+		<wsdl:part name="Dins" element="tns:Dins" />
+		<wsdl:part name="Gender" element="tns:Gender" />
+		<wsdl:part name="PatientOids" element="tns:PatientOids" />
+		<wsdl:part name="SortBy" element="tns:SortBy" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetActiveFileCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportResults" element="tns:ReportResults" />
+	</wsdl:message>
+	<wsdl:message name="IReportSvc_GetActiveFileCount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q1:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetRefillCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PostalCodes" element="tns:PostalCodes" />
+		<wsdl:part name="PharmacyContractNumbers" element="tns:PharmacyContractNumbers" />
+		<wsdl:part name="DateFrom" element="tns:DateFrom" />
+		<wsdl:part name="DateTo" element="tns:DateTo" />
+		<wsdl:part name="GroupBy" element="tns:GroupBy" />
+		<wsdl:part name="Devices" element="tns:Devices" />
+		<wsdl:part name="Dins" element="tns:Dins" />
+		<wsdl:part name="Gender" element="tns:Gender" />
+		<wsdl:part name="PatientOids" element="tns:PatientOids" />
+		<wsdl:part name="SortBy" element="tns:SortBy" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+		<wsdl:part name="IncludeAllRefills" element="tns:IncludeAllRefills" />
+	</wsdl:message>
+	<wsdl:message name="GetRefillCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportResults" element="tns:ReportResults" />
+	</wsdl:message>
+	<wsdl:message name="IReportSvc_GetRefillCount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q2:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetMedsCounsSheetConsultationCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PostalCodes" element="tns:PostalCodes" />
+		<wsdl:part name="PharmacyContractNumbers" element="tns:PharmacyContractNumbers" />
+		<wsdl:part name="DateFrom" element="tns:DateFrom" />
+		<wsdl:part name="DateTo" element="tns:DateTo" />
+		<wsdl:part name="GroupBy" element="tns:GroupBy" />
+		<wsdl:part name="Devices" element="tns:Devices" />
+		<wsdl:part name="Dins" element="tns:Dins" />
+		<wsdl:part name="Gender" element="tns:Gender" />
+		<wsdl:part name="PatientOids" element="tns:PatientOids" />
+		<wsdl:part name="SortBy" element="tns:SortBy" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetMedsCounsSheetConsultationCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportResults" element="tns:ReportResults" />
+	</wsdl:message>
+	<wsdl:message
+		name="IReportSvc_GetMedsCounsSheetConsultationCount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q3:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetVisitCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PostalCodes" element="tns:PostalCodes" />
+		<wsdl:part name="PharmacyContractNumbers" element="tns:PharmacyContractNumbers" />
+		<wsdl:part name="DateFrom" element="tns:DateFrom" />
+		<wsdl:part name="DateTo" element="tns:DateTo" />
+		<wsdl:part name="GroupBy" element="tns:GroupBy" />
+		<wsdl:part name="Devices" element="tns:Devices" />
+		<wsdl:part name="Dins" element="tns:Dins" />
+		<wsdl:part name="Gender" element="tns:Gender" />
+		<wsdl:part name="PatientOids" element="tns:PatientOids" />
+		<wsdl:part name="SortBy" element="tns:SortBy" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetVisitCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportResults" element="tns:ReportResults" />
+	</wsdl:message>
+	<wsdl:message name="IReportSvc_GetVisitCount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q4:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetDINPrescriptionCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PostalCodes" element="tns:PostalCodes" />
+		<wsdl:part name="PharmacyContractNumbers" element="tns:PharmacyContractNumbers" />
+		<wsdl:part name="DateFrom" element="tns:DateFrom" />
+		<wsdl:part name="DateTo" element="tns:DateTo" />
+		<wsdl:part name="GroupBy" element="tns:GroupBy" />
+		<wsdl:part name="Devices" element="tns:Devices" />
+		<wsdl:part name="Dins" element="tns:Dins" />
+		<wsdl:part name="Gender" element="tns:Gender" />
+		<wsdl:part name="PatientOids" element="tns:PatientOids" />
+		<wsdl:part name="SortBy" element="tns:SortBy" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+		<wsdl:part name="IncludeAllPrescriptions" element="tns:IncludeAllPrescriptions" />
+	</wsdl:message>
+	<wsdl:message name="GetDINPrescriptionCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportResults" element="tns:ReportResults" />
+	</wsdl:message>
+	<wsdl:message
+		name="IReportSvc_GetDINPrescriptionCount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q5:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetNoConnectionAccountsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PostalCodes" element="tns:PostalCodes" />
+		<wsdl:part name="PharmacyContractNumbers" element="tns:PharmacyContractNumbers" />
+		<wsdl:part name="DateFrom" element="tns:DateFrom" />
+		<wsdl:part name="DateTo" element="tns:DateTo" />
+		<wsdl:part name="GroupBy" element="tns:GroupBy" />
+		<wsdl:part name="Devices" element="tns:Devices" />
+		<wsdl:part name="Dins" element="tns:Dins" />
+		<wsdl:part name="Gender" element="tns:Gender" />
+		<wsdl:part name="PatientOids" element="tns:PatientOids" />
+		<wsdl:part name="SortBy" element="tns:SortBy" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetNoConnectionAccountsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportResults" element="tns:ReportResults" />
+	</wsdl:message>
+	<wsdl:message
+		name="IReportSvc_GetNoConnectionAccounts_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q6:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetReportRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportInput" element="tns:ReportInput" />
+	</wsdl:message>
+	<wsdl:message name="GetReportResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Content" element="tns:Content" />
+		<wsdl:part name="Extension" element="tns:Extension" />
+		<wsdl:part name="MimeType" element="tns:MimeType" />
+	</wsdl:message>
+	<wsdl:message name="IReportSvc_GetReport_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q7:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetReportParametersRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportName" element="tns:ReportName" />
+	</wsdl:message>
+	<wsdl:message name="GetReportParametersResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ReportParameter" element="tns:ReportParameter" />
+	</wsdl:message>
+	<wsdl:message name="IReportSvc_GetReportParameters_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q8:Error" />
+	</wsdl:message>
+	<wsdl:portType name="IReportSvc">
+		<wsdl:operation name="GetActiveFileCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IReportSvc/GetActiveFileCount"
+				name="GetActiveFileCountRequest" message="tns:GetActiveFileCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IReportSvc/GetActiveFileCountResponse"
+				name="GetActiveFileCountResponse" message="tns:GetActiveFileCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IReportSvc/GetActiveFileCountErrorFault"
+				name="ErrorFault" message="tns:IReportSvc_GetActiveFileCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetRefillCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IReportSvc/GetRefillCount"
+				name="GetRefillCountRequest" message="tns:GetRefillCountRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IReportSvc/GetRefillCountResponse"
+				name="GetRefillCountResponse" message="tns:GetRefillCountResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IReportSvc/GetRefillCountErrorFault"
+				name="ErrorFault" message="tns:IReportSvc_GetRefillCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetMedsCounsSheetConsultationCount">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IReportSvc/GetMedsCounsSheetConsultationCount"
+				name="GetMedsCounsSheetConsultationCountRequest" message="tns:GetMedsCounsSheetConsultationCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IReportSvc/GetMedsCounsSheetConsultationCountResponse"
+				name="GetMedsCounsSheetConsultationCountResponse" message="tns:GetMedsCounsSheetConsultationCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IReportSvc/GetMedsCounsSheetConsultationCountErrorFault"
+				name="ErrorFault"
+				message="tns:IReportSvc_GetMedsCounsSheetConsultationCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetVisitCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IReportSvc/GetVisitCount"
+				name="GetVisitCountRequest" message="tns:GetVisitCountRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IReportSvc/GetVisitCountResponse"
+				name="GetVisitCountResponse" message="tns:GetVisitCountResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IReportSvc/GetVisitCountErrorFault"
+				name="ErrorFault" message="tns:IReportSvc_GetVisitCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetDINPrescriptionCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IReportSvc/GetDINPrescriptionCount"
+				name="GetDINPrescriptionCountRequest" message="tns:GetDINPrescriptionCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IReportSvc/GetDINPrescriptionCountResponse"
+				name="GetDINPrescriptionCountResponse" message="tns:GetDINPrescriptionCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IReportSvc/GetDINPrescriptionCountErrorFault"
+				name="ErrorFault"
+				message="tns:IReportSvc_GetDINPrescriptionCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetNoConnectionAccounts">
+			<wsdl:input wsaw:Action="http://tempuri.org/IReportSvc/GetNoConnectionAccounts"
+				name="GetNoConnectionAccountsRequest" message="tns:GetNoConnectionAccountsRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IReportSvc/GetNoConnectionAccountsResponse"
+				name="GetNoConnectionAccountsResponse" message="tns:GetNoConnectionAccountsResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IReportSvc/GetNoConnectionAccountsErrorFault"
+				name="ErrorFault"
+				message="tns:IReportSvc_GetNoConnectionAccounts_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetReport">
+			<wsdl:input wsaw:Action="http://tempuri.org/IReportSvc/GetReport"
+				name="GetReportRequest" message="tns:GetReportRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IReportSvc/GetReportResponse"
+				name="GetReportResponse" message="tns:GetReportResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IReportSvc/GetReportErrorFault"
+				name="ErrorFault" message="tns:IReportSvc_GetReport_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetReportParameters">
+			<wsdl:input wsaw:Action="http://tempuri.org/IReportSvc/GetReportParameters"
+				name="GetReportParametersRequest" message="tns:GetReportParametersRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IReportSvc/GetReportParametersResponse"
+				name="GetReportParametersResponse" message="tns:GetReportParametersResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IReportSvc/GetReportParametersErrorFault"
+				name="ErrorFault" message="tns:IReportSvc_GetReportParameters_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RxAssystReportEndPoint" type="tns:IReportSvc">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetActiveFileCount">
+			<soap:operation soapAction="http://tempuri.org/IReportSvc/GetActiveFileCount"
+				style="document" />
+			<wsdl:input name="GetActiveFileCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetActiveFileCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetRefillCount">
+			<soap:operation soapAction="http://tempuri.org/IReportSvc/GetRefillCount"
+				style="document" />
+			<wsdl:input name="GetRefillCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetRefillCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetMedsCounsSheetConsultationCount">
+			<soap:operation
+				soapAction="http://tempuri.org/IReportSvc/GetMedsCounsSheetConsultationCount"
+				style="document" />
+			<wsdl:input name="GetMedsCounsSheetConsultationCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetMedsCounsSheetConsultationCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetVisitCount">
+			<soap:operation soapAction="http://tempuri.org/IReportSvc/GetVisitCount"
+				style="document" />
+			<wsdl:input name="GetVisitCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetVisitCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetDINPrescriptionCount">
+			<soap:operation
+				soapAction="http://tempuri.org/IReportSvc/GetDINPrescriptionCount"
+				style="document" />
+			<wsdl:input name="GetDINPrescriptionCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetDINPrescriptionCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetNoConnectionAccounts">
+			<soap:operation
+				soapAction="http://tempuri.org/IReportSvc/GetNoConnectionAccounts"
+				style="document" />
+			<wsdl:input name="GetNoConnectionAccountsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetNoConnectionAccountsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetReport">
+			<soap:operation soapAction="http://tempuri.org/IReportSvc/GetReport"
+				style="document" />
+			<wsdl:input name="GetReportRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetReportResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetReportParameters">
+			<soap:operation soapAction="http://tempuri.org/IReportSvc/GetReportParameters"
+				style="document" />
+			<wsdl:input name="GetReportParametersRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetReportParametersResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="RxAssyst">
+		<wsdl:port name="RxAssystReportEndPoint" binding="tns:RxAssystReportEndPoint">
+			<soap:address
+				location="abc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

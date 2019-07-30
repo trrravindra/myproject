@@ -1,0 +1,222 @@
+<wsdl:definitions targetNamespace="http://www.RxAssyst.com/Operation/2012/08" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.RxAssyst.com/Operation/2012/08" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://www.RxAssyst.com/Operation/2012/08/Imports">
+         <xsd:import schemaLocation="OperationSvc-XSD3.xsd" namespace="http://www.RxAssyst.com/Operation/2012/08"/>
+         <xsd:import schemaLocation="OperationSvc-XSD5.xsd" namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+         <xsd:import schemaLocation="OperationSvc-XSD0.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+         <xsd:import schemaLocation="OperationSvc-XSD1.xsd" namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"/>
+         <xsd:import schemaLocation="OperationSvc-XSD2.xsd" namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"/>
+         <xsd:import schemaLocation="OperationSvc-XSD4.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+         <xsd:import schemaLocation="OperationSvc-XSD6.xsd" namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="GetAutomatedRefillsByPatientOidRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="PatientOid" element="tns:PatientOid"/>
+   </wsdl:message>
+   <wsdl:message name="GetAutomatedRefillsByPatientOIDResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="AutomatedRefills" element="tns:AutomatedRefills"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_GetAutomatedRefillsByPatientOID_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q1:Error" xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="GetAutomatedRefillByOIDRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OID" element="tns:OID"/>
+   </wsdl:message>
+   <wsdl:message name="GetAutomatedRefillByOIDResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="AutomatedRefill" element="tns:AutomatedRefill"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_GetAutomatedRefillByOID_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q2:Error" xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="AddAutomatedRefillRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="PatientOID" element="tns:PatientOID"/>
+      <wsdl:part name="RxNewRequest" element="tns:RxNewRequest"/>
+      <wsdl:part name="OperationalEvent" element="tns:OperationalEvent"/>
+   </wsdl:message>
+   <wsdl:message name="AddAutomatedRefillResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="RequestOid" element="tns:RequestOid"/>
+      <wsdl:part name="OID" element="tns:OID"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_AddAutomatedRefill_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q3:Error" xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateAutomatedRefillRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="PatientOID" element="tns:PatientOID"/>
+      <wsdl:part name="RxNewRequest" element="tns:RxNewRequest"/>
+      <wsdl:part name="OperationalEvent" element="tns:OperationalEvent"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateAutomatedRefillResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_UpdateAutomatedRefill_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q4:Error" xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="DeleteAutomatedRefillRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OID" element="tns:OID"/>
+   </wsdl:message>
+   <wsdl:message name="DeleteAutomatedRefillResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_DeleteAutomatedRefill_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q5:Error" xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="GetExpectedAutomatedRefillRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OperationalEvent" element="tns:OperationalEvent"/>
+      <wsdl:part name="PharmacyContractNumber" element="tns:PharmacyContractNumber"/>
+      <wsdl:part name="OriginalPrescriptionOID" element="tns:OriginalPrescriptionOID"/>
+      <wsdl:part name="MedReleaseMode" element="tns:MedReleaseMode"/>
+   </wsdl:message>
+   <wsdl:message name="GetExpectedAutomatedRefillResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="AutomatedRefillCalendars" element="tns:AutomatedRefillCalendars"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_GetExpectedAutomatedRefill_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q6:Error" xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="GetRefillRemindersByPatientOIDRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="PatientOid" element="tns:PatientOid"/>
+   </wsdl:message>
+   <wsdl:message name="GetRefillRemindersByPatientOIDResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="RefillReminders" element="tns:RefillReminders"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_GetRefillRemindersByPatientOID_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q7:Error" xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="GetRefillReminderByOIDRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OID" element="tns:OID"/>
+   </wsdl:message>
+   <wsdl:message name="GetRefillReminderByOIDResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="RefillReminder" element="tns:RefillReminder"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_GetRefillReminderByOID_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q8:Error" xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="AddRefillReminderRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OperationalEvent" element="tns:OperationalEvent"/>
+      <wsdl:part name="OriginalPrescriptionOID" element="tns:OriginalPrescriptionOID"/>
+      <wsdl:part name="PatientOID" element="tns:PatientOID"/>
+      <wsdl:part name="BufferTimeHours" element="tns:BufferTimeHours"/>
+      <wsdl:part name="MobilePhoneNumber" element="tns:MobilePhoneNumber"/>
+      <wsdl:part name="Email" element="tns:Email"/>
+   </wsdl:message>
+   <wsdl:message name="AddRefillReminderResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OID" element="tns:OID"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_AddRefillReminder_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q9:Error" xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateRefillReminderRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OperationalEvent" element="tns:OperationalEvent"/>
+      <wsdl:part name="OriginalPrescriptionOID" element="tns:OriginalPrescriptionOID"/>
+      <wsdl:part name="BufferTimeHours" element="tns:BufferTimeHours"/>
+      <wsdl:part name="MobilePhoneNumber" element="tns:MobilePhoneNumber"/>
+      <wsdl:part name="Email" element="tns:Email"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateRefillReminderResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_UpdateRefillReminder_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q10:Error" xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="DeleteRefillReminderRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OID" element="tns:OID"/>
+   </wsdl:message>
+   <wsdl:message name="DeleteRefillReminderResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_DeleteRefillReminder_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q11:Error" xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:message name="GetExpectedRefillReminderRequest">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="OperationalEvent" element="tns:OperationalEvent"/>
+      <wsdl:part name="PharmacyContractNumber" element="tns:PharmacyContractNumber"/>
+      <wsdl:part name="OriginalPrescriptionOID" element="tns:OriginalPrescriptionOID"/>
+   </wsdl:message>
+   <wsdl:message name="GetExpectedRefillReminderResponse">
+      <wsdl:part name="UserToken" element="tns:UserToken"/>
+      <wsdl:part name="RefillReminderCalendars" element="tns:RefillReminderCalendars"/>
+   </wsdl:message>
+   <wsdl:message name="IOperationSvc_GetExpectedRefillReminder_ErrorFault_FaultMessage">
+      <wsdl:part name="detail" element="q12:Error" xmlns:q12="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"/>
+   </wsdl:message>
+   <wsdl:portType name="IOperationSvc">
+      <wsdl:operation name="GetAutomatedRefillsByPatientOID">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetAutomatedRefillsByPatientOID" name="GetAutomatedRefillsByPatientOidRequest" message="tns:GetAutomatedRefillsByPatientOidRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetAutomatedRefillsByPatientOIDResponse" name="GetAutomatedRefillsByPatientOIDResponse" message="tns:GetAutomatedRefillsByPatientOIDResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetAutomatedRefillsByPatientOIDErrorFault" name="ErrorFault" message="tns:IOperationSvc_GetAutomatedRefillsByPatientOID_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetAutomatedRefillByOID">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetAutomatedRefillByOID" name="GetAutomatedRefillByOIDRequest" message="tns:GetAutomatedRefillByOIDRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetAutomatedRefillByOIDResponse" name="GetAutomatedRefillByOIDResponse" message="tns:GetAutomatedRefillByOIDResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetAutomatedRefillByOIDErrorFault" name="ErrorFault" message="tns:IOperationSvc_GetAutomatedRefillByOID_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="AddAutomatedRefill">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/AddAutomatedRefill" name="AddAutomatedRefillRequest" message="tns:AddAutomatedRefillRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/AddAutomatedRefillResponse" name="AddAutomatedRefillResponse" message="tns:AddAutomatedRefillResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/AddAutomatedRefillErrorFault" name="ErrorFault" message="tns:IOperationSvc_AddAutomatedRefill_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateAutomatedRefill">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/UpdateAutomatedRefill" name="UpdateAutomatedRefillRequest" message="tns:UpdateAutomatedRefillRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/UpdateAutomatedRefillResponse" name="UpdateAutomatedRefillResponse" message="tns:UpdateAutomatedRefillResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/UpdateAutomatedRefillErrorFault" name="ErrorFault" message="tns:IOperationSvc_UpdateAutomatedRefill_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="DeleteAutomatedRefill">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/DeleteAutomatedRefill" name="DeleteAutomatedRefillRequest" message="tns:DeleteAutomatedRefillRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/DeleteAutomatedRefillResponse" name="DeleteAutomatedRefillResponse" message="tns:DeleteAutomatedRefillResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/DeleteAutomatedRefillErrorFault" name="ErrorFault" message="tns:IOperationSvc_DeleteAutomatedRefill_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetExpectedAutomatedRefill">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetExpectedAutomatedRefill" name="GetExpectedAutomatedRefillRequest" message="tns:GetExpectedAutomatedRefillRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetExpectedAutomatedRefillResponse" name="GetExpectedAutomatedRefillResponse" message="tns:GetExpectedAutomatedRefillResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetExpectedAutomatedRefillErrorFault" name="ErrorFault" message="tns:IOperationSvc_GetExpectedAutomatedRefill_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetRefillRemindersByPatientOID">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetRefillRemindersByPatientOID" name="GetRefillRemindersByPatientOIDRequest" message="tns:GetRefillRemindersByPatientOIDRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetRefillRemindersByPatientOIDResponse" name="GetRefillRemindersByPatientOIDResponse" message="tns:GetRefillRemindersByPatientOIDResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetRefillRemindersByPatientOIDErrorFault" name="ErrorFault" message="tns:IOperationSvc_GetRefillRemindersByPatientOID_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetRefillReminderByOID">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetRefillReminderByOID" name="GetRefillReminderByOIDRequest" message="tns:GetRefillReminderByOIDRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetRefillReminderByOIDResponse" name="GetRefillReminderByOIDResponse" message="tns:GetRefillReminderByOIDResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetRefillReminderByOIDErrorFault" name="ErrorFault" message="tns:IOperationSvc_GetRefillReminderByOID_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="AddRefillReminder">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/AddRefillReminder" name="AddRefillReminderRequest" message="tns:AddRefillReminderRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/AddRefillReminderResponse" name="AddRefillReminderResponse" message="tns:AddRefillReminderResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/AddRefillReminderErrorFault" name="ErrorFault" message="tns:IOperationSvc_AddRefillReminder_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateRefillReminder">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/UpdateRefillReminder" name="UpdateRefillReminderRequest" message="tns:UpdateRefillReminderRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/UpdateRefillReminderResponse" name="UpdateRefillReminderResponse" message="tns:UpdateRefillReminderResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/UpdateRefillReminderErrorFault" name="ErrorFault" message="tns:IOperationSvc_UpdateRefillReminder_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="DeleteRefillReminder">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/DeleteRefillReminder" name="DeleteRefillReminderRequest" message="tns:DeleteRefillReminderRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/DeleteRefillReminderResponse" name="DeleteRefillReminderResponse" message="tns:DeleteRefillReminderResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/DeleteRefillReminderErrorFault" name="ErrorFault" message="tns:IOperationSvc_DeleteRefillReminder_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetExpectedRefillReminder">
+         <wsdl:input wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetExpectedRefillReminder" name="GetExpectedRefillReminderRequest" message="tns:GetExpectedRefillReminderRequest"/>
+         <wsdl:output wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetExpectedRefillReminderResponse" name="GetExpectedRefillReminderResponse" message="tns:GetExpectedRefillReminderResponse"/>
+         <wsdl:fault wsaw:Action="http://www.RxAssyst.com/Operation/2012/08/IOperationSvc/GetExpectedRefillReminderErrorFault" name="ErrorFault" message="tns:IOperationSvc_GetExpectedRefillReminder_ErrorFault_FaultMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

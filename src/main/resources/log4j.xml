@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+	<appender name="DEBUGFILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${SERVER_LOG_ROOT}/erefill_debug.log" />
+		<param name="append" value="true" />
+		<param name="threshold" value="debug" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS} %X{sess-id} [%t] [%X{user-id}] %X{temp-id} %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ERRORFILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${SERVER_LOG_ROOT}/erefill_error.log" />
+		<param name="append" value="true" />
+		<param name="threshold" value="error" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%-5p] %d{yyyy-MM-dd HH:mm:ss.SSS} %X{sess-id} [%t] [%X{user-id}] %X{temp-id} %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="asyncDebug" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="128" />
+		<param name="Blocking" value="false" />
+		<appender-ref ref="DEBUGFILE" />
+	</appender>
+
+	<appender name="asyncError" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="128" />
+		<param name="Blocking" value="false" />
+		<appender-ref ref="ERRORFILE" />
+	</appender>
+
+	<logger name="org.springframework">
+		<level value="INFO" />
+		<appender-ref ref="asyncDebug" />
+	</logger>
+	<logger name="org.apache.commons.digester">
+		<level value="INFO" />
+		<appender-ref ref="asyncDebug" />
+	</logger>
+	<logger name="org.apache.cxf">
+		<level value="INFO" />
+		<appender-ref ref="asyncDebug" />
+	</logger>
+	<logger name="org.apache.logging.log4j">
+		<level value="OFF" />
+		<appender-ref ref="asyncDebug" />
+	</logger>
+	<logger name="com.lcl.erefill" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="asyncDebug" />
+		<appender-ref ref="asyncError" />
+	</logger>
+
+	<!-- <root > <level value="DEBUG"/> <appender-ref ref="DEBUGFILE"/> <appender-ref 
+		ref="ERRORFILE"/> </root> -->
+</log4j:configuration>

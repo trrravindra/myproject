@@ -1,0 +1,115 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution"
+	elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution">
+	<xs:import
+		schemaLocation="ReportSvc-XSD4.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:complexType name="ArrayOfParameterValue">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="ParameterValue"
+				nillable="true" type="tns:ParameterValue" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfParameterValue" nillable="true"
+		type="tns:ArrayOfParameterValue" />
+	<xs:complexType name="ParameterValue">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:ParameterValueOrFieldReference">
+				<xs:sequence>
+					<xs:element name="labelField" nillable="true" type="xs:string" />
+					<xs:element name="nameField" nillable="true" type="xs:string" />
+					<xs:element name="valueField" nillable="true" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ParameterValue" nillable="true"
+		type="tns:ParameterValue" />
+	<xs:complexType name="ParameterValueOrFieldReference">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:element name="ParameterValueOrFieldReference" nillable="true"
+		type="tns:ParameterValueOrFieldReference" />
+	<xs:complexType name="ArrayOfReportParameter">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="ReportParameter"
+				nillable="true" type="tns:ReportParameter" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfReportParameter" nillable="true"
+		type="tns:ArrayOfReportParameter" />
+	<xs:complexType name="ReportParameter">
+		<xs:sequence>
+			<xs:element name="allowBlankField" type="xs:boolean" />
+			<xs:element name="allowBlankFieldSpecified" type="xs:boolean" />
+			<xs:element
+				xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+				name="defaultValuesField" nillable="true" type="q1:ArrayOfstring" />
+			<xs:element name="defaultValuesQueryBasedField" type="xs:boolean" />
+			<xs:element name="defaultValuesQueryBasedFieldSpecified"
+				type="xs:boolean" />
+			<xs:element
+				xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+				name="dependenciesField" nillable="true" type="q2:ArrayOfstring" />
+			<xs:element name="errorMessageField" nillable="true" type="xs:string" />
+			<xs:element name="multiValueField" type="xs:boolean" />
+			<xs:element name="multiValueFieldSpecified" type="xs:boolean" />
+			<xs:element name="nameField" nillable="true" type="xs:string" />
+			<xs:element name="nullableField" type="xs:boolean" />
+			<xs:element name="nullableFieldSpecified" type="xs:boolean" />
+			<xs:element name="promptField" nillable="true" type="xs:string" />
+			<xs:element name="promptUserField" type="xs:boolean" />
+			<xs:element name="promptUserFieldSpecified" type="xs:boolean" />
+			<xs:element name="queryParameterField" type="xs:boolean" />
+			<xs:element name="queryParameterFieldSpecified" type="xs:boolean" />
+			<xs:element name="stateField" type="tns:ParameterStateEnum" />
+			<xs:element name="stateFieldSpecified" type="xs:boolean" />
+			<xs:element name="typeField" type="tns:ParameterTypeEnum" />
+			<xs:element name="typeFieldSpecified" type="xs:boolean" />
+			<xs:element name="validValuesField" nillable="true"
+				type="tns:ArrayOfValidValue" />
+			<xs:element name="validValuesQueryBasedField" type="xs:boolean" />
+			<xs:element name="validValuesQueryBasedFieldSpecified"
+				type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReportParameter" nillable="true"
+		type="tns:ReportParameter" />
+	<xs:simpleType name="ParameterStateEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HasValidValue" />
+			<xs:enumeration value="MissingValidValue" />
+			<xs:enumeration value="HasOutstandingDependencies" />
+			<xs:enumeration value="DynamicValuesUnavailable" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ParameterStateEnum" nillable="true"
+		type="tns:ParameterStateEnum" />
+	<xs:simpleType name="ParameterTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Boolean" />
+			<xs:enumeration value="DateTime" />
+			<xs:enumeration value="Integer" />
+			<xs:enumeration value="Float" />
+			<xs:enumeration value="String" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ParameterTypeEnum" nillable="true"
+		type="tns:ParameterTypeEnum" />
+	<xs:complexType name="ArrayOfValidValue">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="ValidValue"
+				nillable="true" type="tns:ValidValue" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfValidValue" nillable="true"
+		type="tns:ArrayOfValidValue" />
+	<xs:complexType name="ValidValue">
+		<xs:sequence>
+			<xs:element name="labelField" nillable="true" type="xs:string" />
+			<xs:element name="valueField" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidValue" nillable="true" type="tns:ValidValue" />
+</xs:schema>

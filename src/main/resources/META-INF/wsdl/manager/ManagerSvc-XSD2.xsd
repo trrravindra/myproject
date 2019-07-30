@@ -1,0 +1,1215 @@
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes">
+	<xs:import
+		schemaLocation="ManagerSvc-XSD0.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+	<xs:simpleType name="eTokenStatus">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="byte" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Ok">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustConsent">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustChangePassword">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustGivePasswordReminder">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eTemporaryPasswordExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eUnsubscribingState">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eTokenStatus" nillable="true" type="tns:eTokenStatus" />
+	<xs:simpleType name="ErrorCodes">
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="eInvalidUserPassword" />
+					<xs:enumeration value="eAccessDenied" />
+					<xs:enumeration value="eInvalidArguments" />
+					<xs:enumeration value="eSessionExpired" />
+					<xs:enumeration value="eMaxSessionsReached" />
+					<xs:enumeration value="eAccountLocked" />
+					<xs:enumeration value="eUnknown" />
+					<xs:enumeration value="eTokenExpired" />
+					<xs:enumeration value="eAccountDeactivated" />
+					<xs:enumeration value="eNoCounsellingSheetForDin" />
+					<xs:enumeration value="eInvalidOperation" />
+					<xs:enumeration value="eCannotUnassign" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="ErrorCodes" nillable="true" type="tns:ErrorCodes" />
+	<xs:simpleType name="eProvince">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Alberta" />
+			<xs:enumeration value="BritishColumbia" />
+			<xs:enumeration value="Manitoba" />
+			<xs:enumeration value="NewBrunswick" />
+			<xs:enumeration value="Newfoundland" />
+			<xs:enumeration value="NovaScotia" />
+			<xs:enumeration value="Nunavut" />
+			<xs:enumeration value="NorthWestTerritories" />
+			<xs:enumeration value="Ontario" />
+			<xs:enumeration value="PrinceEdwardIsland" />
+			<xs:enumeration value="Quebec" />
+			<xs:enumeration value="Saskatchewan" />
+			<xs:enumeration value="Yukon" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eProvince" nillable="true" type="tns:eProvince" />
+	<xs:simpleType name="eTimeZone">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Utc0900Alaska">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0800PacificTimeUsCanada">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0700MountainTimeUsCanada">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0600CentralTimeUsCanada">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0600Saskatchewan">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0500EasternTimeUsCanada">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0400AtlanticTimeCanada">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0330Newfoundland">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Utc0300Greenland">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">27</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eTimeZone" nillable="true" type="tns:eTimeZone" />
+	<xs:simpleType name="ePMS">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AssystRxL" />
+			<xs:enumeration value="Kroll" />
+			<xs:enumeration value="Ubik" />
+			<xs:enumeration value="AssystRxA" />
+			<xs:enumeration value="Simplicity" />
+			<xs:enumeration value="HealthWatch" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ePMS" nillable="true" type="tns:ePMS" />
+	<xs:simpleType name="eActivationModule">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="None">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="PharmaSpace">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="IVR">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eActivationModule" nillable="true"
+		type="tns:eActivationModule" />
+	<xs:simpleType name="eAssignmentStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All" />
+			<xs:enumeration value="Assigned" />
+			<xs:enumeration value="Unassigned" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eAssignmentStatus" nillable="true"
+		type="tns:eAssignmentStatus" />
+	<xs:simpleType name="eGroup">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Users">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Agents">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Caregivers">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PharmacyManagers">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Administrators">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SuperAdministrators">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Patients">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FamilyManager">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ExternalAgents">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CustomerServiceRepresentative">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ReportViewer">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ClinicAgents">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eGroup" nillable="true" type="tns:eGroup" />
+	<xs:simpleType name="eSearchField">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AccountLastName" />
+			<xs:enumeration value="AccountFirstName" />
+			<xs:enumeration value="AccountUsername" />
+			<xs:enumeration value="AccountAlias" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eSearchField" nillable="true" type="tns:eSearchField" />
+	<xs:simpleType name="eSearchType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ExactMatch" />
+			<xs:enumeration value="BeginsWith" />
+			<xs:enumeration value="Contains" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eSearchType" nillable="true" type="tns:eSearchType" />
+	<xs:simpleType name="eAccountState">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="byte" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Active" />
+			<xs:enumeration value="Deactived" />
+			<xs:enumeration value="Consent" />
+			<xs:enumeration value="Expired" />
+			<xs:enumeration value="ExpiredMajority" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eAccountState" nillable="true"
+		type="tns:eAccountState" />
+	<xs:simpleType name="eAccountType">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="byte" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="User" />
+			<xs:enumeration value="Agent" />
+			<xs:enumeration value="BannerAdmin" />
+			<xs:enumeration value="PharmacyAdmin" />
+			<xs:enumeration value="SuperAdmin" />
+			<xs:enumeration value="Caregivers" />
+			<xs:enumeration value="FamilyManager" />
+			<xs:enumeration value="ExternalAgent" />
+			<xs:enumeration value="CustomerServiceRepresentative" />
+			<xs:enumeration value="ReportViewer" />
+			<xs:enumeration value="ClinicAgent" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eAccountType" nillable="true" type="tns:eAccountType" />
+	<xs:simpleType name="eFamilyManagerAssignRequestState">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All" />
+			<xs:enumeration value="Pending" />
+			<xs:enumeration value="Accepted" />
+			<xs:enumeration value="Declined" />
+			<xs:enumeration value="Revoked" />
+			<xs:enumeration value="Expired" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eFamilyManagerAssignRequestState"
+		nillable="true" type="tns:eFamilyManagerAssignRequestState" />
+	<xs:simpleType name="eFilterAgentState">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All" />
+			<xs:enumeration value="Activated" />
+			<xs:enumeration value="Deactivated" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eFilterAgentState" nillable="true"
+		type="tns:eFilterAgentState" />
+	<xs:simpleType name="eAssignmentAction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Assign" />
+			<xs:enumeration value="Unassign" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eAssignmentAction" nillable="true"
+		type="tns:eAssignmentAction" />
+	<xs:simpleType name="ePatientExtendedInfo">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="None">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="FamilyPhysician">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Facility">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Accounts">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Contacts">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="DefaultPharmacy">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="EmailAddress">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="All">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">255</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Minimal" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="ePatientExtendedInfo" nillable="true"
+		type="tns:ePatientExtendedInfo" />
+	<xs:simpleType name="eAccountReceivable">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Personnal" />
+			<xs:enumeration value="Family" />
+			<xs:enumeration value="Facility" />
+			<xs:enumeration value="POS" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eAccountReceivable" nillable="true"
+		type="tns:eAccountReceivable" />
+	<xs:simpleType name="eContactType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Cellular" />
+			<xs:enumeration value="Email" />
+			<xs:enumeration value="School" />
+			<xs:enumeration value="Relatives" />
+			<xs:enumeration value="DayNursery" />
+			<xs:enumeration value="Pager" />
+			<xs:enumeration value="Home" />
+			<xs:enumeration value="Work" />
+			<xs:enumeration value="ParentOrGuardian" />
+			<xs:enumeration value="Comments" />
+			<xs:enumeration value="Other">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">999</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eContactType" nillable="true" type="tns:eContactType" />
+	<xs:simpleType name="eGender">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Male" />
+			<xs:enumeration value="Female" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eGender" nillable="true" type="tns:eGender" />
+	<xs:simpleType name="eLanguage">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="French" />
+			<xs:enumeration value="English" />
+			<xs:enumeration value="Italian" />
+			<xs:enumeration value="Spanish" />
+			<xs:enumeration value="Vietnamese" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eLanguage" nillable="true" type="tns:eLanguage" />
+	<xs:simpleType name="ePHNType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Alberta" />
+			<xs:enumeration value="BritishColumbia" />
+			<xs:enumeration value="Manitoba" />
+			<xs:enumeration value="NewBrunswick" />
+			<xs:enumeration value="Newfoundland" />
+			<xs:enumeration value="NovaScotia" />
+			<xs:enumeration value="Nunavut" />
+			<xs:enumeration value="NWT" />
+			<xs:enumeration value="Ontario" />
+			<xs:enumeration value="PEI" />
+			<xs:enumeration value="Quebec" />
+			<xs:enumeration value="Saskatchewan" />
+			<xs:enumeration value="Yukon" />
+			<xs:enumeration value="CanadianForces" />
+			<xs:enumeration value="RCMP" />
+			<xs:enumeration value="NSG" />
+			<xs:enumeration value="NSOU" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ePHNType" nillable="true" type="tns:ePHNType" />
+	<xs:simpleType name="eEventMessageType">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All" />
+			<xs:enumeration value="RefillAcceptRequest" />
+			<xs:enumeration value="RefillDeclineRequest" />
+			<xs:enumeration value="FamilyManagerAssignRequest" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequest" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequest" />
+			<xs:enumeration value="FamilyManagerPatientDeleteAssociation" />
+			<xs:enumeration value="PatientRevoke" />
+			<xs:enumeration value="PatientAdminRevoke" />
+			<xs:enumeration value="SendPassword" />
+			<xs:enumeration value="AutomatedRefillAlreadyRefilled" />
+			<xs:enumeration value="AutomatedRefillInAdvance" />
+			<xs:enumeration value="AutomatedRefillExpired" />
+			<xs:enumeration value="AutomatedRefillLastRefill" />
+			<xs:enumeration value="AutomatedRefillSent" />
+			<xs:enumeration value="AutomatedRefillPrescriptionInvalid" />
+			<xs:enumeration value="RefillReminderAlreadyRefilled" />
+			<xs:enumeration value="RefillReminderInAdvance" />
+			<xs:enumeration value="RefillReminderExpired" />
+			<xs:enumeration value="RefillReminderLastRefill" />
+			<xs:enumeration value="RefillReminderSent" />
+			<xs:enumeration value="RefillReminderPrescriptionInvalid" />
+			<xs:enumeration value="EmailConfirmation" />
+			<xs:enumeration value="FamilyManagerExpireAssignRequest" />
+			<xs:enumeration value="ManagerExpiredMajority" />
+			<xs:enumeration value="RefillOverdue" />
+			<xs:enumeration value="RenewalAuthorizationRequestConsent" />
+			<xs:enumeration value="ReadyToPickUp" />
+			<xs:enumeration value="PickUpReminder" />
+			<xs:enumeration value="EnrollmentCompleted" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eEventMessageType" nillable="true"
+		type="tns:eEventMessageType" />
+	<xs:simpleType name="eEventMessageState">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All" />
+			<xs:enumeration value="Generated" />
+			<xs:enumeration value="Sent" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eEventMessageState" nillable="true"
+		type="tns:eEventMessageState" />
+	<xs:simpleType name="eHierarchicalLevel">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="Pharmacy" />
+			<xs:enumeration value="Province" />
+			<xs:enumeration value="Tenant" />
+			<xs:enumeration value="AllPharmacies" />
+			<xs:enumeration value="Region" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eHierarchicalLevel" nillable="true"
+		type="tns:eHierarchicalLevel" />
+	<xs:simpleType name="eParameterProperty">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EventMessageSendFamilyManagerAcceptAssignRequest" />
+			<xs:enumeration value="EventMessageSendFamilyManagerAssignRequest" />
+			<xs:enumeration value="EventMessageSendFamilyManagerDeclineAssignRequest" />
+			<xs:enumeration
+				value="EventMessageSendFamilyManagerPatientDeleteAssociation" />
+			<xs:enumeration value="EventMessageSendPatientAdminRevoke" />
+			<xs:enumeration value="EventMessageSendPatientRevoke" />
+			<xs:enumeration value="EventMessageSendRefillAcceptRequest" />
+			<xs:enumeration value="EventMessageSendRefillDeclineRequest" />
+			<xs:enumeration value="GetPrescriptionFilterAbortedPrescription" />
+			<xs:enumeration value="WebSitePickupThresholdMinutes" />
+			<xs:enumeration value="WebSitePickupBufferTimeMinutes" />
+			<xs:enumeration value="WebSiteHomedropThresholdMinutes" />
+			<xs:enumeration value="WebSiteHomedropBufferTimeMinutes" />
+			<xs:enumeration value="MobileAppBB" />
+			<xs:enumeration value="MobileAppiOS" />
+			<xs:enumeration value="MobileAppAndroid" />
+			<xs:enumeration value="AuthorizeAutomatedRefill" />
+			<xs:enumeration value="AuthorizeRefillReminder" />
+			<xs:enumeration value="AutomatedRefillPickupBufferTimeMinutes" />
+			<xs:enumeration value="AutomatedRefillHomedropBufferTimeMinutes" />
+			<xs:enumeration value="EventMessageSendAutomatedRefillAlreadyRefilled" />
+			<xs:enumeration value="EventMessageSendAutomatedRefillInAdvance" />
+			<xs:enumeration value="EventMessageSendAutomatedRefillExpired" />
+			<xs:enumeration value="EventMessageSendAutomatedRefillLastRefill" />
+			<xs:enumeration value="EventMessageSendAutomatedRefillSent" />
+			<xs:enumeration value="EventMessageSendAutomatedRefillPrescriptionInvalid" />
+			<xs:enumeration value="EventMessageSendRefillReminderAlreadyRefilled" />
+			<xs:enumeration value="EventMessageSendRefillReminderInAdvance" />
+			<xs:enumeration value="EventMessageSendRefillReminderExpired" />
+			<xs:enumeration value="EventMessageSendRefillReminderLastRefill" />
+			<xs:enumeration value="EventMessageSendRefillReminderSent" />
+			<xs:enumeration value="EventMessageSendRefillReminderPrescriptionInvalid" />
+			<xs:enumeration value="AuthorizeFamilyManager" />
+			<xs:enumeration value="AuthorizeTaxReceipt" />
+			<xs:enumeration value="TaxReceiptMessageEn" />
+			<xs:enumeration value="TaxReceiptMessageFr" />
+			<xs:enumeration value="TaxReceiptMessageMultiPharmacyEn" />
+			<xs:enumeration value="TaxReceiptMessageMultiPharmacyFr" />
+			<xs:enumeration value="EventMessageSendEmailConfirmation" />
+			<xs:enumeration value="ExpiredPrescriptionRestriction" />
+			<xs:enumeration value="NoRefillLeftRestriction" />
+			<xs:enumeration value="TerminatedPrescriptionRefillAllowed" />
+			<xs:enumeration value="MessageETA" />
+			<xs:enumeration value="NarcoticRestriction" />
+			<xs:enumeration value="ControlledRestriction" />
+			<xs:enumeration value="ControlledDrugInterval" />
+			<xs:enumeration value="EarlyRefillRestriction" />
+			<xs:enumeration value="EarlyRefillPercentage" />
+			<xs:enumeration value="GetPrescriptionActivePeriod" />
+			<xs:enumeration value="GetPrescriptionExpirationDateExtension" />
+			<xs:enumeration value="AutomatedRefillEarlyRefillPercentage" />
+			<xs:enumeration value="ConsentRevocationAge" />
+			<xs:enumeration value="AuthorizePatientAutomatedRefill" />
+			<xs:enumeration value="PatientCanAutomateNarcotic" />
+			<xs:enumeration value="CaregiverCanAutomateNarcotic" />
+			<xs:enumeration value="AuthorizeDrugsAdvisorPicture" />
+			<xs:enumeration value="TemporaryPasswordExpired" />
+			<xs:enumeration value="DaysBeforeDestroyingPatientFile" />
+			<xs:enumeration value="SupportCenter" />
+			<xs:enumeration value="PasswordSubject" />
+			<xs:enumeration value="PasswordSubjectEnglish" />
+			<xs:enumeration value="PasswordBody" />
+			<xs:enumeration value="PasswordBodyEnglish" />
+			<xs:enumeration value="PasswordBodyHtml" />
+			<xs:enumeration value="PasswordBodyHtmlEnglish" />
+			<xs:enumeration value="FamilyManagerAssignRequestSubject" />
+			<xs:enumeration value="FamilyManagerAssignRequestSubjectEnglish" />
+			<xs:enumeration value="FamilyManagerAssignRequestMessage" />
+			<xs:enumeration value="FamilyManagerAssignRequestMessageEnglish" />
+			<xs:enumeration value="FamilyManagerAssignRequestMessageHtml" />
+			<xs:enumeration value="FamilyManagerAssignRequestMessageHtmlEnglish" />
+			<xs:enumeration value="FamilyManagerAssignRequestFromPatientMessage" />
+			<xs:enumeration value="FamilyManagerAssignRequestFromPatientMessageEnglish" />
+			<xs:enumeration value="FamilyManagerAssignRequestFromPatientMessageHtml" />
+			<xs:enumeration
+				value="FamilyManagerAssignRequestFromPatientMessageHtmlEnglish" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequestSubject" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequestSubjectEnglish" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequestMessage" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequestMessageEnglish" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequestMessageHtml" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequestMessageHtmlEnglish" />
+			<xs:enumeration value="FamilyManagerAcceptAssignRequestFromPatientMessage" />
+			<xs:enumeration
+				value="FamilyManagerAcceptAssignRequestFromPatientMessageEnglish" />
+			<xs:enumeration
+				value="FamilyManagerAcceptAssignRequestFromPatientMessageHtml" />
+			<xs:enumeration
+				value="FamilyManagerAcceptAssignRequestFromPatientMessageHtmlEnglish" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequestSubject" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequestSubjectEnglish" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequestMessage" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequestMessageEnglish" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequestMessageHtml" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequestMessageHtmlEnglish" />
+			<xs:enumeration value="FamilyManagerDeclineAssignRequestFromPatientMessage" />
+			<xs:enumeration
+				value="FamilyManagerDeclineAssignRequestFromPatientMessageEnglish" />
+			<xs:enumeration
+				value="FamilyManagerDeclineAssignRequestFromPatientMessageHtml" />
+			<xs:enumeration
+				value="FamilyManagerDeclineAssignRequestFromPatientMessageHtmlEnglish" />
+			<xs:enumeration value="FamilyManagerPatientDeleteAssociationSubject" />
+			<xs:enumeration value="FamilyManagerPatientDeleteAssociationSubjectEnglish" />
+			<xs:enumeration value="FamilyManagerPatientDeleteAssociationMessage" />
+			<xs:enumeration value="FamilyManagerPatientDeleteAssociationMessageEnglish" />
+			<xs:enumeration value="FamilyManagerPatientDeleteAssociationMessageHtml" />
+			<xs:enumeration
+				value="FamilyManagerPatientDeleteAssociationMessageHtmlEnglish" />
+			<xs:enumeration value="PatientRevokeSubject" />
+			<xs:enumeration value="PatientRevokeSubjectEnglish" />
+			<xs:enumeration value="PatientRevokeMessage" />
+			<xs:enumeration value="PatientRevokeMessageEnglish" />
+			<xs:enumeration value="PatientRevokeMessageHtml" />
+			<xs:enumeration value="PatientRevokeMessageHtmlEnglish" />
+			<xs:enumeration value="PatientAdminRevokeSubject" />
+			<xs:enumeration value="PatientAdminRevokeSubjectEnglish" />
+			<xs:enumeration value="PatientAdminRevokeMessage" />
+			<xs:enumeration value="PatientAdminRevokeMessageEnglish" />
+			<xs:enumeration value="PatientAdminRevokeMessageHtml" />
+			<xs:enumeration value="PatientAdminRevokeMessageHtmlEnglish" />
+			<xs:enumeration value="RefillAcceptRequestSubject" />
+			<xs:enumeration value="RefillAcceptRequestSubjectEnglish" />
+			<xs:enumeration value="RefillAcceptRequest" />
+			<xs:enumeration value="RefillAcceptRequestEnglish" />
+			<xs:enumeration value="RefillAcceptRequestHtml" />
+			<xs:enumeration value="RefillAcceptRequestHtmlEnglish" />
+			<xs:enumeration value="RefillDeclineRequestSubject" />
+			<xs:enumeration value="RefillDeclineRequestSubjectEnglish" />
+			<xs:enumeration value="RefillDeclineRequest" />
+			<xs:enumeration value="RefillDeclineRequestEnglish" />
+			<xs:enumeration value="RefillDeclineRequestHtml" />
+			<xs:enumeration value="RefillDeclineRequestHtmlEnglish" />
+			<xs:enumeration value="AutomatedRefillAlreadyRefilled" />
+			<xs:enumeration value="AutomatedRefillAlreadyRefilledEnglish" />
+			<xs:enumeration value="AutomatedRefillExpired" />
+			<xs:enumeration value="AutomatedRefillExpiredEnglish" />
+			<xs:enumeration value="AutomatedRefillInAdvance" />
+			<xs:enumeration value="AutomatedRefillInAdvanceEnglish" />
+			<xs:enumeration value="AutomatedRefillLastRefill" />
+			<xs:enumeration value="AutomatedRefillLastRefillEnglish" />
+			<xs:enumeration value="AutomatedRefillSent" />
+			<xs:enumeration value="AutomatedRefillSentEnglish" />
+			<xs:enumeration value="AutomatedRefillPrescriptionInvalid" />
+			<xs:enumeration value="AutomatedRefillPrescriptionInvalidEnglish" />
+			<xs:enumeration value="AutomatedRefillRequestCreated" />
+			<xs:enumeration value="AutomatedRefillRequestCreatedEnglish" />
+			<xs:enumeration value="AutomatedRefillAlreadyRefilledSubject" />
+			<xs:enumeration value="AutomatedRefillAlreadyRefilledSubjectEnglish" />
+			<xs:enumeration value="AutomatedRefillAlreadyRefilledHtml" />
+			<xs:enumeration value="AutomatedRefillAlreadyRefilledHtmlEnglish" />
+			<xs:enumeration value="AutomatedRefillInAdvanceSubject" />
+			<xs:enumeration value="AutomatedRefillInAdvanceSubjectEnglish" />
+			<xs:enumeration value="AutomatedRefillInAdvanceHtml" />
+			<xs:enumeration value="AutomatedRefillInAdvanceHtmlEnglish" />
+			<xs:enumeration value="AutomatedRefillExpiredSubject" />
+			<xs:enumeration value="AutomatedRefillExpiredSubjectEnglish" />
+			<xs:enumeration value="AutomatedRefillExpiredHtml" />
+			<xs:enumeration value="AutomatedRefillExpiredHtmlEnglish" />
+			<xs:enumeration value="AutomatedRefillLastRefillSubject" />
+			<xs:enumeration value="AutomatedRefillLastRefillSubjectEnglish" />
+			<xs:enumeration value="AutomatedRefillLastRefillHtml" />
+			<xs:enumeration value="AutomatedRefillLastRefillHtmlEnglish" />
+			<xs:enumeration value="AutomatedRefillSentSubject" />
+			<xs:enumeration value="AutomatedRefillSentSubjectEnglish" />
+			<xs:enumeration value="AutomatedRefillSentHtml" />
+			<xs:enumeration value="AutomatedRefillSentHtmlEnglish" />
+			<xs:enumeration value="AutomatedRefillPrescriptionInvalidSubject" />
+			<xs:enumeration value="AutomatedRefillPrescriptionInvalidSubjectEnglish" />
+			<xs:enumeration value="AutomatedRefillPrescriptionInvalidHtml" />
+			<xs:enumeration value="AutomatedRefillPrescriptionInvalidHtmlEnglish" />
+			<xs:enumeration value="RefillReminderAlreadyRefilled" />
+			<xs:enumeration value="RefillReminderAlreadyRefilledEnglish" />
+			<xs:enumeration value="RefillReminderExpired" />
+			<xs:enumeration value="RefillReminderExpiredEnglish" />
+			<xs:enumeration value="RefillReminderInAdvance" />
+			<xs:enumeration value="RefillReminderInAdvanceEnglish" />
+			<xs:enumeration value="RefillReminderLastRefill" />
+			<xs:enumeration value="RefillReminderLastRefillEnglish" />
+			<xs:enumeration value="RefillReminderSent" />
+			<xs:enumeration value="RefillReminderSentEnglish" />
+			<xs:enumeration value="RefillReminderPrescriptionInvalid" />
+			<xs:enumeration value="RefillReminderPrescriptionInvalidEnglish" />
+			<xs:enumeration value="RefillReminderAlreadyRefilledSubject" />
+			<xs:enumeration value="RefillReminderAlreadyRefilledSubjectEnglish" />
+			<xs:enumeration value="RefillReminderAlreadyRefilledHtml" />
+			<xs:enumeration value="RefillReminderAlreadyRefilledHtmlEnglish" />
+			<xs:enumeration value="RefillReminderInAdvanceSubject" />
+			<xs:enumeration value="RefillReminderInAdvanceSubjectEnglish" />
+			<xs:enumeration value="RefillReminderInAdvanceHtml" />
+			<xs:enumeration value="RefillReminderInAdvanceHtmlEnglish" />
+			<xs:enumeration value="RefillReminderExpiredSubject" />
+			<xs:enumeration value="RefillReminderExpiredSubjectEnglish" />
+			<xs:enumeration value="RefillReminderExpiredHtml" />
+			<xs:enumeration value="RefillReminderExpiredHtmlEnglish" />
+			<xs:enumeration value="RefillReminderLastRefillSubject" />
+			<xs:enumeration value="RefillReminderLastRefillSubjectEnglish" />
+			<xs:enumeration value="RefillReminderLastRefillHtml" />
+			<xs:enumeration value="RefillReminderLastRefillHtmlEnglish" />
+			<xs:enumeration value="RefillReminderSentSubject" />
+			<xs:enumeration value="RefillReminderSentSubjectEnglish" />
+			<xs:enumeration value="RefillReminderSentHtml" />
+			<xs:enumeration value="RefillReminderSentHtmlEnglish" />
+			<xs:enumeration value="RefillReminderPrescriptionInvalidSubject" />
+			<xs:enumeration value="RefillReminderPrescriptionInvalidSubjectEnglish" />
+			<xs:enumeration value="RefillReminderPrescriptionInvalidHtml" />
+			<xs:enumeration value="RefillReminderPrescriptionInvalidHtmlEnglish" />
+			<xs:enumeration value="EmailConfirmationSubject" />
+			<xs:enumeration value="EmailConfirmationSubjectEnglish" />
+			<xs:enumeration value="EmailConfirmationBody" />
+			<xs:enumeration value="EmailConfirmationBodyEnglish" />
+			<xs:enumeration value="EmailConfirmationBodyHtml" />
+			<xs:enumeration value="EmailConfirmationBodyHtmlEnglish" />
+			<xs:enumeration value="EmailConfirmationBaseURL" />
+			<xs:enumeration value="SendPasswordBaseURL" />
+			<xs:enumeration value="FamilyManagerPatientExpirationAssociationDayNb" />
+			<xs:enumeration value="FamilyManagerPatientExpirationAssociationSubject" />
+			<xs:enumeration
+				value="FamilyManagerPatientExpirationAssociationSubjectEnglish" />
+			<xs:enumeration value="FamilyManagerPatientExpirationAssociationMessage" />
+			<xs:enumeration
+				value="FamilyManagerPatientExpirationAssociationMessageEnglish" />
+			<xs:enumeration
+				value="FamilyManagerPatientExpirationAssociationMessageHtml" />
+			<xs:enumeration
+				value="FamilyManagerPatientExpirationAssociationMessageHtmlEnglish" />
+			<xs:enumeration value="EventMessageSendFamilyManagerExpirationAssociation" />
+			<xs:enumeration value="EventMessageSendManagerExpiredMajority" />
+			<xs:enumeration value="ManagerExpiredMajoritySubject" />
+			<xs:enumeration value="ManagerExpiredMajoritySubjectEnglish" />
+			<xs:enumeration value="ManagerExpiredMajorityMessage" />
+			<xs:enumeration value="ManagerExpiredMajorityMessageEnglish" />
+			<xs:enumeration value="ManagerExpiredMajorityMessageHtml" />
+			<xs:enumeration value="ManagerExpiredMajorityMessageHtmlEnglish" />
+			<xs:enumeration value="AuthorizeHomeDelivery" />
+			<xs:enumeration value="AuthorizeRefillOverdue" />
+			<xs:enumeration value="RefillOverdue" />
+			<xs:enumeration value="RefillOverdueEnglish" />
+			<xs:enumeration value="RefillOverdueSubject" />
+			<xs:enumeration value="RefillOverdueSubjectEnglish" />
+			<xs:enumeration value="RefillOverdueHtml" />
+			<xs:enumeration value="RefillOverdueHtmlEnglish" />
+			<xs:enumeration value="RefillOverdueNbDaysBeforeOverdue" />
+			<xs:enumeration value="EventMessageSendRefillOverdue" />
+			<xs:enumeration value="EventMessageSendAuthorizationConsent" />
+			<xs:enumeration value="AuthorizationConsentSubject" />
+			<xs:enumeration value="AuthorizationConsentSubjectEnglish" />
+			<xs:enumeration value="AuthorizationConsentMessage" />
+			<xs:enumeration value="AuthorizationConsentMessageEnglish" />
+			<xs:enumeration value="AuthorizationConsentMessageHtml" />
+			<xs:enumeration value="AuthorizationConsentMessageHtmlEnglish" />
+			<xs:enumeration value="AuthorizeRxReauthorization" />
+			<xs:enumeration value="ThemeName" />
+			<xs:enumeration value="RestrictionOnLogon" />
+			<xs:enumeration value="RestrictionOnFamilyMemberAssociation" />
+			<xs:enumeration value="AuthorizePickUpReminder" />
+			<xs:enumeration value="PickUpReminderFirstAttempt" />
+			<xs:enumeration value="PickUpReminderInterval" />
+			<xs:enumeration value="PickUpReminderMaxNumberOfAttempt" />
+			<xs:enumeration value="EventMessageSendPickUpReminderMessage" />
+			<xs:enumeration value="PickUpReminderSubject" />
+			<xs:enumeration value="PickUpReminderSubjectEnglish" />
+			<xs:enumeration value="PickUpReminderMessage" />
+			<xs:enumeration value="PickUpReminderMessageEnglish" />
+			<xs:enumeration value="PickUpReminderMessageHtml" />
+			<xs:enumeration value="PickUpReminderMessageHtmlEnglish" />
+			<xs:enumeration value="AuthorizePickUpManagement" />
+			<xs:enumeration value="EventMessageSendReadyToPickUpMessage" />
+			<xs:enumeration value="ReadyToPickUpSubject" />
+			<xs:enumeration value="ReadyToPickUpSubjectEnglish" />
+			<xs:enumeration value="ReadyToPickUpMessage" />
+			<xs:enumeration value="ReadyToPickUpMessageEnglish" />
+			<xs:enumeration value="ReadyToPickUpMessageHtml" />
+			<xs:enumeration value="ReadyToPickUpMessageHtmlEnglish" />
+			<xs:enumeration value="EventMessageSendEnrollmentCompletedMessage" />
+			<xs:enumeration value="EnrollmentCompletedSubject" />
+			<xs:enumeration value="EnrollmentCompletedSubjectEnglish" />
+			<xs:enumeration value="EnrollmentCompletedMessage" />
+			<xs:enumeration value="EnrollmentCompletedMessageEnglish" />
+			<xs:enumeration value="EnrollmentCompletedMessageHtml" />
+			<xs:enumeration value="EnrollmentCompletedMessageHtmlEnglish" />
+			<xs:enumeration value="GetPrescriptionFilterOTCPrescription" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eParameterProperty" nillable="true"
+		type="tns:eParameterProperty" />
+	<xs:simpleType name="eParameterType">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="String" />
+			<xs:enumeration value="Int" />
+			<xs:enumeration value="Bool" />
+			<xs:enumeration value="IntPercent" />
+			<xs:enumeration value="IntMinute" />
+			<xs:enumeration value="IntMonth" />
+			<xs:enumeration value="StringHtml" />
+			<xs:enumeration value="IntDay" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eParameterType" nillable="true"
+		type="tns:eParameterType" />
+	<xs:simpleType name="eSettingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="All" />
+			<xs:enumeration value="TimeManagement" />
+			<xs:enumeration value="PrescriptionManagement" />
+			<xs:enumeration value="MessageManagement" />
+			<xs:enumeration value="ServiceManagement" />
+			<xs:enumeration value="RestrictionManagement" />
+			<xs:enumeration value="ConsentManagement" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eSettingType" nillable="true" type="tns:eSettingType" />
+	<xs:simpleType name="eCulture">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="en_CA" />
+			<xs:enumeration value="en_US" />
+			<xs:enumeration value="fr_CA" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eCulture" nillable="true" type="tns:eCulture" />
+	<xs:simpleType name="eParameterAccess">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="None">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Read">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Write">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="ReadWrite">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eParameterAccess" nillable="true"
+		type="tns:eParameterAccess" />
+	<xs:simpleType name="eAssignmentEntity">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="None">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Caregiver">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Facility">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eAssignmentEntity" nillable="true"
+		type="tns:eAssignmentEntity" />
+	<xs:complexType name="ArrayOfeParameterProperty">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="eParameterProperty"
+				type="tns:eParameterProperty" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfeParameterProperty" nillable="true"
+		type="tns:ArrayOfeParameterProperty" />
+	<xs:simpleType name="eParametersExtendedInfo">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="None">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="CultureFrCa">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="CultureEnCa">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Permissions">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="All">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">255</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eParametersExtendedInfo" nillable="true"
+		type="tns:eParametersExtendedInfo" />
+	<xs:simpleType name="ePermissionExtendedInfo">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="None">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="CultureFrCa">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="CultureEnCa">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="All">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">255</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="ePermissionExtendedInfo" nillable="true"
+		type="tns:ePermissionExtendedInfo" />
+	<xs:simpleType name="ePharmacySearchField">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ContractNumber" />
+			<xs:enumeration value="Name" />
+			<xs:enumeration value="Province" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ePharmacySearchField" nillable="true"
+		type="tns:ePharmacySearchField" />
+</xs:schema>

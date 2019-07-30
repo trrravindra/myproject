@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes">
+	<xs:import
+		schemaLocation="AdvisorSheetSvc-XSD0.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+	<xs:simpleType name="eTokenStatus">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType Name="byte" Namespace="http://www.w3.org/2001/XMLSchema"
+					xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Ok">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustConsent">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustChangePassword">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustGivePasswordReminder">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eTemporaryPasswordExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eUnsubscribingState">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eTokenStatus" nillable="true" type="tns:eTokenStatus" />
+	<xs:simpleType name="eLanguage">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="French" />
+			<xs:enumeration value="English" />
+			<xs:enumeration value="Italian" />
+			<xs:enumeration value="Spanish" />
+			<xs:enumeration value="Vietnamese" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eLanguage" nillable="true" type="tns:eLanguage" />
+	<xs:simpleType name="ErrorCodes">
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="eInvalidUserPassword" />
+					<xs:enumeration value="eAccessDenied" />
+					<xs:enumeration value="eInvalidArguments" />
+					<xs:enumeration value="eSessionExpired" />
+					<xs:enumeration value="eMaxSessionsReached" />
+					<xs:enumeration value="eAccountLocked" />
+					<xs:enumeration value="eUnknown" />
+					<xs:enumeration value="eTokenExpired" />
+					<xs:enumeration value="eAccountDeactivated" />
+					<xs:enumeration value="eNoCounsellingSheetForDin" />
+					<xs:enumeration value="eInvalidOperation" />
+					<xs:enumeration value="eCannotUnassign" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="ErrorCodes" nillable="true" type="tns:ErrorCodes" />
+</xs:schema>

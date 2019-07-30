@@ -1,0 +1,17 @@
+<div class="store-infoWindow">
+    <div class="header">
+        <img src="{{=it.banner.logoUrl}}" alt="{{=it.storeName}}"><br />
+    </div>
+    <h3 class="title">{{=it.storeName}}</h3>
+    <p class="store-address">
+       {{=it.address.addressLine1}}<br />
+        {{=it.address.city}}, {{=it.address.province}}&nbsp;&nbsp;&nbsp;{{=it.address.postalCode}}<br />
+        {{=this.format.as('phone', it.phoneNumber)}}<br />
+    </p>
+    <div class="footer">
+        <ul>
+            <!--<li><a href="{{=it.storeUrl}}">View What's In Store</a></li>-->
+            <li><a href="//maps.google.com/maps?saddr={{=it.fromAddress}}&daddr={{=it.address.addressLine1}}+{{=it.address.city}}+{{=it.address.province}}+{{=it.address.postalCode}}" target="_blank">Get Driving Directions</a></li>
+        </ul>
+    </div>
+</div>

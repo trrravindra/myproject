@@ -1,0 +1,216 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	name="RxAssyst" targetNamespace="http://tempuri.org/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import
+				schemaLocation="ConsentSvc-XSD3.xsd"
+				namespace="http://tempuri.org/" />
+			<xsd:import
+				schemaLocation="ConsentSvc-XSD4.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+			<xsd:import
+				schemaLocation="ConsentSvc-XSD0.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import
+				schemaLocation="ConsentSvc-XSD1.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+			<xsd:import
+				schemaLocation="ConsentSvc-XSD2.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xsd:import
+				schemaLocation="ConsentSvc-XSD5.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts" />
+			<xsd:import
+				schemaLocation="ConsentSvc-XSD6.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="GetRxAssystConsentRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="GetRxAssystConsentResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Consents" element="tns:Consents" />
+	</wsdl:message>
+	<wsdl:message name="IConsentSvc_GetRxAssyst_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q1:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetConsentRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ConsentCode" element="tns:ConsentCode" />
+	</wsdl:message>
+	<wsdl:message name="GetConsentResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Consent" element="tns:Consent" />
+	</wsdl:message>
+	<wsdl:message name="IConsentSvc_GetConsent_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q2:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetListConsentRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="GetListConsentResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Consents" element="tns:Consents" />
+	</wsdl:message>
+	<wsdl:message name="IConsentSvc_GetList_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q3:Error" />
+	</wsdl:message>
+	<wsdl:message name="SubscribeConsentRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ConsentIds" element="tns:ConsentIds" />
+	</wsdl:message>
+	<wsdl:message name="SubscribeConsentResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IConsentSvc_Subscribe_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q4:Error" />
+	</wsdl:message>
+	<wsdl:message name="UnsubscribeConsentRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ConsentIds" element="tns:ConsentIds" />
+		<wsdl:part name="ProfileReplication" element="tns:ProfileReplication" />
+		<wsdl:part name="ReasonCode" element="tns:ReasonCode" />
+	</wsdl:message>
+	<wsdl:message name="UnsubscribeConsentResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IConsentSvc_Unsubscribe_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q5:Error" />
+	</wsdl:message>
+	<wsdl:portType name="IConsentSvc">
+		<wsdl:operation name="GetRxAssyst">
+			<wsdl:input wsaw:Action="http://tempuri.org/IConsentSvc/GetRxAssyst"
+				name="GetRxAssystConsentRequest" message="tns:GetRxAssystConsentRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IConsentSvc/GetRxAssystResponse"
+				name="GetRxAssystConsentResponse" message="tns:GetRxAssystConsentResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IConsentSvc/GetRxAssystErrorFault"
+				name="ErrorFault" message="tns:IConsentSvc_GetRxAssyst_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetConsent">
+			<wsdl:input wsaw:Action="http://tempuri.org/IConsentSvc/GetConsent"
+				name="GetConsentRequest" message="tns:GetConsentRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IConsentSvc/GetConsentResponse"
+				name="GetConsentResponse" message="tns:GetConsentResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IConsentSvc/GetConsentErrorFault"
+				name="ErrorFault" message="tns:IConsentSvc_GetConsent_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetList">
+			<wsdl:input wsaw:Action="http://tempuri.org/IConsentSvc/GetList"
+				name="GetListConsentRequest" message="tns:GetListConsentRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IConsentSvc/GetListResponse"
+				name="GetListConsentResponse" message="tns:GetListConsentResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IConsentSvc/GetListErrorFault"
+				name="ErrorFault" message="tns:IConsentSvc_GetList_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="Subscribe">
+			<wsdl:input wsaw:Action="http://tempuri.org/IConsentSvc/Subscribe"
+				name="SubscribeConsentRequest" message="tns:SubscribeConsentRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IConsentSvc/SubscribeResponse"
+				name="SubscribeConsentResponse" message="tns:SubscribeConsentResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IConsentSvc/SubscribeErrorFault"
+				name="ErrorFault" message="tns:IConsentSvc_Subscribe_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="Unsubscribe">
+			<wsdl:input wsaw:Action="http://tempuri.org/IConsentSvc/Unsubscribe"
+				name="UnsubscribeConsentRequest" message="tns:UnsubscribeConsentRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IConsentSvc/UnsubscribeResponse"
+				name="UnsubscribeConsentResponse" message="tns:UnsubscribeConsentResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IConsentSvc/UnsubscribeErrorFault"
+				name="ErrorFault" message="tns:IConsentSvc_Unsubscribe_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RxAssystConsentEndPoint" type="tns:IConsentSvc">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetRxAssyst">
+			<soap:operation soapAction="http://tempuri.org/IConsentSvc/GetRxAssyst"
+				style="document" />
+			<wsdl:input name="GetRxAssystConsentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetRxAssystConsentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetConsent">
+			<soap:operation soapAction="http://tempuri.org/IConsentSvc/GetConsent"
+				style="document" />
+			<wsdl:input name="GetConsentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetConsentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetList">
+			<soap:operation soapAction="http://tempuri.org/IConsentSvc/GetList"
+				style="document" />
+			<wsdl:input name="GetListConsentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetListConsentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Subscribe">
+			<soap:operation soapAction="http://tempuri.org/IConsentSvc/Subscribe"
+				style="document" />
+			<wsdl:input name="SubscribeConsentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SubscribeConsentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Unsubscribe">
+			<soap:operation soapAction="http://tempuri.org/IConsentSvc/Unsubscribe"
+				style="document" />
+			<wsdl:input name="UnsubscribeConsentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UnsubscribeConsentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="RxAssyst">
+		<wsdl:port name="RxAssystConsentEndPoint" binding="tns:RxAssystConsentEndPoint">
+			<soap:address
+				location="abc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

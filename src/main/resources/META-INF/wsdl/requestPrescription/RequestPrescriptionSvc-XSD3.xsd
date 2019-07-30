@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
+	<xs:import
+		schemaLocation="RequestPrescriptionSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:import
+		schemaLocation="RequestPrescriptionSvc-XSD6.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:element name="UserToken" nillable="true" type="q1:UserToken"
+		xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PatientOID" nillable="true" type="xs:string" />
+	<xs:element name="RxNewRequest" nillable="true" type="q2:RxNewRequest"
+		xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="RequestOid" nillable="true" type="xs:string" />
+	<xs:element name="Requests" nillable="true" type="q3:ArrayOflong"
+		xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:element name="UnsubscribeRequests" nillable="true"
+		type="q4:ArrayOflong" xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:element name="RequestId" type="xs:long" />
+	<xs:element name="RxRequest" nillable="true" type="q5:RxRequest"
+		xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="PrescriptionOID" nillable="true" type="xs:string" />
+	<xs:element name="TransactionDate" type="xs:dateTime" />
+	<xs:element name="Prescription" nillable="true" type="q6:RxPrescription"
+		xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Comments" nillable="true" type="xs:string" />
+	<xs:element name="RequestStateWrapper" nillable="true"
+		type="q7:RequestStateWrapper"
+		xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="DateFilter" type="xs:dateTime" />
+	<xs:element name="Paging" nillable="true" type="q8:Paging"
+		xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="ListRequests" nillable="true" type="q9:RxListRequests"
+		xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="Count" type="xs:int" />
+	<xs:element name="RequestOID" nillable="true" type="xs:string" />
+	<xs:element name="Request" nillable="true" type="q10:RxRequest"
+		xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="RequestUnsubscribe" nillable="true"
+		type="q11:RequestUnsubscribe"
+		xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+</xs:schema>

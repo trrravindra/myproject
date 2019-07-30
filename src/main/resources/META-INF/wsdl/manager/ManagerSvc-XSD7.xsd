@@ -1,0 +1,44 @@
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib">
+	<xs:import
+		schemaLocation="ManagerSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:import
+		schemaLocation="ManagerSvc-XSD2.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+	<xs:complexType name="UserAccount">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:Account">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="AccountPreferences"
+						nillable="true" type="q1:ArrayOfAccountPreference"
+						xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+					<xs:element minOccurs="0" name="Assigned" type="xs:boolean" />
+					<xs:element name="GroupId" nillable="true"
+						type="q2:ArrayOfUserAccountsGroup"
+						xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="UserAccount" nillable="true" type="tns:UserAccount" />
+	<xs:complexType name="Account">
+		<xs:sequence>
+			<xs:element name="ApplicationName" nillable="true" type="xs:string" />
+			<xs:element name="Comments" nillable="true" type="xs:string" />
+			<xs:element name="CreationDate" type="xs:dateTime" />
+			<xs:element name="FirstName" nillable="true" type="xs:string" />
+			<xs:element name="LastActivityDate" type="xs:dateTime" />
+			<xs:element name="LastName" nillable="true" type="xs:string" />
+			<xs:element name="LastPasswordChangeDate" type="xs:dateTime" />
+			<xs:element name="State" type="q3:eAccountState"
+				xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xs:element name="StateDate" type="xs:dateTime" />
+			<xs:element name="Type" type="q4:eAccountType"
+				xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xs:element name="UserName" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Account" nillable="true" type="tns:Account" />
+</xs:schema>

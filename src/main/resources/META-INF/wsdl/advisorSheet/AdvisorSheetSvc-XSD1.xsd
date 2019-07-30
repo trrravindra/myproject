@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data">
+	<xs:import
+		schemaLocation="AdvisorSheetSvc-XSD2.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+	<xs:complexType name="UserToken">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Status" type="q1:eTokenStatus"
+				xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xs:element minOccurs="0" name="Token" nillable="true"
+				type="xs:base64Binary" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserToken" nillable="true" type="tns:UserToken" />
+	<xs:complexType name="CounsellingSheetLanguage">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Language" type="q2:eLanguage"
+				xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CounsellingSheetLanguage" nillable="true"
+		type="tns:CounsellingSheetLanguage" />
+</xs:schema>

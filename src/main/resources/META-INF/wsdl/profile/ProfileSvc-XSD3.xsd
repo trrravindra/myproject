@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://tempuri.org/" elementFormDefault="qualified"
+	targetNamespace="http://tempuri.org/">
+	<xs:import schemaLocation="ProfileSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element
+		xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="UserToken" nillable="true" type="q1:UserToken" />
+	<xs:element
+		xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="PrescriptionExtendedInfo" nillable="true" type="q2:PrescriptionExtendedInfo" />
+	<xs:element name="PatientOID" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Paging" nillable="true" type="q3:Paging" />
+	<xs:element
+		xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="CustomFilters" nillable="true" type="q4:CustomFilters" />
+	<xs:element
+		xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="ProfilePrescriptions" nillable="true" type="q5:ProfilePrescriptions" />
+	<xs:element name="Count" type="xs:int" />
+	<xs:element name="PrescriptionOID" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Prescriptions" nillable="true" type="q6:Prescriptions" />
+	<xs:element
+		xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="PatientExtendedInfo" nillable="true" type="q7:PatientExtendedInfo" />
+	<xs:element
+		xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Patient" nillable="true" type="q8:Patient" />
+	<xs:element name="EmailAddress" nillable="true" type="xs:string" />
+	<xs:element name="Chain" nillable="true" type="xs:string" />
+	<xs:element name="PostalCode" nillable="true" type="xs:string" />
+	<xs:element name="City" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Pharmacies" nillable="true" type="q9:Pharmacies" />
+</xs:schema>

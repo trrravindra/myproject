@@ -1,0 +1,1 @@
+define(["plugins/async!//maps.googleapis.com/maps/api/js?sensor=false&libraries=drawing,geometry"],function(){return google.maps});

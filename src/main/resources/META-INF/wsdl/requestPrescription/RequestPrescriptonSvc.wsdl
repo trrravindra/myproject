@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="PrescriptionService" targetNamespace="http://tempuri.org/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import
+				schemaLocation="RequestPrescriptionSvc-XSD3.xsd"
+				namespace="http://tempuri.org/" />
+			<xsd:import
+				schemaLocation="RequestPrescriptionSvc-XSD4.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+			<xsd:import
+				schemaLocation="RequestPrescriptionSvc-XSD0.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import
+				schemaLocation="RequestPrescriptionSvc-XSD1.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+			<xsd:import
+				schemaLocation="RequestPrescriptionSvc-XSD2.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xsd:import
+				schemaLocation="RequestPrescriptionSvc-XSD5.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts" />
+			<xsd:import
+				schemaLocation="RequestPrescriptionSvc-XSD6.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="AddRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientOID" element="tns:PatientOID" />
+		<wsdl:part name="RxNewRequest" element="tns:RxNewRequest" />
+	</wsdl:message>
+	<wsdl:message name="AddRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestOid" element="tns:RequestOid" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_Add_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q1:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetNewRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="GetNewRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Requests" element="tns:Requests" />
+		<wsdl:part name="UnsubscribeRequests" element="tns:UnsubscribeRequests" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_GetNew_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q2:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestId" element="tns:RequestId" />
+	</wsdl:message>
+	<wsdl:message name="GetRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RxRequest" element="tns:RxRequest" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_Get_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q3:Error" />
+	</wsdl:message>
+	<wsdl:message name="AcknowledgeRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestId" element="tns:RequestId" />
+	</wsdl:message>
+	<wsdl:message name="AcknowledgeRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_Acknowledge_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q4:Error" />
+	</wsdl:message>
+	<wsdl:message name="AcceptRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestId" element="tns:RequestId" />
+		<wsdl:part name="PrescriptionOID" element="tns:PrescriptionOID" />
+		<wsdl:part name="TransactionDate" element="tns:TransactionDate" />
+		<wsdl:part name="Prescription" element="tns:Prescription" />
+	</wsdl:message>
+	<wsdl:message name="AcceptRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_Accept_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q5:Error" />
+	</wsdl:message>
+	<wsdl:message name="DeclineRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestId" element="tns:RequestId" />
+		<wsdl:part name="PrescriptionOID" element="tns:PrescriptionOID" />
+		<wsdl:part name="TransactionDate" element="tns:TransactionDate" />
+		<wsdl:part name="Comments" element="tns:Comments" />
+	</wsdl:message>
+	<wsdl:message name="DeclineRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_Decline_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q6:Error" />
+	</wsdl:message>
+	<wsdl:message name="ListRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestStateWrapper" element="tns:RequestStateWrapper" />
+		<wsdl:part name="DateFilter" element="tns:DateFilter" />
+		<wsdl:part name="PatientOID" element="tns:PatientOID" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="ListRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ListRequests" element="tns:ListRequests" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_List_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q7:Error" />
+	</wsdl:message>
+	<wsdl:message name="ListCountRxRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestStateWrapper" element="tns:RequestStateWrapper" />
+		<wsdl:part name="DateFilter" element="tns:DateFilter" />
+		<wsdl:part name="PatientOID" element="tns:PatientOID" />
+	</wsdl:message>
+	<wsdl:message name="ListCountRxResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Count" element="tns:Count" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_ListCount_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q8:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetRequestRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestOID" element="tns:RequestOID" />
+	</wsdl:message>
+	<wsdl:message name="GetRequestResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Request" element="tns:Request" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_GetRequest_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q9:Error" />
+	</wsdl:message>
+	<wsdl:message name="AcceptUnsubscribeRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestId" element="tns:RequestId" />
+	</wsdl:message>
+	<wsdl:message name="AcceptUnsubscribeResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_AcceptUnsubscribe_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q10:Error" />
+	</wsdl:message>
+	<wsdl:message name="GetUnsubscribeRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestId" element="tns:RequestId" />
+	</wsdl:message>
+	<wsdl:message name="GetUnsubscribeResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestUnsubscribe" element="tns:RequestUnsubscribe" />
+	</wsdl:message>
+	<wsdl:message name="IRequestRxSvc_GetUnsubscribe_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q11:Error" />
+	</wsdl:message>
+	<wsdl:portType name="IRequestRxSvc">
+		<wsdl:operation name="Add">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/Add"
+				name="AddRxRequest" message="tns:AddRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/AddResponse"
+				name="AddRxResponse" message="tns:AddRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/AddErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_Add_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetNew">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/GetNew"
+				name="GetNewRxRequest" message="tns:GetNewRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/GetNewResponse"
+				name="GetNewRxResponse" message="tns:GetNewRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/GetNewErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_GetNew_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="Get">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/Get"
+				name="GetRxRequest" message="tns:GetRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/GetResponse"
+				name="GetRxResponse" message="tns:GetRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/GetErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_Get_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="Acknowledge">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/Acknowledge"
+				name="AcknowledgeRxRequest" message="tns:AcknowledgeRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/AcknowledgeResponse"
+				name="AcknowledgeRxResponse" message="tns:AcknowledgeRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/AcknowledgeErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_Acknowledge_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="Accept">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/Accept"
+				name="AcceptRxRequest" message="tns:AcceptRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/AcceptResponse"
+				name="AcceptRxResponse" message="tns:AcceptRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/AcceptErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_Accept_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="Decline">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/Decline"
+				name="DeclineRxRequest" message="tns:DeclineRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/DeclineResponse"
+				name="DeclineRxResponse" message="tns:DeclineRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/DeclineErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_Decline_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="List">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/List"
+				name="ListRxRequest" message="tns:ListRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/ListResponse"
+				name="ListRxResponse" message="tns:ListRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/ListErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_List_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ListCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/ListCount"
+				name="ListCountRxRequest" message="tns:ListCountRxRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/ListCountResponse"
+				name="ListCountRxResponse" message="tns:ListCountRxResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/ListCountErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_ListCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetRequest">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/GetRequest"
+				name="GetRequestRequest" message="tns:GetRequestRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IRequestRxSvc/GetRequestResponse"
+				name="GetRequestResponse" message="tns:GetRequestResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IRequestRxSvc/GetRequestErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_GetRequest_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AcceptUnsubscribe">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/AcceptUnsubscribe"
+				name="AcceptUnsubscribeRequest" message="tns:AcceptUnsubscribeRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IRequestRxSvc/AcceptUnsubscribeResponse"
+				name="AcceptUnsubscribeResponse" message="tns:AcceptUnsubscribeResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IRequestRxSvc/AcceptUnsubscribeErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_AcceptUnsubscribe_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetUnsubscribe">
+			<wsdl:input wsaw:Action="http://tempuri.org/IRequestRxSvc/GetUnsubscribe"
+				name="GetUnsubscribeRequest" message="tns:GetUnsubscribeRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IRequestRxSvc/GetUnsubscribeResponse"
+				name="GetUnsubscribeResponse" message="tns:GetUnsubscribeResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IRequestRxSvc/GetUnsubscribeErrorFault"
+				name="ErrorFault" message="tns:IRequestRxSvc_GetUnsubscribe_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RxAssystRxRequestEndPoint" type="tns:IRequestRxSvc">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Add">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/Add"
+				style="document" />
+			<wsdl:input name="AddRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetNew">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/GetNew"
+				style="document" />
+			<wsdl:input name="GetNewRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetNewRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Get">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/Get"
+				style="document" />
+			<wsdl:input name="GetRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Acknowledge">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/Acknowledge"
+				style="document" />
+			<wsdl:input name="AcknowledgeRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AcknowledgeRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Accept">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/Accept"
+				style="document" />
+			<wsdl:input name="AcceptRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AcceptRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="Decline">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/Decline"
+				style="document" />
+			<wsdl:input name="DeclineRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeclineRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="List">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/List"
+				style="document" />
+			<wsdl:input name="ListRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ListCount">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/ListCount"
+				style="document" />
+			<wsdl:input name="ListCountRxRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListCountRxResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetRequest">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/GetRequest"
+				style="document" />
+			<wsdl:input name="GetRequestRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetRequestResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AcceptUnsubscribe">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/AcceptUnsubscribe"
+				style="document" />
+			<wsdl:input name="AcceptUnsubscribeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AcceptUnsubscribeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetUnsubscribe">
+			<soap:operation soapAction="http://tempuri.org/IRequestRxSvc/GetUnsubscribe"
+				style="document" />
+			<wsdl:input name="GetUnsubscribeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetUnsubscribeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PrescriptionService">
+		<wsdl:port name="RxAssystRxRequestEndPoint" binding="tns:RxAssystRxRequestEndPoint">
+			<soap:address
+				location="abc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

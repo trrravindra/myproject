@@ -1,0 +1,1 @@
+define(["jquery"],function(e){function n(n){n=e.extend({},t,n);var r=e("<div>").addClass("flash-msg").text(n.text);return n.appendTo?r.appendTo(n.appendTo):n.insertBefore&&r.insertBefore(n.insertBefore),r.delay(n.delay).fadeOut("slow",function(){r.remove(),n.complete&&n.complete.call(this)})}var t={text:"",insertBefore:null,appendTo:null,delay:2e3,complete:null};return n});

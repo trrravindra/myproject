@@ -1,0 +1,571 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+	xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/"
+	elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data">
+	<xs:import schemaLocation="SessionSvc-XSD3.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+	<xs:import schemaLocation="SessionSvc-XSD6.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:import schemaLocation="SessionSvc-XSD8.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/System" />
+	<xs:import schemaLocation="SessionSvc-XSD0.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+	<xs:complexType name="User">
+		<xs:sequence>
+			<xs:element name="Password" nillable="true" type="xs:string" />
+			<xs:element name="UserName" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="User" nillable="true" type="tns:User" />
+	<xs:complexType name="UserInfo">
+		<xs:sequence>
+			<xs:element name="OID" nillable="true" type="xs:string" />
+			<xs:element name="FirstName" nillable="true" type="xs:string" />
+			<xs:element name="LastName" nillable="true" type="xs:string" />
+			<xs:element name="Role" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+	<xs:complexType name="UserToken">
+		<xs:sequence>
+			<xs:element
+				xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Status" type="q1:eTokenStatus" />
+			<xs:element minOccurs="0" name="Token" nillable="true"
+				type="xs:base64Binary" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserToken" nillable="true" type="tns:UserToken" />
+	<xs:complexType name="ArrayOfAccountPreference">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="AccountPreference"
+				nillable="true" type="tns:AccountPreference" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfAccountPreference" nillable="true"
+		type="tns:ArrayOfAccountPreference" />
+	<xs:complexType name="AccountPreference">
+		<xs:sequence>
+			<xs:element name="Type"
+				type="tns:AccountPreference.eAccountPreferenceType" />
+			<xs:element name="Value" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AccountPreference" nillable="true"
+		type="tns:AccountPreference" />
+	<xs:simpleType name="AccountPreference.eAccountPreferenceType">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+					Name="short" Namespace="http://www.w3.org/2001/XMLSchema" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Language" />
+			<xs:enumeration value="Email" />
+			<xs:enumeration value="Notification" />
+			<xs:enumeration value="PaswordRecoveryQuestion1" />
+			<xs:enumeration value="PaswordRecoveryQuestion2" />
+			<xs:enumeration value="PaswordRecoveryQuestion3" />
+			<xs:enumeration value="PaswordRecoveryQuestionAnswer1" />
+			<xs:enumeration value="PaswordRecoveryQuestionAnswer2" />
+			<xs:enumeration value="PaswordRecoveryQuestionAnswer3" />
+			<xs:enumeration value="EmailType" />
+			<xs:enumeration value="MobilePhoneNumber" />
+			<xs:enumeration value="StopEmailCommunication" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="AccountPreference.eAccountPreferenceType"
+		nillable="true" type="tns:AccountPreference.eAccountPreferenceType" />
+	<xs:complexType name="ConfirmEmailReturnCode">
+		<xs:sequence>
+			<xs:element
+				xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Code" type="q2:eConfirmEmailReturnCode" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConfirmEmailReturnCode" nillable="true"
+		type="tns:ConfirmEmailReturnCode" />
+	<xs:complexType name="EmailReturnStatus">
+		<xs:sequence>
+			<xs:element
+				xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Code" type="q3:eEmailReturnCode" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmailReturnStatus" nillable="true"
+		type="tns:EmailReturnStatus" />
+	<xs:complexType name="PasswordRecovery">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="AnswerIndex" type="xs:short" />
+			<xs:element
+				xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+				minOccurs="0" name="Answers" nillable="true" type="q4:ArrayOfstring" />
+			<xs:element minOccurs="0" name="Identifier" nillable="true"
+				type="xs:string" />
+			<xs:element
+				xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+				minOccurs="0" name="Questions" nillable="true" type="q5:ArrayOfstring" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PasswordRecovery" nillable="true"
+		type="tns:PasswordRecovery" />
+	<xs:complexType name="PasswordReminder">
+		<xs:sequence>
+			<xs:element
+				xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+				minOccurs="0" name="Answers" nillable="true" type="q6:ArrayOfstring" />
+			<xs:element
+				xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+				minOccurs="0" name="Questions" nillable="true" type="q7:ArrayOfstring" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PasswordReminder" nillable="true"
+		type="tns:PasswordReminder" />
+	<xs:simpleType name="AccountPreference.eLanguagesSupported">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Francais" />
+			<xs:enumeration value="English" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="AccountPreference.eLanguagesSupported"
+		nillable="true" type="tns:AccountPreference.eLanguagesSupported" />
+	<xs:complexType name="Pharmacies">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="Pharmacy"
+				nillable="true" type="tns:Pharmacy" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Pharmacies" nillable="true" type="tns:Pharmacies" />
+	<xs:complexType name="Pharmacy">
+		<xs:sequence>
+			<xs:element name="Address" nillable="true" type="xs:string" />
+			<xs:element name="Chain" nillable="true" type="xs:string" />
+			<xs:element name="City" nillable="true" type="xs:string" />
+			<xs:element name="ContractNumber" nillable="true" type="xs:string" />
+			<xs:element name="FaxNumber" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="ImageChecksum" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="Message" nillable="true"
+				type="xs:string" />
+			<xs:element name="Name" nillable="true" type="xs:string" />
+			<xs:element name="Number" nillable="true" type="xs:string" />
+			<xs:element name="Owner" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="PharmacyOpeningHours"
+				nillable="true" type="tns:ArrayOfPharmacyOpeningHour" />
+			<xs:element name="PhoneNumber" nillable="true" type="xs:string" />
+			<xs:element name="PostalCode" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Province" type="q8:eProvince" />
+			<xs:element minOccurs="0" name="Email" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="InternalId" nillable="true"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Pharmacy" nillable="true" type="tns:Pharmacy" />
+	<xs:complexType name="ArrayOfPharmacyOpeningHour">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="PharmacyOpeningHour"
+				nillable="true" type="tns:PharmacyOpeningHour" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfPharmacyOpeningHour" nillable="true"
+		type="tns:ArrayOfPharmacyOpeningHour" />
+	<xs:complexType name="PharmacyOpeningHour">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="HourFrom" type="xs:int" />
+			<xs:element minOccurs="0" name="HourTo" type="xs:int" />
+			<xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System"
+				name="WeekDay" type="q9:DayOfWeek" />
+			<xs:element minOccurs="0" name="HourFromV2" type="ser:duration">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="HourToV2" type="ser:duration">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PharmacyOpeningHour" nillable="true"
+		type="tns:PharmacyOpeningHour" />
+	<xs:complexType name="UserAccountsGroup">
+		<xs:sequence>
+			<xs:element
+				xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Group" type="q10:eGroup" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserAccountsGroup" nillable="true"
+		type="tns:UserAccountsGroup" />
+	<xs:complexType name="AccountAliases">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="AccountAlias"
+				nillable="true" type="tns:AccountAlias" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AccountAliases" nillable="true"
+		type="tns:AccountAliases" />
+	<xs:complexType name="AccountAlias">
+		<xs:sequence>
+			<xs:element name="Alias" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AccountAlias" nillable="true" type="tns:AccountAlias" />
+	<xs:complexType name="VerifyUserInputs">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="VerifyUserInput"
+				nillable="true" type="tns:VerifyUserInput" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VerifyUserInputs" nillable="true"
+		type="tns:VerifyUserInputs" />
+	<xs:complexType name="VerifyUserInput">
+		<xs:sequence>
+			<xs:element
+				xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Field" type="q11:ePatientVerification" />
+			<xs:element minOccurs="0" name="Value" nillable="true"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VerifyUserInput" nillable="true"
+		type="tns:VerifyUserInput" />
+	<xs:complexType name="VerifyIdentityReason">
+		<xs:sequence>
+			<xs:element
+				xmlns:q12="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="IdentityReason" type="q12:eVerifyIdentityReason" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VerifyIdentityReason" nillable="true"
+		type="tns:VerifyIdentityReason" />
+	<xs:complexType name="IdentificationType">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="IdentificationType" nillable="true"
+		type="tns:IdentificationType" />
+	<xs:complexType name="Identification">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:element name="Identification" nillable="true"
+		type="tns:Identification" />
+	<xs:complexType name="PatientOIDIdentification">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:Identification">
+				<xs:sequence>
+					<xs:element name="PatientOID" nillable="true" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="PatientOIDIdentification" nillable="true"
+		type="tns:PatientOIDIdentification" />
+	<xs:complexType name="PatientIdentification">
+		<xs:complexContent mixed="false">
+			<xs:extension base="tns:Identification">
+				<xs:sequence>
+					<xs:element name="Patient" nillable="true" type="tns:Patient" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="PatientIdentification" nillable="true"
+		type="tns:PatientIdentification" />
+	<xs:complexType name="Patient">
+		<xs:sequence>
+			<xs:element name="Accounts" nillable="true" type="tns:PatientAccounts" />
+			<xs:element name="Address" nillable="true" type="xs:string" />
+			<xs:element name="Alias" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="BirthDate" type="xs:int" />
+			<xs:element name="City" nillable="true" type="xs:string" />
+			<xs:element name="Comments" nillable="true" type="xs:string" />
+			<xs:element name="Contacts" nillable="true" type="tns:PatientContacts" />
+			<xs:element name="CreatinineClearance" type="xs:int" />
+			<xs:element minOccurs="0" name="CreationDate" type="xs:int" />
+			<xs:element name="DISExcluded" type="xs:boolean" />
+			<xs:element name="DISKey" nillable="true" type="xs:string" />
+			<xs:element name="Deceased" type="xs:boolean" />
+			<xs:element name="DeliveryActive" type="xs:boolean" />
+			<xs:element name="DeliveryAddress" nillable="true" type="xs:string" />
+			<xs:element name="DeliveryCity" nillable="true" type="xs:string" />
+			<xs:element name="DeliveryComments" nillable="true" type="xs:string" />
+			<xs:element name="DeliveryPhoneNumber" nillable="true"
+				type="xs:string" />
+			<xs:element name="DeliveryPostalCode" nillable="true"
+				type="xs:string" />
+			<xs:element
+				xmlns:q13="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="DeliveryProvince" type="q13:eProvince" />
+			<xs:element name="Facility" nillable="true" type="tns:Facility" />
+			<xs:element name="FacilityActive" type="xs:boolean" />
+			<xs:element name="FacilityBed" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="FacilityDepartureDate"
+				type="xs:int" />
+			<xs:element name="FacilityFloor" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="FacilityReturnDate" type="xs:int" />
+			<xs:element name="FacilityRoom" nillable="true" type="xs:string" />
+			<xs:element name="FacilityTable" nillable="true" type="xs:string" />
+			<xs:element name="FamilyPhysician" nillable="true"
+				type="tns:Prescriber" />
+			<xs:element name="FirstName" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q14="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Gender" type="q14:eGender" />
+			<xs:element name="Height" type="xs:int" />
+			<xs:element minOccurs="0" name="HeightWeightModificationDate"
+				type="xs:int" />
+			<xs:element name="HospitalCardNumber" nillable="true"
+				type="xs:string" />
+			<xs:element
+				xmlns:q15="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Language" type="q15:eLanguage" />
+			<xs:element name="LastName" nillable="true" type="xs:string" />
+			<xs:element name="LoyaltyCardActive" type="xs:boolean" />
+			<xs:element name="LoyaltyCardNumber" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="ModificationDate" type="xs:int" />
+			<xs:element name="NoSubstitute" type="xs:boolean" />
+			<xs:element name="OID" nillable="true" type="xs:string" />
+			<xs:element name="PHN" nillable="true" type="xs:string" />
+			<xs:element name="PHNExpiration" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q16="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="PHNType" type="q16:ePHNType" />
+			<xs:element name="PatientFile" nillable="true" type="xs:string" />
+			<xs:element name="PhoneNumber" nillable="true" type="xs:string" />
+			<xs:element name="PostalCode" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q17="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Province" type="q17:eProvince" />
+			<xs:element name="ReferenceFileNumber" nillable="true"
+				type="xs:string" />
+			<xs:element name="ShortRemark" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="UserName" nillable="true"
+				type="xs:string" />
+			<xs:element name="Weight" type="xs:int" />
+			<xs:element name="WorkPhoneNumber" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="BirthDateV2" nillable="true"
+				type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="HeightWeightModificationDateV2"
+				nillable="true" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="CreationDateV2" nillable="true"
+				type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="ModificationDateV2"
+				nillable="true" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="FacilityDepartureDateV2"
+				nillable="true" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="FacilityReturnDateV2"
+				nillable="true" type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="DefaultPharmacy" nillable="true"
+				type="tns:Pharmacy" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Patient" nillable="true" type="tns:Patient" />
+	<xs:complexType name="PatientAccounts">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="PatientAccount"
+				nillable="true" type="tns:PatientAccount" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PatientAccounts" nillable="true"
+		type="tns:PatientAccounts" />
+	<xs:complexType name="PatientAccount">
+		<xs:sequence>
+			<xs:element name="Address" nillable="true" type="xs:string" />
+			<xs:element name="City" nillable="true" type="xs:string" />
+			<xs:element name="FaxNumber" nillable="true" type="xs:string" />
+			<xs:element name="Name" nillable="true" type="xs:string" />
+			<xs:element name="Number" nillable="true" type="xs:string" />
+			<xs:element name="PhoneNumber" nillable="true" type="xs:string" />
+			<xs:element name="PostalCode" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q18="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Province" type="q18:eProvince" />
+			<xs:element
+				xmlns:q19="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Type" type="q19:eAccountReceivable" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PatientAccount" nillable="true"
+		type="tns:PatientAccount" />
+	<xs:complexType name="PatientContacts">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="PatientContact"
+				nillable="true" type="tns:PatientContact" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PatientContacts" nillable="true"
+		type="tns:PatientContacts" />
+	<xs:complexType name="PatientContact">
+		<xs:sequence>
+			<xs:element
+				xmlns:q20="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="ContactType" type="q20:eContactType" />
+			<xs:element name="Value" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PatientContact" nillable="true"
+		type="tns:PatientContact" />
+	<xs:complexType name="Facility">
+		<xs:sequence>
+			<xs:element name="Address" nillable="true" type="xs:string" />
+			<xs:element name="City" nillable="true" type="xs:string" />
+			<xs:element name="Fax" nillable="true" type="xs:string" />
+			<xs:element name="Name" nillable="true" type="xs:string" />
+			<xs:element name="Number" nillable="true" type="xs:string" />
+			<xs:element name="Phone" nillable="true" type="xs:string" />
+			<xs:element name="PostalCode" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q21="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Province" type="q21:eProvince" />
+			<xs:element minOccurs="0" name="OID" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Facility" nillable="true" type="tns:Facility" />
+	<xs:complexType name="Prescriber">
+		<xs:sequence>
+			<xs:element name="Address" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="BirthDate" type="xs:int" />
+			<xs:element name="City" nillable="true" type="xs:string" />
+			<xs:element name="FirstName" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q22="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Gender" type="q22:eGender" />
+			<xs:element
+				xmlns:q23="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Language" type="q23:eLanguage" />
+			<xs:element name="LastName" nillable="true" type="xs:string" />
+			<xs:element name="License" nillable="true" type="xs:string" />
+			<xs:element name="PhoneNumber" nillable="true" type="xs:string" />
+			<xs:element name="PostalCode" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q24="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="Province" type="q24:eProvince" />
+			<xs:element name="WorkPhoneNumber" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="BirthDateV2" nillable="true"
+				type="xs:dateTime">
+				<xs:annotation>
+					<xs:appinfo>
+						<DefaultValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+							EmitDefaultValue="false" />
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Prescriber" nillable="true" type="tns:Prescriber" />
+	<xs:complexType name="Establishment">
+		<xs:sequence>
+			<xs:element name="OID" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="Name" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="Owner" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="Address" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="City" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="PostalCode" nillable="true"
+				type="xs:string" />
+			<xs:element name="Province" type="xs:short" />
+			<xs:element minOccurs="0" name="Email" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="FaxNumber" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="PhoneNumber" nillable="true"
+				type="xs:string" />
+			<xs:element minOccurs="0" name="InternalId" nillable="true"
+				type="xs:string" />
+			<xs:element name="EstablishmentType" type="xs:short" />
+			<xs:element minOccurs="0" name="Software" type="xs:short" />
+			<xs:element minOccurs="0" name="OpeningHours" nillable="true"
+				type="tns:ArrayOfEstablishmentOpeningHour" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Establishment" nillable="true"
+		type="tns:Establishment" />
+	<xs:complexType name="ArrayOfEstablishmentOpeningHour">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded"
+				name="EstablishmentOpeningHour" nillable="true"
+				type="tns:EstablishmentOpeningHour" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfEstablishmentOpeningHour" nillable="true"
+		type="tns:ArrayOfEstablishmentOpeningHour" />
+	<xs:complexType name="EstablishmentOpeningHour">
+		<xs:sequence>
+			<xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/System"
+				name="WeekDay" type="q25:DayOfWeek" />
+			<xs:element name="HourFrom" type="ser:duration" />
+			<xs:element name="HourTo" type="ser:duration" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EstablishmentOpeningHour" nillable="true"
+		type="tns:EstablishmentOpeningHour" />
+</xs:schema>

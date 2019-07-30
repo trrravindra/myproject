@@ -1,0 +1,93 @@
+{{?it.content_type.indexOf('perfectpairing')!=-1}}
+{{?it.pathUrl.indexOf('videos')!=-1}}
+<div class="media-object-new media-object-video">
+<a class="media-object-action modal modal-video" href="{{=it.pathUrl}}" >
+{{?}}
+{{?it.pathUrl.indexOf('recipes')!=-1 || it.pathUrl.indexOf('products')!=-1 }}
+<div class="media-object-new media-object-shadowbox" >
+<a class="media-object-action" href="{{=it.pathUrl}}" >
+{{?}}
+    <div class="media-object-thumbnail" >
+        <img src="{{=it.imgUrl}}" title="" alt="{{=it.imgTitle}}" />
+    </div>
+    {{?it.pathUrl.indexOf('videos')!=-1}}
+	</a>
+	{{?}}
+    <div class="media-object-details" >
+    <div class="media-object-details-inner" >
+        <h3 class="media-object-title" >
+            {{=it.title}}
+        </h3>
+        <p class="media-object-cta" >
+            {{=it.desc}}
+        </p>
+    </div>
+    </div>
+{{?it.pathUrl.indexOf('recipes')!=-1 || it.pathUrl.indexOf('products')!=-1 }}
+</a>
+{{?}}
+
+</div>
+{{?}}
+
+{{?it.content_type.indexOf("whynottry")!=-1}}
+<div class="card promo why-not-try">
+    <a href="{{=it.pathUrl}}">
+        <div class="header">
+            <h3 class="title">{{=it.title}}</h3>
+        </div>
+        <div class="composite"><img src="{{=it.imgUrl}}" alt="{{=it.imgTitle}}"></div>
+        <div class="footer">           
+            <p>{{=it.desc}}</p>           
+        </div>
+    </a>
+</div>
+{{?}}
+{{?it.content_type.indexOf("whynottry_fullwidth")!=-1}}
+<section class="why-not-try full-width">
+	<div class="column-layout col-2">
+		<div class="col header">
+			<h1 class="title">{{=it.whyNotTryLabel}}</h1>
+		</div>
+		<div class="col content last">
+				<div class="text">
+					<h2 class="title">{{=it.title}}</h2>
+					 <p>{{=it.desc}}</p>
+					<a class="btn" href="{{=it.pathUrl}}">{{=it.buttonLabel}}</a>
+				</div>
+				<a href="{{=it.pathUrl}}">
+				<div class="composite img"><img src="{{=it.imgUrl}}" alt="{{=it.imgTitle}}"></div>
+			</a>
+		</div>
+	</div>
+</section>
+{{?}}
+{{?it.content_type.indexOf("whynottry_withbutton")!=-1}}
+<div class="card promo why-not-try">
+    <a href="{{=it.pathUrl}}">
+        <div class="header">
+            <h3 class="title">{{=it.whyNotTryLabel}}</h3>
+        </div>
+        <img src="{{=it.imgUrl}}" alt="{{=it.imgTitle}}">
+     </a>
+        <div class="footer">
+       <a href="{{=it.pathUrl}}">
+            <h4 class="title">{{=it.title}}</h4>
+            <p>{{=it.desc}}</p>
+            <p class="get-recipe">{{=it.buttonLabel}}</p>
+        </div>
+    </a>
+</div>
+{{?}}
+
+{{?it.content_type.indexOf("cardtile")!=-1}}
+<a href="{{=it.pathUrl}}">
+    <div class="header more">
+		<h3 class="title">{{=it.title}}</h3>
+		<div class="more">
+			<p>{{=it.desc}}</p>
+		</div>
+    </div>
+    <img src="{{=it.img}}" alt="{{=it.imgTitle}}">
+</a>
+{{?}}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="AdvisorSheets" targetNamespace="http://tempuri.org/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import
+				schemaLocation="AdvisorSheetSvc-XSD3.xsd"
+				namespace="http://tempuri.org/" />
+			<xsd:import
+				schemaLocation="AdvisorSheetSvc-XSD4.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+			<xsd:import
+				schemaLocation="AdvisorSheetSvc-XSD0.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import
+				schemaLocation="AdvisorSheetSvc-XSD1.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+			<xsd:import
+				schemaLocation="AdvisorSheetSvc-XSD2.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xsd:import
+				schemaLocation="AdvisorSheetSvc-XSD5.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="GetMedCounsellingSheetRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="DIN" element="tns:DIN" />
+		<wsdl:part name="Language" element="tns:Language" />
+	</wsdl:message>
+	<wsdl:message name="GetMedCounsellingSheetResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="URL" element="tns:URL" />
+		<wsdl:part name="CheckSum" element="tns:CheckSum" />
+		<wsdl:part name="ImageURL" element="tns:ImageURL" />
+		<wsdl:part name="ImageCheckSum" element="tns:ImageCheckSum" />
+	</wsdl:message>
+	<wsdl:message
+		name="IAdvisorSheetsSvc_GetMedCounsellingSheet_ErrorFault_FaultMessage">
+		<wsdl:part
+			xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error"
+			name="detail" element="q1:Error" />
+	</wsdl:message>
+	<wsdl:portType name="IAdvisorSheetsSvc">
+		<wsdl:operation name="GetMedCounsellingSheet">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IAdvisorSheetsSvc/GetMedCounsellingSheet"
+				name="GetMedCounsellingSheetRequest" message="tns:GetMedCounsellingSheetRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IAdvisorSheetsSvc/GetMedCounsellingSheetResponse"
+				name="GetMedCounsellingSheetResponse" message="tns:GetMedCounsellingSheetResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IAdvisorSheetsSvc/GetMedCounsellingSheetErrorFault"
+				name="ErrorFault"
+				message="tns:IAdvisorSheetsSvc_GetMedCounsellingSheet_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="BasicHttpBinding_IAdvisorSheetsSvc"
+		type="tns:IAdvisorSheetsSvc">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetMedCounsellingSheet">
+			<soap:operation
+				soapAction="http://tempuri.org/IAdvisorSheetsSvc/GetMedCounsellingSheet"
+				style="document" />
+			<wsdl:input name="GetMedCounsellingSheetRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetMedCounsellingSheetResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="AdvisorSheets">
+		<wsdl:port name="BasicHttpBinding_IAdvisorSheetsSvc"
+			binding="tns:BasicHttpBinding_IAdvisorSheetsSvc">
+			<soap:address
+				location="abc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

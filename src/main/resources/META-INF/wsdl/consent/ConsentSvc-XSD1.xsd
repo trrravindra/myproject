@@ -1,0 +1,109 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+	elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data">
+	<xs:import
+		schemaLocation="ConsentSvc-XSD2.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+	<xs:complexType name="UserToken">
+		<xs:sequence>
+			<xs:element
+				xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Status" type="q1:eTokenStatus" />
+			<xs:element minOccurs="0" name="Token" nillable="true"
+				type="xs:base64Binary" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserToken" nillable="true" type="tns:UserToken" />
+	<xs:complexType name="ConsentStatuses">
+		<xs:sequence>
+			<xs:element name="Consents" nillable="true" type="tns:ArrayOfConsent" />
+			<xs:element name="Statuses" nillable="true"
+				type="tns:ArrayOfConsentStatus" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConsentStatuses" nillable="true"
+		type="tns:ConsentStatuses" />
+	<xs:complexType name="ArrayOfConsent">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="Consent"
+				nillable="true" type="tns:Consent" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfConsent" nillable="true"
+		type="tns:ArrayOfConsent" />
+	<xs:complexType name="Consent">
+		<xs:sequence>
+			<xs:element name="Active" type="xs:boolean" />
+			<xs:element name="AgreementEnglish" nillable="true" type="xs:string" />
+			<xs:element name="AgreementFrench" nillable="true" type="xs:string" />
+			<xs:element name="Id" type="xs:int" />
+			<xs:element name="Mandatory" type="xs:boolean" />
+			<xs:element name="NameEnglish" nillable="true" type="xs:string" />
+			<xs:element name="NameFrench" nillable="true" type="xs:string" />
+			<xs:element name="OwnerId" type="xs:short" />
+			<xs:element name="Version" type="xs:int" />
+			<xs:element minOccurs="0" name="Duration" nillable="true"
+				type="xs:short" />
+			<xs:element minOccurs="0" name="OID" nillable="true" type="xs:string" />
+			<xs:element
+				xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				minOccurs="0" name="Type" type="q2:ConsentType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Consent" nillable="true" type="tns:Consent" />
+	<xs:complexType name="ArrayOfConsentStatus">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="ConsentStatus"
+				nillable="true" type="tns:ConsentStatus" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfConsentStatus" nillable="true"
+		type="tns:ArrayOfConsentStatus" />
+	<xs:complexType name="ConsentStatus">
+		<xs:sequence>
+			<xs:element name="ConsentId" type="xs:int" />
+			<xs:element name="Date" type="xs:dateTime" />
+			<xs:element name="Id" type="xs:long" />
+			<xs:element name="PatientOID" nillable="true" type="xs:string" />
+			<xs:element name="Status" type="tns:ConsentStatus.eStatus" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConsentStatus" nillable="true"
+		type="tns:ConsentStatus" />
+	<xs:simpleType name="ConsentStatus.eStatus">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+					Name="short" Namespace="http://www.w3.org/2001/XMLSchema" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Pending" />
+			<xs:enumeration value="Accepted" />
+			<xs:enumeration value="Rejected" />
+			<xs:enumeration value="Expired" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ConsentStatus.eStatus" nillable="true"
+		type="tns:ConsentStatus.eStatus" />
+	<xs:complexType name="ConsentCode">
+		<xs:sequence>
+			<xs:element
+				xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="ConsentType" type="q3:ConsentType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConsentCode" nillable="true" type="tns:ConsentCode" />
+	<xs:complexType name="ReasonCode">
+		<xs:sequence>
+			<xs:element
+				xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+				name="ReasonForUnsubscribe" type="q4:eUnsubscribeReason" />
+			<xs:element minOccurs="0" name="ReasonText" nillable="true"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReasonCode" nillable="true" type="tns:ReasonCode" />
+</xs:schema>

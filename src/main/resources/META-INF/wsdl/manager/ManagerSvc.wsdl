@@ -1,0 +1,2129 @@
+<wsdl:definitions name="RxAssyst" targetNamespace="http://tempuri.org/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://tempuri.org/Imports">
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD3.xsd"
+				namespace="http://tempuri.org/" />
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD4.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD0.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD1.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD2.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes" />
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD5.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLoggerLib.Contracts" />
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD6.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/System" />
+			<xsd:import
+				schemaLocation="ManagerSvc-XSD7.xsd"
+				namespace="http://schemas.datacontract.org/2004/07/RxAssystLib" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="ResetUserAccountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Username" element="tns:Username" />
+		<wsdl:part name="SendPasswordByEmail" element="tns:SendPasswordByEmail" />
+	</wsdl:message>
+	<wsdl:message name="ResetUserAccountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Password" element="tns:Password" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_ResetUserAccount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q1:Error"
+			xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UnlockUserAccountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Username" element="tns:Username" />
+	</wsdl:message>
+	<wsdl:message name="UnlockUserAccountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_UnlockUserAccount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q2:Error"
+			xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AddPharmacyRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Pharmacy" element="tns:Pharmacy" />
+		<wsdl:part name="MainPharmacyContractNumber" element="tns:MainPharmacyContractNumber" />
+		<wsdl:part name="PharmacyTimeZone" element="tns:PharmacyTimeZone" />
+		<wsdl:part name="PharmacyPMS" element="tns:PharmacyPMS" />
+	</wsdl:message>
+	<wsdl:message name="AddPharmacyResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_AddPharmacy_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q3:Error"
+			xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePharmacyRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Pharmacy" element="tns:Pharmacy" />
+		<wsdl:part name="MainPharmacyContractNumber" element="tns:MainPharmacyContractNumber" />
+		<wsdl:part name="PharmacyTimeZone" element="tns:PharmacyTimeZone" />
+		<wsdl:part name="PharmacyPMS" element="tns:PharmacyPMS" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePharmacyResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_UpdatePharmacy_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q4:Error"
+			xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="ActivatePharmacyRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PharmacyContractNumber" element="tns:PharmacyContractNumber" />
+		<wsdl:part name="ActivationKey" element="tns:ActivationKey" />
+		<wsdl:part name="ActivationModule" element="tns:ActivationModule" />
+	</wsdl:message>
+	<wsdl:message name="ActivatePharmacyResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_ActivatePharmacy_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q5:Error"
+			xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="DeactivatePharmacyRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PharmacyContractNumber" element="tns:PharmacyContractNumber" />
+	</wsdl:message>
+	<wsdl:message name="DeactivatePharmacyResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_DeactivatePharmacy_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q6:Error"
+			xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetUserAccountsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="AssignmentStatus" element="tns:AssignmentStatus" />
+		<wsdl:part name="GroupId" element="tns:GroupId" />
+		<wsdl:part name="ParentUserName" element="tns:ParentUserName" />
+		<wsdl:part name="SearchCriteria" element="tns:SearchCriteria" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetUserAccountsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Accounts" element="tns:Accounts" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetUserAccounts_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q7:Error"
+			xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetUserAccountsCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="AssignmentStatus" element="tns:AssignmentStatus" />
+		<wsdl:part name="GroupId" element="tns:GroupId" />
+		<wsdl:part name="ParentUserName" element="tns:ParentUserName" />
+		<wsdl:part name="SearchCriteria" element="tns:SearchCriteria" />
+	</wsdl:message>
+	<wsdl:message name="GetUserAccountsCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Count" element="tns:Count" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetUserAccountsCount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q8:Error"
+			xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetAgentsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PharmacyContractNumber" element="tns:PharmacyContractNumber" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+		<wsdl:part name="LinkedPharmacies" element="tns:LinkedPharmacies" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetAgentsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Agents" element="tns:Agents" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetAgents_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q9:Error"
+			xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="CreateUserAccountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="AccountType" element="tns:AccountType" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+		<wsdl:part name="Password" element="tns:Password" />
+		<wsdl:part name="FirstName" element="tns:FirstName" />
+		<wsdl:part name="LastName" element="tns:LastName" />
+		<wsdl:part name="Email" element="tns:Email" />
+		<wsdl:part name="Comments" element="tns:Comments" />
+		<wsdl:part name="Language" element="tns:Language" />
+	</wsdl:message>
+	<wsdl:message name="CreateUserAccountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_CreateUserAccount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q10:Error"
+			xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="CreateFamilyManagerAccountRequest">
+		<wsdl:part name="FirstName" element="tns:FirstName" />
+		<wsdl:part name="LastName" element="tns:LastName" />
+		<wsdl:part name="Password" element="tns:Password" />
+		<wsdl:part name="Email" element="tns:Email" />
+		<wsdl:part name="Comments" element="tns:Comments" />
+		<wsdl:part name="Language" element="tns:Language" />
+	</wsdl:message>
+	<wsdl:message name="CreateFamilyManagerAccountResponse">
+		<wsdl:part name="UserName" element="tns:UserName" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_CreateFamilyManagerAccount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q11:Error"
+			xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="FamilyManagerAssignAcceptRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestorUserName" element="tns:RequestorUserName" />
+		<wsdl:part name="ConsentOID" element="tns:ConsentOID" />
+	</wsdl:message>
+	<wsdl:message name="FamilyManagerAssignAcceptResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_FamilyManagerAssignAccept_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q12:Error"
+			xmlns:q12="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="FamilyManagerAssignRequestRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="GuestUserName" element="tns:GuestUserName" />
+		<wsdl:part name="GuestPassword" element="tns:GuestPassword" />
+		<wsdl:part name="ConsentForGuest" element="tns:ConsentForGuest" />
+		<wsdl:part name="ConsentOID" element="tns:ConsentOID" />
+		<wsdl:part name="Description" element="tns:Description" />
+	</wsdl:message>
+	<wsdl:message name="FamilyManagerAssignRequestResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_FamilyManagerAssignRequest_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q13:Error"
+			xmlns:q13="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="DeleteFamilyManagerPatientAssociationRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Username" element="tns:Username" />
+		<wsdl:part name="SendNotification" element="tns:SendNotification" />
+	</wsdl:message>
+	<wsdl:message name="DeleteFamilyManagerPatientAssociationResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_DeleteFamilyManagerPatientAssociation_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q14:Error"
+			xmlns:q14="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetFamilyManagerRequestsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestsState" element="tns:RequestsState" />
+	</wsdl:message>
+	<wsdl:message name="GetFamilyManagerRequestsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="FamilyManagerPatientRequests" element="tns:FamilyManagerPatientRequests" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetFamilyManagerRequests_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q15:Error"
+			xmlns:q15="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="FamilyManagerAssignDeclineRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestorUserName" element="tns:RequestorUserName" />
+	</wsdl:message>
+	<wsdl:message name="FamilyManagerAssignDeclineResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_FamilyManagerAssignDecline_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q16:Error"
+			xmlns:q16="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="DeleteFamilyManagerAccountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="DeleteFamilyManagerAccountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_DeleteFamilyManagerAccount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q17:Error"
+			xmlns:q17="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="DeleteUserAccountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+	</wsdl:message>
+	<wsdl:message name="DeleteUserAccountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_DeleteUserAccount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q18:Error"
+			xmlns:q18="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetListAgentsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+		<wsdl:part name="State" element="tns:State" />
+	</wsdl:message>
+	<wsdl:message name="GetListAgentsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ListAgents" element="tns:ListAgents" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetListAgents_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q19:Error"
+			xmlns:q19="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AssignUserAccountToAgentRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+		<wsdl:part name="PharmacyContractNumber" element="tns:PharmacyContractNumber" />
+		<wsdl:part name="AssignmentAction" element="tns:AssignmentAction" />
+	</wsdl:message>
+	<wsdl:message name="AssignUserAccountToAgentResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_AssignUserAccountToAgent_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q20:Error"
+			xmlns:q20="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdateUserAccountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+		<wsdl:part name="UserAccountState" element="tns:UserAccountState" />
+		<wsdl:part name="FirstName" element="tns:FirstName" />
+		<wsdl:part name="LastName" element="tns:LastName" />
+		<wsdl:part name="Email" element="tns:Email" />
+		<wsdl:part name="Comments" element="tns:Comments" />
+	</wsdl:message>
+	<wsdl:message name="UpdateUserAccountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_UpdateUserAccount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q21:Error"
+			xmlns:q21="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetCaregiversRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientUserName" element="tns:PatientUserName" />
+	</wsdl:message>
+	<wsdl:message name="GetCaregiversResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Accounts" element="tns:Accounts" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetCaregivers_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q22:Error"
+			xmlns:q22="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPatientOIDRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientUserName" element="tns:PatientUserName" />
+	</wsdl:message>
+	<wsdl:message name="GetPatientOIDResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientOID" element="tns:PatientOID" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetPatientOID_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q23:Error"
+			xmlns:q23="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AssignPatientRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientUserName" element="tns:PatientUserName" />
+		<wsdl:part name="CaregiverUserName" element="tns:CaregiverUserName" />
+		<wsdl:part name="AssignmentAction" element="tns:AssignmentAction" />
+	</wsdl:message>
+	<wsdl:message name="AssignPatientResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_AssignPatientToCaregiver_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q24:Error"
+			xmlns:q24="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AssignFacilityRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="FacilityOID" element="tns:FacilityOID" />
+		<wsdl:part name="CaregiverUserName" element="tns:CaregiverUserName" />
+		<wsdl:part name="AssignmentAction" element="tns:AssignmentAction" />
+	</wsdl:message>
+	<wsdl:message name="AssignFacilityResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_AssignFacilityToCaregiver_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q25:Error"
+			xmlns:q25="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetAssignedPatientsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ExtendedInfo" element="tns:ExtendedInfo" />
+		<wsdl:part name="ParentUsername" element="tns:ParentUsername" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+		<wsdl:part name="SearchCriteria" element="tns:SearchCriteria" />
+	</wsdl:message>
+	<wsdl:message name="GetAssignedPatientsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Patients" element="tns:Patients" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetAssignedPatients_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q26:Error"
+			xmlns:q26="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetAssignedPatientsCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ParentUsername" element="tns:ParentUsername" />
+		<wsdl:part name="SearchCriteria" element="tns:SearchCriteria" />
+	</wsdl:message>
+	<wsdl:message name="GetAssignedPatientsCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Count" element="tns:Count" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetAssignedPatientsCount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q27:Error"
+			xmlns:q27="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="SetMobileLicenseAgreementDateRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="LicenseAgreementDate" element="tns:LicenseAgreementDate" />
+	</wsdl:message>
+	<wsdl:message name="SetMobileLicenseAgreementDateResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_SetMobileLicenseAgreementDate_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q28:Error"
+			xmlns:q28="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetMobileLicenseAgreementDateRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Username" element="tns:Username" />
+	</wsdl:message>
+	<wsdl:message name="GetMobileLicenseAgreementDateResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="LicenseAgreementDate" element="tns:LicenseAgreementDate" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetMobileLicenseAgreementDate_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q29:Error"
+			xmlns:q29="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetFamilyManagersRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientUserName" element="tns:PatientUserName" />
+	</wsdl:message>
+	<wsdl:message name="GetFamilyManagersResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Accounts" element="tns:Accounts" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetFamilyManagers_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q30:Error"
+			xmlns:q30="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdateDefaultPharmacyRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ContractNumber" element="tns:ContractNumber" />
+	</wsdl:message>
+	<wsdl:message name="UpdateDefaultPharmacyResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_UpdateDefaultPharmacy_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q31:Error"
+			xmlns:q31="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetEventMessagesRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="MessageType" element="tns:MessageType" />
+		<wsdl:part name="MessageState" element="tns:MessageState" />
+		<wsdl:part name="DateFrom" element="tns:DateFrom" />
+		<wsdl:part name="DateTo" element="tns:DateTo" />
+		<wsdl:part name="UserName" element="tns:UserName" />
+	</wsdl:message>
+	<wsdl:message name="GetEventMessagesResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="GetEventMessages" element="tns:GetEventMessages" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetEventMessages_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q32:Error"
+			xmlns:q32="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyAllParameterRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ContractNumber" element="tns:ContractNumber" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyAllParameterResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="GetPharmacyParameters" element="tns:GetPharmacyParameters" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetPharmacyAllParameter_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q33:Error"
+			xmlns:q33="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdateHierarchicalParameterRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Target" element="tns:Target" />
+		<wsdl:part name="UpdatePharmacyParameter" element="tns:UpdatePharmacyParameter" />
+	</wsdl:message>
+	<wsdl:message name="UpdateHierarchicalParameterResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_UpdateHierarchicalParameter_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q34:Error"
+			xmlns:q34="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="ManagerAssignAccountRequestRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="GuestUserName" element="tns:GuestUserName" />
+		<wsdl:part name="GuestPassword" element="tns:GuestPassword" />
+		<wsdl:part name="ConsentForGuest" element="tns:ConsentForGuest" />
+		<wsdl:part name="ConsentOID" element="tns:ConsentOID" />
+		<wsdl:part name="Description" element="tns:Description" />
+	</wsdl:message>
+	<wsdl:message name="ManagerAssignAccountRequestResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_ManagerAssignAccountRequest_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q35:Error"
+			xmlns:q35="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AccountAssignManagerRequestRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="GuestUserName" element="tns:GuestUserName" />
+		<wsdl:part name="GuestPassword" element="tns:GuestPassword" />
+		<wsdl:part name="ConsentForGuest" element="tns:ConsentForGuest" />
+		<wsdl:part name="ConsentOID" element="tns:ConsentOID" />
+		<wsdl:part name="Description" element="tns:Description" />
+	</wsdl:message>
+	<wsdl:message name="AccountAssignManagerRequestResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_AccountAssignManagerRequest_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q36:Error"
+			xmlns:q36="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetManagerRequestsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RequestsState" element="tns:RequestsState" />
+	</wsdl:message>
+	<wsdl:message name="GetManagerRequestsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="FamilyManagerPatientRequests" element="tns:FamilyManagerPatientRequests" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetManagerRequests_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q37:Error"
+			xmlns:q37="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="DeleteAccountAssociationRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ManagerUsername" element="tns:ManagerUsername" />
+		<wsdl:part name="ManagedUsername" element="tns:ManagedUsername" />
+		<wsdl:part name="SendNotification" element="tns:SendNotification" />
+	</wsdl:message>
+	<wsdl:message name="DeleteAccountAssociationResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_DeleteAccountAssociation_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q38:Error"
+			xmlns:q38="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyFacilitiesRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ContractNumber" element="tns:ContractNumber" />
+		<wsdl:part name="ParentUsername" element="tns:ParentUsername" />
+		<wsdl:part name="FacilityAssignmentStatus" element="tns:FacilityAssignmentStatus" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyFacilitiesResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="FacilitiesAssigned" element="tns:FacilitiesAssigned" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetPharmacyFacilities_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q39:Error"
+			xmlns:q39="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyFacilitiesCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ContractNumber" element="tns:ContractNumber" />
+		<wsdl:part name="ParentUsername" element="tns:ParentUsername" />
+		<wsdl:part name="FacilityAssignmentStatus" element="tns:FacilityAssignmentStatus" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyFacilitiesCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Count" element="tns:Count" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetPharmacyFacilitiesCount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q40:Error"
+			xmlns:q40="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetListPatientsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ContractNumber" element="tns:ContractNumber" />
+		<wsdl:part name="ParentUsername" element="tns:ParentUsername" />
+		<wsdl:part name="ExtendedInfo" element="tns:ExtendedInfo" />
+		<wsdl:part name="SearchCriteria" element="tns:SearchCriteria" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetListPatientsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PatientsAssigned" element="tns:PatientsAssigned" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetListPatients_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q41:Error"
+			xmlns:q41="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetHierarchicalParametersRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Target" element="tns:Target" />
+		<wsdl:part name="FilterParameters" element="tns:FilterParameters" />
+		<wsdl:part name="ParametersExtendedInfo" element="tns:ParametersExtendedInfo" />
+	</wsdl:message>
+	<wsdl:message name="GetHierarchicalParametersResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PharmacyParametersValue" element="tns:PharmacyParametersValue" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetHierarchicalParameters_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q42:Error"
+			xmlns:q42="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetParametersPermissionRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="PermissionGroup" element="tns:PermissionGroup" />
+		<wsdl:part name="PermissionExtendedInfo" element="tns:PermissionExtendedInfo" />
+	</wsdl:message>
+	<wsdl:message name="GetParametersPermissionResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ParametersPermission" element="tns:ParametersPermission" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetParametersPermission_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q43:Error"
+			xmlns:q43="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdateParameterPermissionRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="UpdateValue" element="tns:UpdateValue" />
+	</wsdl:message>
+	<wsdl:message name="UpdateParameterPermissionResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_UpdateParameterPermission_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q44:Error"
+			xmlns:q44="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AddRegionRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Region" element="tns:Region" />
+	</wsdl:message>
+	<wsdl:message name="AddRegionResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="OID" element="tns:OID" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_AddRegion_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q45:Error"
+			xmlns:q45="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdateRegionRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Region" element="tns:Region" />
+	</wsdl:message>
+	<wsdl:message name="UpdateRegionResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_UpdateRegion_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q46:Error"
+			xmlns:q46="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="DeleteRegionRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="OID" element="tns:OID" />
+	</wsdl:message>
+	<wsdl:message name="DeleteRegionResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_DeleteRegion_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q47:Error"
+			xmlns:q47="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetListRegionsRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="GetListRegionsResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ListRegions" element="tns:ListRegions" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_GetListRegions_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q48:Error"
+			xmlns:q48="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AssignPharmacyRegionRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ContractNumber" element="tns:ContractNumber" />
+		<wsdl:part name="RegionOID" element="tns:RegionOID" />
+		<wsdl:part name="PharmacyRegionAssignmentAction" element="tns:PharmacyRegionAssignmentAction" />
+		<wsdl:part name="ApplyParameters" element="tns:ApplyParameters" />
+	</wsdl:message>
+	<wsdl:message name="AssignPharmacyRegionResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_AssignPharmacyRegion_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q49:Error"
+			xmlns:q49="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyRegionAssignedRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RegionOID" element="tns:RegionOID" />
+		<wsdl:part name="PharmacySearchCriteria" element="tns:PharmacySearchCriteria" />
+		<wsdl:part name="Paging" element="tns:Paging" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyRegionAssignedResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="assignedPharmacies" element="tns:assignedPharmacies" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetPharmacyRegionAssigned_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q50:Error"
+			xmlns:q50="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyRegionAssignedCountRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="RegionOID" element="tns:RegionOID" />
+		<wsdl:part name="PharmacySearchCriteria" element="tns:PharmacySearchCriteria" />
+	</wsdl:message>
+	<wsdl:message name="GetPharmacyRegionAssignedCountResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Count" element="tns:Count" />
+	</wsdl:message>
+	<wsdl:message
+		name="IManagerSvc_GetPharmacyRegionAssignedCount_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q51:Error"
+			xmlns:q51="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="CreateEventMessageRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="EventMessageType" element="tns:EventMessageType" />
+	</wsdl:message>
+	<wsdl:message name="CreateEventMessageResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_CreateEventMessage_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q52:Error"
+			xmlns:q52="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="AddPhysicianRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Physician" element="tns:Physician" />
+	</wsdl:message>
+	<wsdl:message name="AddPhysicianResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="OID" element="tns:OID" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_AddPhysician_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q53:Error"
+			xmlns:q53="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePhysicianRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="Physician" element="tns:Physician" />
+	</wsdl:message>
+	<wsdl:message name="UpdatePhysicianResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_UpdatePhysician_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q54:Error"
+			xmlns:q54="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="DeletePhysicianRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="OID" element="tns:OID" />
+	</wsdl:message>
+	<wsdl:message name="DeletePhysicianResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_DeletePhysician_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q55:Error"
+			xmlns:q55="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:message name="ListPhysiciansRequest">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+	</wsdl:message>
+	<wsdl:message name="ListPhysiciansResponse">
+		<wsdl:part name="UserToken" element="tns:UserToken" />
+		<wsdl:part name="ActiveListPhysicians" element="tns:ActiveListPhysicians" />
+	</wsdl:message>
+	<wsdl:message name="IManagerSvc_ListPhysicians_ErrorFault_FaultMessage">
+		<wsdl:part name="detail" element="q56:Error"
+			xmlns:q56="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Error" />
+	</wsdl:message>
+	<wsdl:portType name="IManagerSvc">
+		<wsdl:operation name="ResetUserAccount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/ResetUserAccount"
+				name="ResetUserAccountRequest" message="tns:ResetUserAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/ResetUserAccountResponse"
+				name="ResetUserAccountResponse" message="tns:ResetUserAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/ResetUserAccountErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_ResetUserAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UnlockUserAccount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/UnlockUserAccount"
+				name="UnlockUserAccountRequest" message="tns:UnlockUserAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/UnlockUserAccountResponse"
+				name="UnlockUserAccountResponse" message="tns:UnlockUserAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/UnlockUserAccountErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_UnlockUserAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AddPharmacy">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/AddPharmacy"
+				name="AddPharmacyRequest" message="tns:AddPharmacyRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/AddPharmacyResponse"
+				name="AddPharmacyResponse" message="tns:AddPharmacyResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/AddPharmacyErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_AddPharmacy_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePharmacy">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/UpdatePharmacy"
+				name="UpdatePharmacyRequest" message="tns:UpdatePharmacyRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/UpdatePharmacyResponse"
+				name="UpdatePharmacyResponse" message="tns:UpdatePharmacyResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/UpdatePharmacyErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_UpdatePharmacy_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ActivatePharmacy">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/ActivatePharmacy"
+				name="ActivatePharmacyRequest" message="tns:ActivatePharmacyRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/ActivatePharmacyResponse"
+				name="ActivatePharmacyResponse" message="tns:ActivatePharmacyResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/ActivatePharmacyErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_ActivatePharmacy_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeactivatePharmacy">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/DeactivatePharmacy"
+				name="DeactivatePharmacyRequest" message="tns:DeactivatePharmacyRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeactivatePharmacyResponse"
+				name="DeactivatePharmacyResponse" message="tns:DeactivatePharmacyResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeactivatePharmacyErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_DeactivatePharmacy_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetUserAccounts">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetUserAccounts"
+				name="GetUserAccountsRequest" message="tns:GetUserAccountsRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/GetUserAccountsResponse"
+				name="GetUserAccountsResponse" message="tns:GetUserAccountsResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetUserAccountsErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetUserAccounts_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetUserAccountsCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetUserAccountsCount"
+				name="GetUserAccountsCountRequest" message="tns:GetUserAccountsCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetUserAccountsCountResponse"
+				name="GetUserAccountsCountResponse" message="tns:GetUserAccountsCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetUserAccountsCountErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetUserAccountsCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetAgents">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetAgents"
+				name="GetAgentsRequest" message="tns:GetAgentsRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/GetAgentsResponse"
+				name="GetAgentsResponse" message="tns:GetAgentsResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/GetAgentsErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetAgents_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="CreateUserAccount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/CreateUserAccount"
+				name="CreateUserAccountRequest" message="tns:CreateUserAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/CreateUserAccountResponse"
+				name="CreateUserAccountResponse" message="tns:CreateUserAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/CreateUserAccountErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_CreateUserAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="CreateFamilyManagerAccount">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/CreateFamilyManagerAccount"
+				name="CreateFamilyManagerAccountRequest" message="tns:CreateFamilyManagerAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/CreateFamilyManagerAccountResponse"
+				name="CreateFamilyManagerAccountResponse" message="tns:CreateFamilyManagerAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/CreateFamilyManagerAccountErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_CreateFamilyManagerAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="FamilyManagerAssignAccept">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignAccept"
+				name="FamilyManagerAssignAcceptRequest" message="tns:FamilyManagerAssignAcceptRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignAcceptResponse"
+				name="FamilyManagerAssignAcceptResponse" message="tns:FamilyManagerAssignAcceptResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignAcceptErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_FamilyManagerAssignAccept_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="FamilyManagerAssignRequest">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignRequest"
+				name="FamilyManagerAssignRequestRequest" message="tns:FamilyManagerAssignRequestRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignRequestResponse"
+				name="FamilyManagerAssignRequestResponse" message="tns:FamilyManagerAssignRequestResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignRequestErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_FamilyManagerAssignRequest_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeleteFamilyManagerPatientAssociation">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteFamilyManagerPatientAssociation"
+				name="DeleteFamilyManagerPatientAssociationRequest" message="tns:DeleteFamilyManagerPatientAssociationRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteFamilyManagerPatientAssociationResponse"
+				name="DeleteFamilyManagerPatientAssociationResponse" message="tns:DeleteFamilyManagerPatientAssociationResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteFamilyManagerPatientAssociationErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_DeleteFamilyManagerPatientAssociation_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetFamilyManagerRequests">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetFamilyManagerRequests"
+				name="GetFamilyManagerRequestsRequest" message="tns:GetFamilyManagerRequestsRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetFamilyManagerRequestsResponse"
+				name="GetFamilyManagerRequestsResponse" message="tns:GetFamilyManagerRequestsResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetFamilyManagerRequestsErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetFamilyManagerRequests_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="FamilyManagerAssignDecline">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignDecline"
+				name="FamilyManagerAssignDeclineRequest" message="tns:FamilyManagerAssignDeclineRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignDeclineResponse"
+				name="FamilyManagerAssignDeclineResponse" message="tns:FamilyManagerAssignDeclineResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/FamilyManagerAssignDeclineErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_FamilyManagerAssignDecline_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeleteFamilyManagerAccount">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteFamilyManagerAccount"
+				name="DeleteFamilyManagerAccountRequest" message="tns:DeleteFamilyManagerAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteFamilyManagerAccountResponse"
+				name="DeleteFamilyManagerAccountResponse" message="tns:DeleteFamilyManagerAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteFamilyManagerAccountErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_DeleteFamilyManagerAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeleteUserAccount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/DeleteUserAccount"
+				name="DeleteUserAccountRequest" message="tns:DeleteUserAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteUserAccountResponse"
+				name="DeleteUserAccountResponse" message="tns:DeleteUserAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteUserAccountErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_DeleteUserAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetListAgents">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetListAgents"
+				name="GetListAgentsRequest" message="tns:GetListAgentsRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/GetListAgentsResponse"
+				name="GetListAgentsResponse" message="tns:GetListAgentsResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/GetListAgentsErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetListAgents_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AssignUserAccountToAgent">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/AssignUserAccountToAgent"
+				name="AssignUserAccountToAgentRequest" message="tns:AssignUserAccountToAgentRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignUserAccountToAgentResponse"
+				name="AssignUserAccountToAgentResponse" message="tns:AssignUserAccountToAgentResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignUserAccountToAgentErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_AssignUserAccountToAgent_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdateUserAccount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/UpdateUserAccount"
+				name="UpdateUserAccountRequest" message="tns:UpdateUserAccountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateUserAccountResponse"
+				name="UpdateUserAccountResponse" message="tns:UpdateUserAccountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateUserAccountErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_UpdateUserAccount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetCaregivers">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetCaregivers"
+				name="GetCaregiversRequest" message="tns:GetCaregiversRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/GetCaregiversResponse"
+				name="GetCaregiversResponse" message="tns:GetCaregiversResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/GetCaregiversErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetCaregivers_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPatientOID">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetPatientOID"
+				name="GetPatientOIDRequest" message="tns:GetPatientOIDRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/GetPatientOIDResponse"
+				name="GetPatientOIDResponse" message="tns:GetPatientOIDResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/GetPatientOIDErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetPatientOID_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AssignPatientToCaregiver">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/AssignPatientToCaregiver"
+				name="AssignPatientRequest" message="tns:AssignPatientRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignPatientToCaregiverResponse"
+				name="AssignPatientResponse" message="tns:AssignPatientResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignPatientToCaregiverErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_AssignPatientToCaregiver_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AssignFacilityToCaregiver">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignFacilityToCaregiver"
+				name="AssignFacilityRequest" message="tns:AssignFacilityRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignFacilityToCaregiverResponse"
+				name="AssignFacilityResponse" message="tns:AssignFacilityResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignFacilityToCaregiverErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_AssignFacilityToCaregiver_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetAssignedPatients">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetAssignedPatients"
+				name="GetAssignedPatientsRequest" message="tns:GetAssignedPatientsRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetAssignedPatientsResponse"
+				name="GetAssignedPatientsResponse" message="tns:GetAssignedPatientsResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetAssignedPatientsErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetAssignedPatients_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetAssignedPatientsCount">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetAssignedPatientsCount"
+				name="GetAssignedPatientsCountRequest" message="tns:GetAssignedPatientsCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetAssignedPatientsCountResponse"
+				name="GetAssignedPatientsCountResponse" message="tns:GetAssignedPatientsCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetAssignedPatientsCountErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetAssignedPatientsCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="SetMobileLicenseAgreementDate">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/SetMobileLicenseAgreementDate"
+				name="SetMobileLicenseAgreementDateRequest" message="tns:SetMobileLicenseAgreementDateRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/SetMobileLicenseAgreementDateResponse"
+				name="SetMobileLicenseAgreementDateResponse" message="tns:SetMobileLicenseAgreementDateResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/SetMobileLicenseAgreementDateErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_SetMobileLicenseAgreementDate_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetMobileLicenseAgreementDate">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetMobileLicenseAgreementDate"
+				name="GetMobileLicenseAgreementDateRequest" message="tns:GetMobileLicenseAgreementDateRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetMobileLicenseAgreementDateResponse"
+				name="GetMobileLicenseAgreementDateResponse" message="tns:GetMobileLicenseAgreementDateResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetMobileLicenseAgreementDateErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetMobileLicenseAgreementDate_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetFamilyManagers">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetFamilyManagers"
+				name="GetFamilyManagersRequest" message="tns:GetFamilyManagersRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetFamilyManagersResponse"
+				name="GetFamilyManagersResponse" message="tns:GetFamilyManagersResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetFamilyManagersErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetFamilyManagers_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdateDefaultPharmacy">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/UpdateDefaultPharmacy"
+				name="UpdateDefaultPharmacyRequest" message="tns:UpdateDefaultPharmacyRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateDefaultPharmacyResponse"
+				name="UpdateDefaultPharmacyResponse" message="tns:UpdateDefaultPharmacyResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateDefaultPharmacyErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_UpdateDefaultPharmacy_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetEventMessages">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetEventMessages"
+				name="GetEventMessagesRequest" message="tns:GetEventMessagesRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetEventMessagesResponse"
+				name="GetEventMessagesResponse" message="tns:GetEventMessagesResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetEventMessagesErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetEventMessages_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyAllParameter">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyAllParameter"
+				name="GetPharmacyAllParameterRequest" message="tns:GetPharmacyAllParameterRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyAllParameterResponse"
+				name="GetPharmacyAllParameterResponse" message="tns:GetPharmacyAllParameterResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyAllParameterErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetPharmacyAllParameter_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdateHierarchicalParameter">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateHierarchicalParameter"
+				name="UpdateHierarchicalParameterRequest" message="tns:UpdateHierarchicalParameterRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateHierarchicalParameterResponse"
+				name="UpdateHierarchicalParameterResponse" message="tns:UpdateHierarchicalParameterResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateHierarchicalParameterErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_UpdateHierarchicalParameter_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ManagerAssignAccountRequest">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/ManagerAssignAccountRequest"
+				name="ManagerAssignAccountRequestRequest" message="tns:ManagerAssignAccountRequestRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/ManagerAssignAccountRequestResponse"
+				name="ManagerAssignAccountRequestResponse" message="tns:ManagerAssignAccountRequestResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/ManagerAssignAccountRequestErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_ManagerAssignAccountRequest_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AccountAssignManagerRequest">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/AccountAssignManagerRequest"
+				name="AccountAssignManagerRequestRequest" message="tns:AccountAssignManagerRequestRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/AccountAssignManagerRequestResponse"
+				name="AccountAssignManagerRequestResponse" message="tns:AccountAssignManagerRequestResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/AccountAssignManagerRequestErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_AccountAssignManagerRequest_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetManagerRequests">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetManagerRequests"
+				name="GetManagerRequestsRequest" message="tns:GetManagerRequestsRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetManagerRequestsResponse"
+				name="GetManagerRequestsResponse" message="tns:GetManagerRequestsResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetManagerRequestsErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetManagerRequests_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeleteAccountAssociation">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/DeleteAccountAssociation"
+				name="DeleteAccountAssociationRequest" message="tns:DeleteAccountAssociationRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteAccountAssociationResponse"
+				name="DeleteAccountAssociationResponse" message="tns:DeleteAccountAssociationResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeleteAccountAssociationErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_DeleteAccountAssociation_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyFacilities">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyFacilities"
+				name="GetPharmacyFacilitiesRequest" message="tns:GetPharmacyFacilitiesRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyFacilitiesResponse"
+				name="GetPharmacyFacilitiesResponse" message="tns:GetPharmacyFacilitiesResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyFacilitiesErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetPharmacyFacilities_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyFacilitiesCount">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyFacilitiesCount"
+				name="GetPharmacyFacilitiesCountRequest" message="tns:GetPharmacyFacilitiesCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyFacilitiesCountResponse"
+				name="GetPharmacyFacilitiesCountResponse" message="tns:GetPharmacyFacilitiesCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyFacilitiesCountErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetPharmacyFacilitiesCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetListPatients">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetListPatients"
+				name="GetListPatientsRequest" message="tns:GetListPatientsRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/GetListPatientsResponse"
+				name="GetListPatientsResponse" message="tns:GetListPatientsResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetListPatientsErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetListPatients_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetHierarchicalParameters">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetHierarchicalParameters"
+				name="GetHierarchicalParametersRequest" message="tns:GetHierarchicalParametersRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetHierarchicalParametersResponse"
+				name="GetHierarchicalParametersResponse" message="tns:GetHierarchicalParametersResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetHierarchicalParametersErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetHierarchicalParameters_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetParametersPermission">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetParametersPermission"
+				name="GetParametersPermissionRequest" message="tns:GetParametersPermissionRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetParametersPermissionResponse"
+				name="GetParametersPermissionResponse" message="tns:GetParametersPermissionResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetParametersPermissionErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetParametersPermission_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdateParameterPermission">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateParameterPermission"
+				name="UpdateParameterPermissionRequest" message="tns:UpdateParameterPermissionRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateParameterPermissionResponse"
+				name="UpdateParameterPermissionResponse" message="tns:UpdateParameterPermissionResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdateParameterPermissionErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_UpdateParameterPermission_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AddRegion">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/AddRegion"
+				name="AddRegionRequest" message="tns:AddRegionRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/AddRegionResponse"
+				name="AddRegionResponse" message="tns:AddRegionResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/AddRegionErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_AddRegion_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdateRegion">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/UpdateRegion"
+				name="UpdateRegionRequest" message="tns:UpdateRegionRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/UpdateRegionResponse"
+				name="UpdateRegionResponse" message="tns:UpdateRegionResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/UpdateRegionErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_UpdateRegion_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeleteRegion">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/DeleteRegion"
+				name="DeleteRegionRequest" message="tns:DeleteRegionRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/DeleteRegionResponse"
+				name="DeleteRegionResponse" message="tns:DeleteRegionResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/DeleteRegionErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_DeleteRegion_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetListRegions">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/GetListRegions"
+				name="GetListRegionsRequest" message="tns:GetListRegionsRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/GetListRegionsResponse"
+				name="GetListRegionsResponse" message="tns:GetListRegionsResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/GetListRegionsErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_GetListRegions_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AssignPharmacyRegion">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/AssignPharmacyRegion"
+				name="AssignPharmacyRegionRequest" message="tns:AssignPharmacyRegionRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignPharmacyRegionResponse"
+				name="AssignPharmacyRegionResponse" message="tns:AssignPharmacyRegionResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/AssignPharmacyRegionErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_AssignPharmacyRegion_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyRegionAssigned">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssigned"
+				name="GetPharmacyRegionAssignedRequest" message="tns:GetPharmacyRegionAssignedRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssignedResponse"
+				name="GetPharmacyRegionAssignedResponse" message="tns:GetPharmacyRegionAssignedResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssignedErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetPharmacyRegionAssigned_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyRegionAssignedCount">
+			<wsdl:input
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssignedCount"
+				name="GetPharmacyRegionAssignedCountRequest" message="tns:GetPharmacyRegionAssignedCountRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssignedCountResponse"
+				name="GetPharmacyRegionAssignedCountResponse" message="tns:GetPharmacyRegionAssignedCountResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssignedCountErrorFault"
+				name="ErrorFault"
+				message="tns:IManagerSvc_GetPharmacyRegionAssignedCount_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="CreateEventMessage">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/CreateEventMessage"
+				name="CreateEventMessageRequest" message="tns:CreateEventMessageRequest" />
+			<wsdl:output
+				wsaw:Action="http://tempuri.org/IManagerSvc/CreateEventMessageResponse"
+				name="CreateEventMessageResponse" message="tns:CreateEventMessageResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/CreateEventMessageErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_CreateEventMessage_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="AddPhysician">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/AddPhysician"
+				name="AddPhysicianRequest" message="tns:AddPhysicianRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/AddPhysicianResponse"
+				name="AddPhysicianResponse" message="tns:AddPhysicianResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/AddPhysicianErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_AddPhysician_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePhysician">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/UpdatePhysician"
+				name="UpdatePhysicianRequest" message="tns:UpdatePhysicianRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/UpdatePhysicianResponse"
+				name="UpdatePhysicianResponse" message="tns:UpdatePhysicianResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/UpdatePhysicianErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_UpdatePhysician_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="DeletePhysician">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/DeletePhysician"
+				name="DeletePhysicianRequest" message="tns:DeletePhysicianRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/DeletePhysicianResponse"
+				name="DeletePhysicianResponse" message="tns:DeletePhysicianResponse" />
+			<wsdl:fault
+				wsaw:Action="http://tempuri.org/IManagerSvc/DeletePhysicianErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_DeletePhysician_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ListPhysicians">
+			<wsdl:input wsaw:Action="http://tempuri.org/IManagerSvc/ListPhysicians"
+				name="ListPhysiciansRequest" message="tns:ListPhysiciansRequest" />
+			<wsdl:output wsaw:Action="http://tempuri.org/IManagerSvc/ListPhysiciansResponse"
+				name="ListPhysiciansResponse" message="tns:ListPhysiciansResponse" />
+			<wsdl:fault wsaw:Action="http://tempuri.org/IManagerSvc/ListPhysiciansErrorFault"
+				name="ErrorFault" message="tns:IManagerSvc_ListPhysicians_ErrorFault_FaultMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RxAssystManagerEndPoint" type="tns:IManagerSvc">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="ResetUserAccount">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/ResetUserAccount"
+				style="document" />
+			<wsdl:input name="ResetUserAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ResetUserAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UnlockUserAccount">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/UnlockUserAccount"
+				style="document" />
+			<wsdl:input name="UnlockUserAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UnlockUserAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AddPharmacy">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/AddPharmacy"
+				style="document" />
+			<wsdl:input name="AddPharmacyRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddPharmacyResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePharmacy">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/UpdatePharmacy"
+				style="document" />
+			<wsdl:input name="UpdatePharmacyRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdatePharmacyResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ActivatePharmacy">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/ActivatePharmacy"
+				style="document" />
+			<wsdl:input name="ActivatePharmacyRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ActivatePharmacyResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeactivatePharmacy">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/DeactivatePharmacy"
+				style="document" />
+			<wsdl:input name="DeactivatePharmacyRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeactivatePharmacyResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetUserAccounts">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetUserAccounts"
+				style="document" />
+			<wsdl:input name="GetUserAccountsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetUserAccountsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetUserAccountsCount">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetUserAccountsCount"
+				style="document" />
+			<wsdl:input name="GetUserAccountsCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetUserAccountsCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAgents">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetAgents"
+				style="document" />
+			<wsdl:input name="GetAgentsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAgentsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="CreateUserAccount">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/CreateUserAccount"
+				style="document" />
+			<wsdl:input name="CreateUserAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CreateUserAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="CreateFamilyManagerAccount">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/CreateFamilyManagerAccount"
+				style="document" />
+			<wsdl:input name="CreateFamilyManagerAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CreateFamilyManagerAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="FamilyManagerAssignAccept">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/FamilyManagerAssignAccept"
+				style="document" />
+			<wsdl:input name="FamilyManagerAssignAcceptRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="FamilyManagerAssignAcceptResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="FamilyManagerAssignRequest">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/FamilyManagerAssignRequest"
+				style="document" />
+			<wsdl:input name="FamilyManagerAssignRequestRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="FamilyManagerAssignRequestResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteFamilyManagerPatientAssociation">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/DeleteFamilyManagerPatientAssociation"
+				style="document" />
+			<wsdl:input name="DeleteFamilyManagerPatientAssociationRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeleteFamilyManagerPatientAssociationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetFamilyManagerRequests">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetFamilyManagerRequests"
+				style="document" />
+			<wsdl:input name="GetFamilyManagerRequestsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetFamilyManagerRequestsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="FamilyManagerAssignDecline">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/FamilyManagerAssignDecline"
+				style="document" />
+			<wsdl:input name="FamilyManagerAssignDeclineRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="FamilyManagerAssignDeclineResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteFamilyManagerAccount">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/DeleteFamilyManagerAccount"
+				style="document" />
+			<wsdl:input name="DeleteFamilyManagerAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeleteFamilyManagerAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteUserAccount">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/DeleteUserAccount"
+				style="document" />
+			<wsdl:input name="DeleteUserAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeleteUserAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetListAgents">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetListAgents"
+				style="document" />
+			<wsdl:input name="GetListAgentsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetListAgentsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AssignUserAccountToAgent">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/AssignUserAccountToAgent"
+				style="document" />
+			<wsdl:input name="AssignUserAccountToAgentRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AssignUserAccountToAgentResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateUserAccount">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/UpdateUserAccount"
+				style="document" />
+			<wsdl:input name="UpdateUserAccountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdateUserAccountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetCaregivers">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetCaregivers"
+				style="document" />
+			<wsdl:input name="GetCaregiversRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetCaregiversResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPatientOID">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetPatientOID"
+				style="document" />
+			<wsdl:input name="GetPatientOIDRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPatientOIDResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AssignPatientToCaregiver">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/AssignPatientToCaregiver"
+				style="document" />
+			<wsdl:input name="AssignPatientRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AssignPatientResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AssignFacilityToCaregiver">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/AssignFacilityToCaregiver"
+				style="document" />
+			<wsdl:input name="AssignFacilityRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AssignFacilityResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAssignedPatients">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetAssignedPatients"
+				style="document" />
+			<wsdl:input name="GetAssignedPatientsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAssignedPatientsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetAssignedPatientsCount">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetAssignedPatientsCount"
+				style="document" />
+			<wsdl:input name="GetAssignedPatientsCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAssignedPatientsCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SetMobileLicenseAgreementDate">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/SetMobileLicenseAgreementDate"
+				style="document" />
+			<wsdl:input name="SetMobileLicenseAgreementDateRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SetMobileLicenseAgreementDateResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetMobileLicenseAgreementDate">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetMobileLicenseAgreementDate"
+				style="document" />
+			<wsdl:input name="GetMobileLicenseAgreementDateRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetMobileLicenseAgreementDateResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetFamilyManagers">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetFamilyManagers"
+				style="document" />
+			<wsdl:input name="GetFamilyManagersRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetFamilyManagersResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateDefaultPharmacy">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/UpdateDefaultPharmacy"
+				style="document" />
+			<wsdl:input name="UpdateDefaultPharmacyRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdateDefaultPharmacyResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetEventMessages">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetEventMessages"
+				style="document" />
+			<wsdl:input name="GetEventMessagesRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetEventMessagesResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyAllParameter">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetPharmacyAllParameter"
+				style="document" />
+			<wsdl:input name="GetPharmacyAllParameterRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPharmacyAllParameterResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateHierarchicalParameter">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/UpdateHierarchicalParameter"
+				style="document" />
+			<wsdl:input name="UpdateHierarchicalParameterRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdateHierarchicalParameterResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ManagerAssignAccountRequest">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/ManagerAssignAccountRequest"
+				style="document" />
+			<wsdl:input name="ManagerAssignAccountRequestRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ManagerAssignAccountRequestResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AccountAssignManagerRequest">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/AccountAssignManagerRequest"
+				style="document" />
+			<wsdl:input name="AccountAssignManagerRequestRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AccountAssignManagerRequestResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetManagerRequests">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetManagerRequests"
+				style="document" />
+			<wsdl:input name="GetManagerRequestsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetManagerRequestsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteAccountAssociation">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/DeleteAccountAssociation"
+				style="document" />
+			<wsdl:input name="DeleteAccountAssociationRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeleteAccountAssociationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyFacilities">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetPharmacyFacilities"
+				style="document" />
+			<wsdl:input name="GetPharmacyFacilitiesRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPharmacyFacilitiesResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyFacilitiesCount">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetPharmacyFacilitiesCount"
+				style="document" />
+			<wsdl:input name="GetPharmacyFacilitiesCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPharmacyFacilitiesCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetListPatients">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetListPatients"
+				style="document" />
+			<wsdl:input name="GetListPatientsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetListPatientsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetHierarchicalParameters">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetHierarchicalParameters"
+				style="document" />
+			<wsdl:input name="GetHierarchicalParametersRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetHierarchicalParametersResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetParametersPermission">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetParametersPermission"
+				style="document" />
+			<wsdl:input name="GetParametersPermissionRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetParametersPermissionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateParameterPermission">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/UpdateParameterPermission"
+				style="document" />
+			<wsdl:input name="UpdateParameterPermissionRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdateParameterPermissionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AddRegion">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/AddRegion"
+				style="document" />
+			<wsdl:input name="AddRegionRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddRegionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateRegion">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/UpdateRegion"
+				style="document" />
+			<wsdl:input name="UpdateRegionRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdateRegionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteRegion">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/DeleteRegion"
+				style="document" />
+			<wsdl:input name="DeleteRegionRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeleteRegionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetListRegions">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/GetListRegions"
+				style="document" />
+			<wsdl:input name="GetListRegionsRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetListRegionsResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AssignPharmacyRegion">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/AssignPharmacyRegion"
+				style="document" />
+			<wsdl:input name="AssignPharmacyRegionRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AssignPharmacyRegionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyRegionAssigned">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssigned"
+				style="document" />
+			<wsdl:input name="GetPharmacyRegionAssignedRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPharmacyRegionAssignedResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetPharmacyRegionAssignedCount">
+			<soap:operation
+				soapAction="http://tempuri.org/IManagerSvc/GetPharmacyRegionAssignedCount"
+				style="document" />
+			<wsdl:input name="GetPharmacyRegionAssignedCountRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetPharmacyRegionAssignedCountResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="CreateEventMessage">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/CreateEventMessage"
+				style="document" />
+			<wsdl:input name="CreateEventMessageRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CreateEventMessageResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="AddPhysician">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/AddPhysician"
+				style="document" />
+			<wsdl:input name="AddPhysicianRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddPhysicianResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePhysician">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/UpdatePhysician"
+				style="document" />
+			<wsdl:input name="UpdatePhysicianRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdatePhysicianResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="DeletePhysician">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/DeletePhysician"
+				style="document" />
+			<wsdl:input name="DeletePhysicianRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeletePhysicianResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ListPhysicians">
+			<soap:operation soapAction="http://tempuri.org/IManagerSvc/ListPhysicians"
+				style="document" />
+			<wsdl:input name="ListPhysiciansRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="ListPhysiciansResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorFault">
+				<soap:fault name="ErrorFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="RxAssyst">
+		<wsdl:port name="RxAssystManagerEndPoint" binding="tns:RxAssystManagerEndPoint">
+			<soap:address
+				location="abc" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

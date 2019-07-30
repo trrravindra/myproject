@@ -1,0 +1,55 @@
+{
+    "api": {
+        "pcApi": {
+            "base": "",
+            "dataType": "json",
+            "services": {
+                "store": {
+                    "path": "/apps/lcl/storelocator",
+                    "params": {
+                        "storeId": null,
+                        "lang": "en_CA"
+                    }
+                },
+                "storeLocator": {
+                    "path": "/apps/lcl/storelocator",
+                    "params": {
+                        "location": null,
+                        "stores": 10,
+                        "banner": [],
+                        "departments": null,
+                        "proximity": 50,
+                        "lang": "en_CA"
+                    }
+                }
+            }
+        }
+    },
+    "storeLocator": {
+        "defaultSearch": "Toronto",
+        "pinUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld={identifier}|ff776b",
+        "pinShadowUrlTpl": "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        "mapDefaults": {
+            "mapType": "ROADMAP",
+            "center": {
+                "lat": 43.707594,
+                "lng": -79.365234
+            },
+            "zoom": 4,
+            "zoomDetail": 15
+        }
+    },
+    "analytics": {
+        "enabled": true,
+        "data": {
+            "pageURL": "/en_CA/global.html",
+            "identifiedStore": "",
+            "province": "ON"
+        }
+    },
+    "cssToShow": "",
+    "cssToHide": "",
+    "provincePrompt": "",
+    "cookieDomain": "/",
+    "cookieExpiry": 365
+}

@@ -1,0 +1,58 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://tempuri.org/" elementFormDefault="qualified"
+	targetNamespace="http://tempuri.org/">
+	<xs:import
+		schemaLocation="ReportSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:import
+		schemaLocation="ReportSvc-XSD4.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:import
+		schemaLocation="ReportSvc-XSD7.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution" />
+	<xs:element
+		xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="UserToken" nillable="true" type="q1:UserToken" />
+	<xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+		name="PostalCodes" nillable="true" type="q2:ArrayOfstring" />
+	<xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+		name="PharmacyContractNumbers" nillable="true" type="q3:ArrayOfstring" />
+	<xs:element name="DateFrom" nillable="true" type="xs:dateTime" />
+	<xs:element name="DateTo" nillable="true" type="xs:dateTime" />
+	<xs:element
+		xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="GroupBy" nillable="true" type="q4:GroupBy" />
+	<xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+		name="Devices" nillable="true" type="q5:ArrayOfstring" />
+	<xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+		name="Dins" nillable="true" type="q6:ArrayOfstring" />
+	<xs:element
+		xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Gender" nillable="true" type="q7:Gender" />
+	<xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+		name="PatientOids" nillable="true" type="q8:ArrayOfstring" />
+	<xs:element
+		xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="SortBy" nillable="true" type="q9:SortBy" />
+	<xs:element
+		xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Paging" nillable="true" type="q10:Paging" />
+	<xs:element
+		xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="ReportResults" nillable="true" type="q11:ReportResults" />
+	<xs:element name="IncludeAllRefills" type="xs:boolean" />
+	<xs:element name="IncludeAllPrescriptions" nillable="true"
+		type="xs:boolean" />
+	<xs:element
+		xmlns:q12="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="ReportInput" nillable="true" type="q12:ReportInput" />
+	<xs:element name="Content" nillable="true" type="xs:base64Binary" />
+	<xs:element name="Extension" nillable="true" type="xs:string" />
+	<xs:element name="MimeType" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q13="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="ReportName" nillable="true" type="q13:ReportName" />
+	<xs:element
+		xmlns:q14="http://schemas.datacontract.org/2004/07/Microsoft.Reporting.WebForms.Internal.Soap.ReportingServices2005.Execution"
+		name="ReportParameter" nillable="true" type="q14:ArrayOfReportParameter" />
+</xs:schema>

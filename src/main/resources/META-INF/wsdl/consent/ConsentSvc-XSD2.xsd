@@ -1,0 +1,153 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+	elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes">
+	<xs:import
+		schemaLocation="ConsentSvc-XSD0.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+	<xs:simpleType name="eTokenStatus">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+					Name="byte" Namespace="http://www.w3.org/2001/XMLSchema" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Ok">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustConsent">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustChangePassword">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustGivePasswordReminder">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eTemporaryPasswordExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eUnsubscribingState">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eTokenStatus" nillable="true" type="tns:eTokenStatus" />
+	<xs:simpleType name="ConsentType">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+					Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Enrollment" />
+			<xs:enumeration value="FamilyManager" />
+			<xs:enumeration value="FamilyMember" />
+			<xs:enumeration value="RenewalAuthorizationRequest" />
+			<xs:enumeration value="ManagerAccept" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ConsentType" nillable="true" type="tns:ConsentType" />
+	<xs:simpleType name="ErrorCodes">
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="eInvalidUserPassword" />
+					<xs:enumeration value="eAccessDenied" />
+					<xs:enumeration value="eInvalidArguments" />
+					<xs:enumeration value="eSessionExpired" />
+					<xs:enumeration value="eMaxSessionsReached" />
+					<xs:enumeration value="eAccountLocked" />
+					<xs:enumeration value="eUnknown" />
+					<xs:enumeration value="eTokenExpired" />
+					<xs:enumeration value="eAccountDeactivated" />
+					<xs:enumeration value="eNoCounsellingSheetForDin" />
+					<xs:enumeration value="eInvalidOperation" />
+					<xs:enumeration value="eCannotUnassign" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="ErrorCodes" nillable="true" type="tns:ErrorCodes" />
+	<xs:simpleType name="eProfileReplicationOperation">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="StopReplication" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eProfileReplicationOperation" nillable="true"
+		type="tns:eProfileReplicationOperation" />
+	<xs:simpleType name="eUnsubscribeReason">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+					Name="short" Namespace="http://www.w3.org/2001/XMLSchema" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AccountNeverActivated" />
+			<xs:enumeration value="InactiveAccount" />
+			<xs:enumeration value="ConsentExpired" />
+			<xs:enumeration value="MoveToAnotherLocation" />
+			<xs:enumeration value="MoveToAnotherPharmacy" />
+			<xs:enumeration value="FindWebsiteDifficultToUse" />
+			<xs:enumeration value="FindTheServiceUnreliable" />
+			<xs:enumeration value="FindTheWebsiteToBeInflexible" />
+			<xs:enumeration value="DoNotLikeThisService" />
+			<xs:enumeration value="Other">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1000</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eUnsubscribeReason" nillable="true"
+		type="tns:eUnsubscribeReason" />
+</xs:schema>

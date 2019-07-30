@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/">
+	<xs:import
+		schemaLocation="AdvisorSheetSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="UserToken" nillable="true" type="q1:UserToken"
+		xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="DIN" nillable="true" type="xs:string" />
+	<xs:element name="Language" nillable="true"
+		type="q2:CounsellingSheetLanguage"
+		xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:element name="URL" nillable="true" type="xs:string" />
+	<xs:element name="CheckSum" nillable="true" type="xs:string" />
+	<xs:element name="ImageURL" nillable="true" type="xs:string" />
+	<xs:element name="ImageCheckSum" nillable="true" type="xs:string" />
+</xs:schema>

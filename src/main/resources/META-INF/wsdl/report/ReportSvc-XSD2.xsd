@@ -1,0 +1,289 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes"
+	elementFormDefault="qualified"
+	targetNamespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Codes">
+	<xs:import
+		schemaLocation="ReportSvc-XSD0.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+	<xs:simpleType name="eTokenStatus">
+		<xs:annotation>
+			<xs:appinfo>
+				<ActualType xmlns="http://schemas.microsoft.com/2003/10/Serialization/"
+					Name="byte" Namespace="http://www.w3.org/2001/XMLSchema" />
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Ok">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustConsent">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustChangePassword">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eMustGivePasswordReminder">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eTemporaryPasswordExpired">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="eUnsubscribingState">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue
+									xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="eTokenStatus" nillable="true" type="tns:eTokenStatus" />
+	<xs:simpleType name="eGroupBy">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="Year" />
+			<xs:enumeration value="Month" />
+			<xs:enumeration value="Day" />
+			<xs:enumeration value="PostalCode" />
+			<xs:enumeration value="PharmacyContractNumber" />
+			<xs:enumeration value="Device" />
+			<xs:enumeration value="Din" />
+			<xs:enumeration value="Gender" />
+			<xs:enumeration value="PatientOid" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eGroupBy" nillable="true" type="tns:eGroupBy" />
+	<xs:simpleType name="eGender">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Male" />
+			<xs:enumeration value="Female" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eGender" nillable="true" type="tns:eGender" />
+	<xs:simpleType name="eSortBy">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="PostalCode" />
+			<xs:enumeration value="PharmacyContractNumber" />
+			<xs:enumeration value="Period" />
+			<xs:enumeration value="Device" />
+			<xs:enumeration value="Din" />
+			<xs:enumeration value="Gender" />
+			<xs:enumeration value="PatientOid" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eSortBy" nillable="true" type="tns:eSortBy" />
+	<xs:simpleType name="ErrorCodes">
+		<xs:list>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="eInvalidUserPassword" />
+					<xs:enumeration value="eAccessDenied" />
+					<xs:enumeration value="eInvalidArguments" />
+					<xs:enumeration value="eSessionExpired" />
+					<xs:enumeration value="eMaxSessionsReached" />
+					<xs:enumeration value="eAccountLocked" />
+					<xs:enumeration value="eUnknown" />
+					<xs:enumeration value="eTokenExpired" />
+					<xs:enumeration value="eAccountDeactivated" />
+					<xs:enumeration value="eNoCounsellingSheetForDin" />
+					<xs:enumeration value="eInvalidOperation" />
+					<xs:enumeration value="eCannotUnassign" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:list>
+	</xs:simpleType>
+	<xs:element name="ErrorCodes" nillable="true" type="tns:ErrorCodes" />
+	<xs:simpleType name="eReportName">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Log" />
+			<xs:enumeration value="TaxReceipt">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RefillRequest">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RefillRequestIVR">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">25</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PatientSubscriptions">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PatientUnsubscribe">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">31</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PatientToBeDeleted">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">35</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PatientActivities">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">40</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Statistics">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">50</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="StatisticsFamily">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">52</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="StatisticsByDIN">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">55</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="StatisticsCounsellingSheets">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">56</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="StatisticsCommunication">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">57</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ActivePharmacies">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">60</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AutomatedRefill">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">70</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RefillReminder">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">71</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eReportName" nillable="true" type="tns:eReportName" />
+	<xs:simpleType name="eReportOutputFormat">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="XML" />
+			<xs:enumeration value="CSV" />
+			<xs:enumeration value="PDF" />
+			<xs:enumeration value="MHTML" />
+			<xs:enumeration value="EXCEL" />
+			<xs:enumeration value="WORD">
+				<xs:annotation>
+					<xs:appinfo>
+						<EnumerationValue
+							xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eReportOutputFormat" nillable="true"
+		type="tns:eReportOutputFormat" />
+	<xs:simpleType name="eCulture">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="en_CA" />
+			<xs:enumeration value="en_US" />
+			<xs:enumeration value="fr_CA" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="eCulture" nillable="true" type="tns:eCulture" />
+</xs:schema>

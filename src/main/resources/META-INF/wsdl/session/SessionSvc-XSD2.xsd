@@ -1,0 +1,86 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://tempuri.org/" elementFormDefault="qualified"
+	targetNamespace="http://tempuri.org/">
+	<xs:import schemaLocation="SessionSvc-XSD1.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data" />
+	<xs:import schemaLocation="SessionSvc-XSD7.xsd"
+		namespace="http://schemas.datacontract.org/2004/07/RxAssystLib" />
+	<xs:element
+		xmlns:q1="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="User" nillable="true" type="q1:User" />
+	<xs:element
+		xmlns:q2="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="UserInfo" nillable="true" type="q2:UserInfo" />
+	<xs:element
+		xmlns:q3="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="UserToken" nillable="true" type="q3:UserToken" />
+	<xs:element name="NewPassword" nillable="true" type="xs:string" />
+	<xs:element name="OldPassword" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q4="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="AccountPreferences" nillable="true" type="q4:ArrayOfAccountPreference" />
+	<xs:element name="UniqueIdentifier" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q5="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="ConfirmEmailCode" nillable="true" type="q5:ConfirmEmailReturnCode" />
+	<xs:element name="Email" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q6="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Status" nillable="true" type="q6:EmailReturnStatus" />
+	<xs:element name="Username" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q7="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Reminder" nillable="true" type="q7:PasswordRecovery" />
+	<xs:element
+		xmlns:q8="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="PasswordReminder" nillable="true" type="q8:PasswordReminder" />
+	<xs:element
+		xmlns:q9="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Language" nillable="true" type="q9:AccountPreference.eLanguagesSupported" />
+	<xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RxAssystLib"
+		name="Account" nillable="true" type="q10:Account" />
+	<xs:element name="UserName" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q11="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Pharmacies" nillable="true" type="q11:Pharmacies" />
+	<xs:element name="Default" nillable="true" type="xs:string" />
+	<xs:element name="Main" nillable="true" type="xs:string" />
+	<xs:element name="LastService" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q12="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="GroupId" nillable="true" type="q12:UserAccountsGroup" />
+	<xs:element
+		xmlns:q13="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Aliases" nillable="true" type="q13:AccountAliases" />
+	<xs:element name="Alias" nillable="true" type="xs:string" />
+	<xs:element name="NewAlias" nillable="true" type="xs:string" />
+	<xs:element name="SourceName" nillable="true" type="xs:string" />
+	<xs:element
+		xmlns:q14="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Verifications" nillable="true" type="q14:VerifyUserInputs" />
+	<xs:element name="Valid" type="xs:boolean" />
+	<xs:element
+		xmlns:q15="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="VerifyIdentityReason" nillable="true" type="q15:VerifyIdentityReason" />
+	<xs:element name="MobilePhoneNumber" nillable="true" type="xs:string" />
+	<xs:element name="MobileConfirmationStatus" type="xs:int" />
+	<xs:element
+		xmlns:q16="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="IdentificationType" nillable="true" type="q16:IdentificationType" />
+	<xs:element
+		xmlns:q17="http://schemas.datacontract.org/2004/07/RxAssystLib.Contracts.Data"
+		name="Identification" nillable="true" type="q17:Identification" />
+	<xs:element name="Identity" nillable="true" type="xs:string" />
+	<xs:element name="UnsubscribeEmailCommunication" type="xs:boolean" />
+	<xs:element name="UnsubscribeMobilePhoneCommunication" type="xs:boolean" />
+	<xs:element name="ExtendedInfo" type="xs:int" />
+	<xs:element name="EncryptedKey" nillable="true" type="xs:string" />
+	<xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/RxAssystLib"
+		name="Detail" nillable="true" type="q18:LogOnDetail" />
+	<xs:element name="SecondFactor" nillable="true" type="xs:string" />
+	<xs:element name="SecondFactorType" type="xs:int" />
+	<xs:element name="UnsubscribeKey" nillable="true" type="xs:string" />
+	<xs:element name="PharmacyContractNumber" nillable="true"
+		type="xs:string" />
+	<xs:element name="BirthDate" nillable="true" type="xs:dateTime" />
+</xs:schema>

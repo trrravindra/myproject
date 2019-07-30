@@ -1,0 +1,189 @@
+@font-face {
+	font-family: 'icons';
+	src:url('fonts/icons.eot');
+	src:url('fonts/icons.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icons.woff') format('woff'),
+		url('fonts/icons.ttf') format('truetype'),
+		url('fonts/icons.svg#icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icons';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-contactus-write, .icon-contactus-fax, .icon-filter-cancel, .icon-content-recipes, .icon-content-products, .icon-content-articles, .icon-contactus-telephone, .icon-doc-text, .icon-plus-circled, .icon-plus, .icon-minus, .icon-folder, .icon-left-circle, .icon-right-circle, .icon-help, .icon-mail, .icon-cursor, .icon-facebook, .icon-pinterest, .icon-share, .icon-twitter, .icon-youtube, .icon-th-large, .icon-calendar, .icon-search, .icon-chat, .icon-lightbulb, .icon-print, .icon-comment, .icon-library, .icon-product, .icon-phone, .icon-videocam, .icon-write, .icon-cancel-circle, .icon-up-circle, .icon-star-half, .icon-down-circle, .icon-menu, .icon-fax, .icon-play, .icon-star, .icon-star-empty, .icon-check, .icon-ok-circle, .icon-cancel, .icon-social, .icon-content-info, .icon-giftcards, .icon-envelope {
+	font-family: 'icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-contactus-write:before {
+	content: "\e007";
+}
+.icon-contactus-fax:before {
+	content: "\e009";
+}
+.icon-filter-cancel:before {
+	content: "\e002";
+}
+.icon-content-recipes:before {
+	content: "\e004";
+}
+.icon-content-products:before {
+	content: "\e005";
+}
+.icon-content-articles:before {
+	content: "\e006";
+}
+.icon-contactus-telephone:before {
+	content: "\e008";
+}
+.icon-doc-text:before {
+	content: "\25";
+}
+.icon-plus-circled:before {
+	content: "\2a";
+}
+.icon-plus:before {
+	content: "\2b";
+}
+.icon-minus:before {
+	content: "\2d";
+}
+.icon-folder:before {
+	content: "\2f";
+}
+.icon-left-circle:before {
+	content: "\3c";
+}
+.icon-right-circle:before {
+	content: "\3e";
+}
+.icon-help:before {
+	content: "\3f";
+}
+.icon-mail:before {
+	content: "\40";
+}
+.icon-cursor:before {
+	content: "\43";
+}
+.icon-facebook:before {
+	content: "\46";
+}
+.icon-pinterest:before {
+	content: "\50";
+}
+.icon-share:before {
+	content: "\53";
+}
+.icon-twitter:before {
+	content: "\54";
+}
+.icon-youtube:before {
+	content: "\59";
+}
+.icon-th-large:before {
+	content: "\60";
+}
+.icon-calendar:before {
+	content: "\63";
+}
+.icon-search:before {
+	content: "\66";
+}
+.icon-chat:before {
+	content: "\68";
+}
+.icon-lightbulb:before {
+	content: "\69";
+}
+.icon-print:before {
+	content: "\70";
+}
+.icon-comment:before {
+	content: "\71";
+}
+.icon-library:before {
+	content: "\72";
+}
+.icon-product:before {
+	content: "\73";
+}
+.icon-phone:before {
+	content: "\74";
+}
+.icon-videocam:before {
+	content: "\76";
+}
+.icon-write:before {
+	content: "\77";
+}
+.icon-cancel-circle:before {
+	content: "\78";
+}
+.icon-up-circle:before {
+	content: "\7b";
+}
+.icon-star-half:before {
+	content: "\7c";
+}
+.icon-down-circle:before {
+	content: "\7d";
+}
+.icon-menu:before {
+	content: "\7e";
+}
+.icon-fax:before {
+	content: "\d1";
+}
+.icon-play:before {
+	content: "\25b6";
+}
+.icon-star:before {
+	content: "\2605";
+}
+.icon-star-empty:before {
+	content: "\2606";
+}
+.icon-check:before {
+	content: "\2713";
+}
+.icon-ok-circle:before {
+	content: "\2714";
+}
+.icon-cancel:before {
+	content: "\2715";
+}
+.icon-social:before {
+	content: "\e000";
+}
+.icon-content-info:before {
+	content: "\e00a";
+}
+.icon-giftcards:before {
+	content: "\e001";
+}
+.icon-envelope:before {
+	content: "\e003";
+}

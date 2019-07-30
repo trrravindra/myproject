@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="/jsp/mainPageLayout.jsp">
+		<put-attribute name="header" value="/jsp/home/header.jsp" />
+		<put-attribute name="navigation" value="/jsp/navigation.jsp" />
+		<put-attribute name="footer" value="/jsp/home/footer.jsp" />
+	</definition>
+
+	<definition name="simple.definition" template="/jsp/simplePageLayout.jsp">
+		<put-attribute name="header" value="/jsp/home/header.jsp" />
+		<put-attribute name="footer" value="/jsp/home/footer.jsp" />
+	</definition>
+	
+	<definition name="simplenofooter.definition" template="/jsp/simplePageLayoutNoFooter.jsp">
+		<put-attribute name="header" value="/jsp/home/header.jsp" />
+	</definition>
+
+	
+	<definition name="verifyIdentity" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/verifyIdentity.jsp" />
+	</definition>
+
+	<definition name="termsOfUse" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/termsOfUse.jsp" />
+	</definition>
+	
+	<definition name="reConsent" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/reConsent.jsp" />
+	</definition>
+	
+	<definition name="confirmReconsentCancel" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/confirmReconsentCancel.jsp" />
+	</definition>
+	
+	<definition name="privacyPolicy" extends="base.definition">
+		<put-attribute name="body" value="/jsp/privacyPolicy.jsp" />
+	</definition>
+	
+	<definition name="privacyPolicyLO" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/privacyPolicy.jsp" />
+	</definition>
+	
+	<definition name="termsAndConditionsLO" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/termsAndCondition.jsp" />
+	</definition>
+	
+	<definition name="termsAndConditions" extends="base.definition">
+		<put-attribute name="body" value="/jsp/termsAndCondition.jsp" />
+	</definition>
+	
+	<definition name="consentLO" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/consent.jsp" />
+	</definition>
+	<definition name="consent" extends="base.definition">
+		<put-attribute name="body" value="/jsp/consent.jsp" />
+	</definition>
+	
+	<definition name="help" extends="base.definition">
+		<put-attribute name="body" value="/jsp/help.jsp" />
+	</definition>
+	
+	<definition name="contactUs" extends="base.definition">
+		<put-attribute name="body" value="/jsp/contactUs.jsp" />
+	</definition>
+	
+	<definition name="accountInfo" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/accountInfo.jsp" />
+	</definition>
+	
+	<definition name="accountPreferences" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/accountPreferences.jsp" />
+	</definition>
+	
+	<definition name="userAccountPreferences" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/userAccountPreferences.jsp" />
+	</definition>
+	
+	<definition name="success" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/success.jsp" />
+	</definition>
+	
+	<definition name="refillrequest" extends="base.definition">
+		<put-attribute name="body" value="/jsp/refillrequest.jsp" />
+	</definition>
+
+	<definition name="myPrescriptions" extends="base.definition">
+		<put-attribute name="notification" value="/jsp/globalnotification.jsp" />
+		<put-attribute name="body" value="/jsp/myPrescriptions.jsp" />
+	</definition>
+
+	<definition name="myMedicationRecord" extends="base.definition">
+		<put-attribute name="body" value="/jsp/myMedicationRecord.jsp" />
+	</definition>
+	
+	<definition name="orderHistory" extends="base.definition">
+		<put-attribute name="body" value="/jsp/orderHistory.jsp" />
+	</definition>
+
+	<definition name="signin" extends="base.definition">
+		<put-attribute name="body" value="/jsp/signin.jsp" />
+	</definition>
+
+	<definition name="myAccount" extends="base.definition">
+		<put-attribute name="body" value="/jsp/myAccount.jsp" />
+	</definition>
+
+	<definition name="resetPwdUserValidation" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/resetPwdUserValidation.jsp" />
+	</definition>
+
+	<definition name="resetPwdAnswerValidation" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/resetPwdAnswerValidation.jsp" />
+	</definition>
+
+	<definition name="resetPwdStatus" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/resetPwdStatus.jsp" />
+	</definition>
+
+	<definition name="resetPassword" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/resetPassword.jsp" />
+	</definition>
+	
+	<definition name="myManagedAccounts" extends="base.definition">
+		<put-attribute name="body" value="/jsp/myManagedAccounts.jsp" />
+	</definition>
+	
+	<definition name="autoRefill" extends="base.definition">
+		<put-attribute name="body" value="/jsp/autoRefill.jsp" />
+	</definition>
+	
+	<definition name="emailconfirmation" extends="simplenofooter.definition">
+		<put-attribute name="body" value="/jsp/emailconfirmation.jsp"/>
+	</definition>
+	
+	<definition name="home.myDefinition" template="/jsp/myhomepage.jsp">
+		<put-attribute name="header" value="/jsp/home/header.jsp" />
+	</definition>
+	
+	<definition name="myhomepage" extends="home.myDefinition">
+		<put-attribute name="mycarousel" value="/jsp/home/carousel.jsp" />
+		<put-attribute name="mylogin_sidebar" value="/jsp/home/login_sidebar.jsp" />
+		<put-attribute name="reservedSection" value="/jsp/home/reservedSectionQC.jsp" />
+		<put-attribute name="my2columncard_2_QC" value="/jsp/home/2columncard_findPharmacyQC.jsp" />
+		<put-attribute name="my2columncard_2_ROC" value="/jsp/home/2columncard_findPharmacyROC.jsp" />
+		<put-attribute name="footer" value="/jsp/home/footer.jsp" />
+		<!--<put-attribute name="my2columncard_1" value="/jsp/home/2columncard_1.jsp" />
+		<put-attribute name="my3columncard" value="/jsp/home/3columncard.jsp" /> 
+		<put-attribute name="my1columncardROC" value="/jsp/home/1columncardROC.jsp" />
+		<put-attribute name="my1columncardQC" value="/jsp/home/1columncardQC.jsp" /> -->
+	</definition>
+	
+	<!-- care giver block -->
+	
+	<definition name="caregiver.base.definition" template="/jsp/mainPageLayout.jsp">
+		<put-attribute name="header" value="/jsp/home/header.jsp"/>
+		<put-attribute name="navigation" value="/jsp/caregiverNavigation.jsp"/>
+		<put-attribute name="footer" value="/jsp/home/footer.jsp"/>
+	</definition>	
+	
+	<definition name="caregiverMyPrescription" extends="caregiver.base.definition">
+		<put-attribute name="notification" value="/jsp/caregiverGlobalNotification.jsp"/>
+		<put-attribute name="body" value="/jsp/caregiverMyPrescription.jsp"/>
+	</definition>
+	
+	<definition name="caregiverOrderHistory" extends="caregiver.base.definition">
+		<put-attribute name="body" value="/jsp/caregiverOrderHistory.jsp" />
+	</definition>
+	
+	<definition name="caregiverMyMedicationRecord" extends="caregiver.base.definition">
+		<put-attribute name="body" value="/jsp/caregiverMyMedicationRecord.jsp" />
+	</definition>
+	
+	<definition name="caregiverHelp" extends="caregiver.base.definition">
+		<put-attribute name="body" value="/jsp/caregiverHelp.jsp"/>
+	</definition>
+	
+	<definition name="caregiverContactUs" extends="caregiver.base.definition">
+		<put-attribute name="body" value="/jsp/caregiverContactUs.jsp"/>
+	</definition>
+	
+	<definition name="caregiverMyAccount" extends="caregiver.base.definition">
+		<put-attribute name="body" value="/jsp/caregiverMyAccount.jsp"/>
+	</definition>
+	
+	<definition name="caregiverAccountPreferences" extends="simple.definition">
+		<put-attribute name="body" value="/jsp/caregiverAccountPreferences.jsp" />
+	</definition>
+	
+	<!-- care giver block: END -->
+	
+</tiles-definitions>
